@@ -1,0 +1,8 @@
+add a notification icon ( when the doctor logs in a notification shows )
+when the doctor is connected a grey buble with the text ( Doctor is now connected )
+chat ( with emojis available )
+iphone sms look and feel
+attach a document
+end chat screen for user
+
+
