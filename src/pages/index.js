@@ -86,11 +86,7 @@ const Pages = ({ match }) => {
                 path={`/corporate-counselling`}
                 component={CorporateCounselling}
               />
-              {/* <Route
-              exact
-              path={`/service-fee/:serviceID`}
-              component={ServiceFee}
-            /> */}
+
               <Route
                 exact
                 path={`/service-fee/:serviceID?/:serviceName?/:serviceType?`}

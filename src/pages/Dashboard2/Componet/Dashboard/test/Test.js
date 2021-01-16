@@ -9,6 +9,7 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import AllTest from "./AllTest";
 import SelfTest from "./SelfTest";
+import PaidTest from "./PaidTest";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -68,10 +69,13 @@ function Test({ service }) {
   }, []);
   return (
     <div>
+      <h4
+        style={{ textAlign: "center", marginTop: "20px", marginBottom: "30px" }}
+      ></h4>
       <Grid container spacing={3}>
         <Grid item xs={6} sm={3}>
           <Button
-            className={`${classes.paper} ${classes.psychology}`}
+            className={`${classes.paper} ${classes.psychology} `}
             onClick={() => {
               setpage(<AllTest />);
             }}
@@ -95,7 +99,7 @@ function Test({ service }) {
           <Button
             className={`${classes.paper} ${classes.psychology}`}
             onClick={() => {
-              //   setpage(<Seassion1 service="service" seassion={seassion3} />);
+              setpage(<PaidTest test={"Paid"} />);
             }}
           >
             Paid Test
@@ -105,8 +109,9 @@ function Test({ service }) {
 
         {/*  */}
       </Grid>
+
       {/*  */}
-      {page}
+      <div style={{ marginTop: "20px" }}>{page}</div>
     </div>
   );
 }

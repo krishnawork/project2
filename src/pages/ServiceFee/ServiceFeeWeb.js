@@ -4,7 +4,7 @@ import { Radio } from "antd";
 import React, { Component, Fragment } from "react";
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 import { GoogleLogin } from "react-google-login";
-import { withRouter } from "react-router-dom";
+import { withRouter, useParams } from "react-router-dom";
 import {
   Button,
   Card,
@@ -31,6 +31,15 @@ import api_url from "../../api_url";
 import Swal from "sweetalert2";
 import firebase, { auth, provider } from "../firebase";
 let db = firebase.firestore();
+
+// let ServiceFeeWeb = () => {
+//   let { serviceID } = useParams();
+//   alert(serviceID);
+//   return <h1>{serviceID}</h1>;
+// };
+
+// export default ServiceFeeWeb;
+
 var validator = require("email-validator");
 
 class ServiceFee extends Component {
@@ -155,6 +164,7 @@ class ServiceFee extends Component {
               first_name: result.user.displayName,
               email: result.user.email,
             };
+            this.hideAll();
             localStorage.setItem("isLoggedIn", true);
             localStorage.setItem("userData", JSON.stringify(user));
             window.location.reload();
@@ -189,6 +199,7 @@ class ServiceFee extends Component {
         .then(function (response) {
           if (response.data.message === "No user found") {
             self.hideAll();
+
             // self.props.history.push({
             //     pathname: '/signup',
             // })
@@ -211,6 +222,7 @@ class ServiceFee extends Component {
             localStorage.setItem("isLoggedIn", true);
             localStorage.setItem("email", data.email);
             localStorage.setItem("userData", JSON.stringify(user));
+            this.state.loggedIn = true;
             window.location.reload();
           }
         })

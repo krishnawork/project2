@@ -16,7 +16,7 @@ import "react-toastify/dist/ReactToastify.css";
 import fb from "../../assets/images/fb.png";
 import registration from "../../assets/images/registration.png";
 import google from "../../assets/images/google-icon.png";
-import firebase from "../firebase";
+import firebase, { auth, provider } from "../firebase";
 import axios from "axios";
 import {
   Button,
@@ -78,7 +78,33 @@ class Checkout extends Component {
       isSearchable: true,
     };
   }
-
+  addgoogle = () => {
+    auth.signInWithPopup(provider).then((result) => {
+      if (result) {
+        console.log(result.user);
+        db.collection("web_user")
+          .doc(result.user.email)
+          .set(
+            {
+              email: result.user.email,
+              fname: result.user.displayName,
+              number: result.user.phoneNumber,
+            },
+            { merge: true }
+          )
+          .then((d) => {
+            localStorage.setItem("email", result.user.email);
+            let user = {
+              first_name: result.user.displayName,
+              email: result.user.email,
+            };
+            localStorage.setItem("isLoggedIn", true);
+            localStorage.setItem("userData", JSON.stringify(user));
+            window.location.reload();
+          });
+      }
+    });
+  };
   handleChange = (selectedOption) => {
     console.log(selectedOption);
     this.setState({
@@ -237,30 +263,21 @@ class Checkout extends Component {
 
         handler: (response) => {
           let ff = "";
-          if (this.props.location.state[3] == "service") {
+          if (this.props.location.state[3] === "service") {
             if (this.props.location.state[5]) {
               ff = this.props.location.state[5];
             }
+            let x = localStorage.getItem("email");
             db.collection("web_user")
-              .doc(this.state.email)
+              .doc(x)
               .collection("service")
               .add({
                 orderID: response.razorpay_payment_id,
-                userID: this.state.id,
+                userID: x,
                 amount: this.props.location.state[0],
                 seassion: this.props.location.state[1],
                 service_name: this.props.location.state[4],
                 service_type: ff,
-              });
-          }
-          if (this.props.location.state[3] == "service") {
-            axios
-              .post(api_url + "order", {
-                orderID: response.razorpay_payment_id,
-                userID: this.state.id,
-                amount: this.props.location.state[0],
-                purpose: this.props.location.state[1],
-                service_id: this.props.location.state[2],
               })
               .then(function (response) {
                 Swal.fire({
@@ -280,27 +297,18 @@ class Checkout extends Component {
               .catch(function (response) {
                 console.log(response);
               });
-          } else if (this.props.location.state[3] == "paid-test") {
+          } else if (this.props.location.state[3] === "paid-test") {
+            let x = localStorage.getItem("email");
             db.collection("web_user")
-              .doc(this.state.email)
+              .doc(x)
               .collection("paid-test")
               .add({
                 orderID: response.razorpay_payment_id,
-                userID: this.state.id,
+                userID: x,
                 amount: this.props.location.state[0],
                 seassion: this.props.location.state[1],
-                test_type: "paid",
+                test_type: "Paid",
                 test_name: localStorage.getItem("type"),
-              })
-              .then((r) => {});
-            console.log("else paid test");
-            axios
-              .post(api_url + "order", {
-                orderID: response.razorpay_payment_id,
-                userID: this.state.id,
-                amount: this.props.location.state[0],
-                purpose: this.props.location.state[1],
-                test_id: this.props.location.state[2],
               })
               .then(function (response) {
                 Swal.fire({
@@ -340,23 +348,15 @@ class Checkout extends Component {
               this.props.location.state[1],
               this.props.location.state[4]
             );
+            let x = localStorage.getItem("email");
             db.collection("web_user")
-              .doc(this.state.email)
+              .doc(x)
               .collection("Programs")
               .add({
-                userID: this.state.id,
+                userID: x,
                 amount: this.props.location.state[0],
                 seassion: this.props.location.state[1],
                 service_name: this.props.location.state[4],
-              });
-
-            axios
-              .post(api_url + "order", {
-                orderID: response.razorpay_payment_id,
-                userID: this.state.id,
-                amount: this.props.location.state[0],
-                purpose: this.props.location.state[1],
-                program_id: this.props.location.state[2],
               })
               .then(function (response) {
                 Swal.fire({
@@ -514,7 +514,7 @@ class Checkout extends Component {
                     width: "100%",
                   }}
                 >
-                  <div>
+                  {/* <div>
                     <FacebookLogin
                       appId="318952325788846"
                       // autoLoad
@@ -546,8 +546,8 @@ class Checkout extends Component {
                         </span>
                       )}
                     />
-                  </div>
-                  <div>
+                  </div> */}
+                  {/* <div>
                     <GoogleLogin
                       clientId="666008965252-p0f44125gort69gcqa1m6e25o3tujpvp.apps.googleusercontent.com"
                       render={(renderProps) => (
@@ -585,6 +585,35 @@ class Checkout extends Component {
                       // onFailure={responseGoogle}
                       cookiePolicy={"single_host_origin"}
                     />
+                  </div> */}
+                  <div>
+                    <button
+                      style={{
+                        cursor: "pointer",
+                        fontSize: "13px",
+                        background: "#4285F4",
+                        color: "white",
+                        padding: "6px 10px",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        borderRadius: "8px",
+                      }}
+                      onClick={this.addgoogle}
+                    >
+                      <img
+                        src={google}
+                        style={{
+                          height: "30px",
+                          width: "30px",
+                          objectFit: "contain",
+                          marginRight: "10px",
+                          padding: "5px",
+                          background: "white",
+                          borderRadius: "6px",
+                        }}
+                      />
+                      <span>Login with Google</span>
+                    </button>
                   </div>
                 </div>
                 <div

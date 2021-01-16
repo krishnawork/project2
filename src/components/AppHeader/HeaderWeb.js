@@ -596,6 +596,7 @@ class AppHeader extends Component {
   addgoogle = () => {
     auth.signInWithPopup(provider).then((result) => {
       if (result) {
+        console.log(result.user);
         db.collection("web_user")
           .doc(result.user.email)
           .set(

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import AddToPhotosOutlinedIcon from "@material-ui/icons/AddToPhotosOutlined";
 import ScheduleOutlinedIcon from "@material-ui/icons/ScheduleOutlined";
 import Journy from "./Journy";
@@ -10,7 +11,7 @@ function Dashboard() {
     <div>
       <div className="col-12" style={{ marginTop: "20px" }}>
         <div className="col-3">
-          <div className="box1">
+          <Link to="/programs" className="box1">
             <i>
               <AddToPhotosOutlinedIcon style={{ fontSize: 40 }} />
             </i>
@@ -23,7 +24,7 @@ function Dashboard() {
             >
               Book Your Next Seassion
             </h6>
-          </div>
+          </Link>
         </div>
         <div className="col-3" onClick={() => setpage(<Journy />)}>
           <div className="box2">

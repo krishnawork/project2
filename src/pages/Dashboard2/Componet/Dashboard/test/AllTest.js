@@ -58,6 +58,7 @@ const useStyles = makeStyles((theme) => ({
 function AllTest() {
   const [Loadind, setLoadind] = useState("Loading");
   const [selfdata, setselfdata] = useState([]);
+  const [paiddata, setpaiddata] = useState([]);
   const classes = useStyles();
   //
   useEffect(() => {
@@ -72,6 +73,27 @@ function AllTest() {
         if (!result.empty) {
           result.forEach((d) => {
             setselfdata((old) => [...old, d.data()]);
+          });
+        } else {
+          setLoadind("Data Not Avalabel");
+        }
+      });
+    return () => {
+      setLoadind("Loading");
+    };
+  }, []);
+  useEffect(() => {
+    let x = localStorage.getItem("email");
+    setselfdata([]);
+    db.collection("web_user")
+      .doc(x)
+      .collection("Paid")
+      .orderBy("TimeNow", "desc")
+      .get()
+      .then((result) => {
+        if (!result.empty) {
+          result.forEach((d) => {
+            setpaiddata((old) => [...old, d.data()]);
           });
         } else {
           setLoadind("Data Not Avalabel");
@@ -130,6 +152,51 @@ function AllTest() {
               );
             })
           : Loadind}
+
+        {/*  */}
+        {paiddata.length > 0
+          ? paiddata.map((d) => {
+              return (
+                <>
+                  <Grid item xs={6} sm={3}>
+                    <Card className={classes.root} variant="outlined">
+                      <CardContent>
+                        <Typography
+                          className={classes.title}
+                          color="textSecondary"
+                          gutterBottom
+                        >
+                          {d.Test}
+                        </Typography>
+                        <Typography variant="h5" component="h2">
+                          {d.TimeNow}
+                        </Typography>
+                        <Typography
+                          className={classes.pos}
+                          color="textSecondary"
+                        >
+                          Test_type: <br />
+                          {d.Test_type}
+                          <br />
+                        </Typography>
+                        <Typography variant="body2" component="p">
+                          <br />
+                        </Typography>
+                      </CardContent>
+                      <CardActions>
+                        <Button
+                          size="small"
+                          onClick={() => generatePDF(d.Details)}
+                        >
+                          DownLoad PDF{" "}
+                        </Button>
+                      </CardActions>
+                    </Card>
+                  </Grid>
+                </>
+              );
+            })
+          : ""}
       </Grid>
     </div>
   );

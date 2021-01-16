@@ -27,6 +27,8 @@ import registration from "../../assets/images/registration.png";
 import Subscribe from "../../components/Subscribe";
 import api_url from "../../api_url";
 import Swal from "sweetalert2";
+import firebase, { auth, provider } from "../../pages/firebase";
+let db = firebase.firestore();
 var validator = require("email-validator");
 
 class PaidTest extends Component {
@@ -66,7 +68,33 @@ class PaidTest extends Component {
     this.componentDidMount();
     window.location.reload();
   };
-
+  addgoogle = () => {
+    auth.signInWithPopup(provider).then((result) => {
+      if (result) {
+        console.log(result.user);
+        db.collection("web_user")
+          .doc(result.user.email)
+          .set(
+            {
+              email: result.user.email,
+              fname: result.user.displayName,
+              number: result.user.phoneNumber,
+            },
+            { merge: true }
+          )
+          .then((d) => {
+            localStorage.setItem("email", result.user.email);
+            let user = {
+              first_name: result.user.displayName,
+              email: result.user.email,
+            };
+            localStorage.setItem("isLoggedIn", true);
+            localStorage.setItem("userData", JSON.stringify(user));
+            window.location.reload();
+          });
+      }
+    });
+  };
   responseFacebook = (response) => {
     console.log(response);
     let res = response.profileObj;
@@ -151,7 +179,7 @@ class PaidTest extends Component {
     if (localStorage.getItem("isLoggedIn")) {
       localStorage.setItem("type", value);
       localStorage.setItem("settesttype", "Paid");
-      localStorage.setItem("settest",value)
+      localStorage.setItem("settest", value);
       this.props.history.push({
         pathname: "/checkout",
         state: [amount, sessions, test_id, "paid-test"],
@@ -267,7 +295,7 @@ class PaidTest extends Component {
                     width: "100%",
                   }}
                 >
-                  <div>
+                  {/* <div>
                     <FacebookLogin
                       appId="318952325788846"
                       // autoLoad
@@ -299,8 +327,8 @@ class PaidTest extends Component {
                         </span>
                       )}
                     />
-                  </div>
-                  <div>
+                  </div> */}
+                  {/* <div>
                     <GoogleLogin
                       clientId="666008965252-p0f44125gort69gcqa1m6e25o3tujpvp.apps.googleusercontent.com"
                       render={(renderProps) => (
@@ -335,9 +363,38 @@ class PaidTest extends Component {
                       )}
                       buttonText="Login"
                       onSuccess={this.responseGoogle}
-                      // onFailure={responseGoogle}
+                      
                       cookiePolicy={"single_host_origin"}
                     />
+                  </div> */}
+                  <div>
+                    <button
+                      style={{
+                        cursor: "pointer",
+                        fontSize: "13px",
+                        background: "#4285F4",
+                        color: "white",
+                        padding: "6px 10px",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        borderRadius: "8px",
+                      }}
+                      onClick={this.addgoogle}
+                    >
+                      <img
+                        src={google}
+                        style={{
+                          height: "30px",
+                          width: "30px",
+                          objectFit: "contain",
+                          marginRight: "10px",
+                          padding: "5px",
+                          background: "white",
+                          borderRadius: "6px",
+                        }}
+                      />
+                      <span>Login with Google</span>
+                    </button>
                   </div>
                 </div>
                 <div

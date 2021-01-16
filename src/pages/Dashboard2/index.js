@@ -8,6 +8,9 @@ import PollIcon from "@material-ui/icons/Poll";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import Dashboard from "./Dashboard";
+import Test from "./Componet/Dashboard/test/Test";
+import Service from "./Componet/Dashboard/service/Service";
+import Program from "./Componet/Dashboard/program/Program";
 
 function Index() {
   const { componet } = useParams();
@@ -15,6 +18,17 @@ function Index() {
   useEffect(() => {
     setmainpage(<Dashboard />);
   }, []);
+  useEffect(() => {
+    if (componet === "test") {
+      setmainpage(<Test />);
+    } else if (componet === "seassion") {
+      setmainpage(<Service />);
+    } else if (componet === "program") {
+      setmainpage(<Program />);
+    } else {
+      setmainpage(<Dashboard />);
+    }
+  }, [componet]);
   // let {};
   return (
     <Fragment>
@@ -29,11 +43,6 @@ function Index() {
             height: "240px",
           }}
         ></div>
-        {/*  */}
-        {/* <Grid  */}
-
-        {/*  */}
-
         <div className="main_box">
           {/* row start */}
           <div className="row">
@@ -58,8 +67,21 @@ function Index() {
                   <DynamicFeedIcon /> Clinical Progress
                 </NavLink>
 
-                <NavLink exact to="/dashboard" className="col-12 menu_option">
-                  <FavoriteBorderIcon /> Session History
+                <NavLink
+                  exact
+                  to="/dashboard/seassion"
+                  className="col-12 menu_option"
+                >
+                  <FavoriteBorderIcon />
+                  Service seassion
+                </NavLink>
+                <NavLink
+                  exact
+                  to="/dashboard/program"
+                  className="col-12 menu_option"
+                >
+                  <FavoriteBorderIcon />
+                  Program seassion
                 </NavLink>
 
                 <NavLink exact to="/dashboard" className="col-12 menu_option">
@@ -74,10 +96,10 @@ function Index() {
                     <p></p>
                   </div>
                   <div className="col-3 apoiment">
-                    <Link to="/service">Book Apoiment </Link>
+                    <Link to="/services">Book appointment </Link>
                   </div>
                   <div className="col-3 apoiment">
-                    <Link to="/service">TOLL FREE NO :- 26492659 </Link>
+                    <Link>TOLL FREE NO :- 26492659 </Link>
                   </div>
                 </div>
                 {/*  */}
