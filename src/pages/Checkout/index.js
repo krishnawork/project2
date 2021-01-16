@@ -320,11 +320,6 @@ class Checkout extends Component {
                 }).then((result) => {
                   if (result.value) {
                     if (self.props.location.state[3] === "paid-test") {
-                      console.log("---");
-                      localStorage.setItem(
-                        "paid_test_test_is",
-                        response.data.order
-                      );
                       self.props.history.push({
                         pathname: "/test",
                         state: self.props.location.state[3],
