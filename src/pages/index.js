@@ -242,7 +242,11 @@ const Pages = ({ match }) => {
               <Route exact path={`/self-test`} component={SelfTest} />
               <Route exact path={`/consultant`} component={Consultant} />
               {/* <Route exact path={`/dashboard`} component={Dashboard} /> */}
-              <Route exact path={`/dashboard`} component={Dashboard2} />
+              <Route
+                exact
+                path={`/dashboard/:componet?`}
+                component={Dashboard2}
+              />
               <Route exact path={`/profile`} component={Profile} />
               <Route exact path={`/gift`} component={Gift} />
               <Route exact path={`/terms`} component={Terms} />

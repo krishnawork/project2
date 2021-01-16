@@ -123,6 +123,17 @@ function Chatboard({ username, email, Img }) {
         .doc(id)
         .get()
         .then((result) => {
+          //
+          let x = new Date().toISOString().slice(0, 10);
+
+          db.collection("web_user").doc(user_name).collection("Histry").add({
+            TimeNow: x,
+            service_name: result.data().service_name,
+            seassion: 1,
+            service_type: result.data().service_type,
+          });
+
+          //
           if (result.data().seassion > 1) {
             seassion = result.data().seassion;
 

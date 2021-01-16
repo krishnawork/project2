@@ -598,7 +598,14 @@ class AppHeader extends Component {
       if (result) {
         db.collection("web_user")
           .doc(result.user.email)
-          .update({ email: result.user.email })
+          .set(
+            {
+              email: result.user.email,
+              fname: result.user.displayName,
+              number: result.user.phoneNumber,
+            },
+            { merge: true }
+          )
           .then((d) => {
             localStorage.setItem("email", result.user.email);
             let user = {
@@ -1245,6 +1252,7 @@ class AppHeader extends Component {
                   <Link className="headerLink" to="/gift">
                     <div className="linkHeader">Gift Hapiness</div>
                   </Link>
+
                   <div
                     style={{ cursor: "pointer" }}
                     hidden={this.state.loggedIn}

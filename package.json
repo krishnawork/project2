@@ -1,7 +1,7 @@
 {
   "name": "mind",
   "version": "0.1.0",
-  "homepage": "http://mindlyftest.antimtechnologies.com/",
+  "homepage": "http://www.mindlyf.com/",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.28",

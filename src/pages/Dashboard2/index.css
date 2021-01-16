@@ -1,60 +1,122 @@
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+[class*="col-"] {
+  float: left;
+}
+
+/* For desktop: */
+.col-1 {
+  width: 8.33%;
+}
+.col-2 {
+  width: 16.66%;
+}
+.col-3 {
+  width: 25%;
+}
+.col-4 {
+  width: 33.33%;
+}
+.col-5 {
+  width: 41.66%;
+}
+.col-6 {
+  width: 50%;
+}
+.col-7 {
+  width: 58.33%;
+}
+.col-8 {
+  width: 66.66%;
+}
+.col-9 {
+  width: 75%;
+}
+.col-10 {
+  width: 83.33%;
+}
+.col-11 {
+  width: 91.66%;
+}
+.col-12 {
+  width: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  [class*="col-"] {
+    width: 100%;
+  }
+}
+/*  */
 .marginB {
   margin-bottom: 30vh;
 }
 .main_box {
   width: 95%;
   height: 100vh;
-  padding: 1px 1px;
-  background-color: #155aba;
   margin: auto;
 }
-.sidebar {
-  width: 230px;
-  height: 100%;
-  background-color: #5278df;
-  padding: 10px 10px;
-  display: inline-block;
+.sidenav {
+  background-color: #5279e0;
+  height: 100vh;
+  padding-top: 10px;
 }
-.content_box {
-  height: 100%;
-  background-color: #f9f7fd;
-  display: inline-block;
-}
-.sidebar_option {
-  width: 100%;
-  display: block;
+.menu_option {
   padding: 10px;
 }
-.sidebar_option {
+.menu_option {
   text-decoration: none;
   color: white;
-  width: 100%;
 }
-.sidebar_option:hover {
-  background-color: #5cd1d3;
+.menu_option:hover {
   text-decoration: none;
+  background-color: #5bd0d2;
 }
-.sidebar_option:active {
-  background-color: #5cd1d3;
-}
-.content_box ul li {
+.menu_option:active {
   text-decoration: none;
-  list-style: none;
-  background-color: #ffffff;
-  color: black;
-  padding: 5px;
-  margin-left: 10px;
-  font-size: 13px;
-  border-radius: 10%;
+  background-color: #5bd0d2;
+}
+.sidebar {
+  padding-top: 10px;
+  background-color: #f9f7fd;
+  height: 100vh;
+}
+.apoiment {
   text-align: center;
 }
-.search {
-  width: 300px;
-}
-.content_box a {
+.apoiment a {
+  padding: 4px;
+  background-color: #fff;
   text-decoration: none;
   color: black;
+  font-size: 12px;
 }
-.analitics {
-  padding-right: 20px;
+.box1 {
+  background-color: #3cc8ce;
+  padding: 20px;
+  text-align: center;
+  color: white;
+  height: 130px;
+  display: flex;
+  align-items: center;
+}
+.box2 {
+  background-color: #4d7fdf;
+  padding: 20px;
+  text-align: center;
+  color: white;
+  height: 130px;
+  display: flex;
+  align-items: center;
+}
+.journey_box {
+  width: 90%;
+  height: 200px;
+  border: 1px solid black;
+  padding: 10px;
 }

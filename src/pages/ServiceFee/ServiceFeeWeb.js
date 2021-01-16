@@ -29,6 +29,8 @@ import Subscribe from "../../components/Subscribe";
 import Price from "react-forex-price";
 import api_url from "../../api_url";
 import Swal from "sweetalert2";
+import firebase, { auth, provider } from "../firebase";
+let db = firebase.firestore();
 var validator = require("email-validator");
 
 class ServiceFee extends Component {
@@ -77,6 +79,7 @@ class ServiceFee extends Component {
       name: res.name,
       email: res.email,
     };
+    localStorage.setItem("email", res.email);
     localStorage.setItem("userData", JSON.stringify(data));
     localStorage.setItem("isLoggedIn", true);
     this.hideAll();
@@ -91,6 +94,7 @@ class ServiceFee extends Component {
       name: res.name,
       email: res.email,
     };
+    localStorage.setItem("email", res.email);
     localStorage.setItem("userData", JSON.stringify(data));
     localStorage.setItem("isLoggedIn", true);
     this.hideAll();
@@ -131,7 +135,34 @@ class ServiceFee extends Component {
       });
     }
   };
-
+  //
+  addgoogle = () => {
+    auth.signInWithPopup(provider).then((result) => {
+      if (result) {
+        db.collection("web_user")
+          .doc(result.user.email)
+          .set(
+            {
+              email: result.user.email,
+              fname: result.user.displayName,
+              number: result.user.phoneNumber,
+            },
+            { merge: true }
+          )
+          .then((d) => {
+            localStorage.setItem("email", result.user.email);
+            let user = {
+              first_name: result.user.displayName,
+              email: result.user.email,
+            };
+            localStorage.setItem("isLoggedIn", true);
+            localStorage.setItem("userData", JSON.stringify(user));
+            window.location.reload();
+          });
+      }
+    });
+  };
+  //
   emailChange = (event) => {
     this.setState({ email: event.target.value });
   };
@@ -178,6 +209,7 @@ class ServiceFee extends Component {
               number: data.number,
             };
             localStorage.setItem("isLoggedIn", true);
+            localStorage.setItem("email", data.email);
             localStorage.setItem("userData", JSON.stringify(user));
             window.location.reload();
           }
@@ -302,7 +334,7 @@ class ServiceFee extends Component {
                     width: "100%",
                   }}
                 >
-                  <div>
+                  {/* <div>
                     <FacebookLogin
                       appId="318952325788846"
                       // autoLoad
@@ -334,8 +366,8 @@ class ServiceFee extends Component {
                         </span>
                       )}
                     />
-                  </div>
-                  <div>
+                  </div> */}
+                  {/* <div>
                     <GoogleLogin
                       clientId="666008965252-p0f44125gort69gcqa1m6e25o3tujpvp.apps.googleusercontent.com"
                       render={(renderProps) => (
@@ -370,9 +402,37 @@ class ServiceFee extends Component {
                       )}
                       buttonText="Login"
                       onSuccess={this.responseGoogle}
-                      // onFailure={responseGoogle}
                       cookiePolicy={"single_host_origin"}
                     />
+                  </div> */}
+                  <div>
+                    <button
+                      style={{
+                        cursor: "pointer",
+                        fontSize: "13px",
+                        background: "#4285F4",
+                        color: "white",
+                        padding: "6px 10px",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        borderRadius: "8px",
+                      }}
+                      onClick={this.addgoogle}
+                    >
+                      <img
+                        src={google}
+                        style={{
+                          height: "30px",
+                          width: "30px",
+                          objectFit: "contain",
+                          marginRight: "10px",
+                          padding: "5px",
+                          background: "white",
+                          borderRadius: "6px",
+                        }}
+                      />
+                      <span>Login with Google</span>
+                    </button>
                   </div>
                 </div>
               </Col>
