@@ -596,27 +596,62 @@ class AppHeader extends Component {
   addgoogle = () => {
     auth.signInWithPopup(provider).then((result) => {
       if (result) {
-        console.log(result.user);
-        db.collection("web_user")
-          .doc(result.user.email)
-          .set(
-            {
-              email: result.user.email,
-              fname: result.user.displayName,
-              number: result.user.phoneNumber,
-            },
-            { merge: true }
-          )
-          .then((d) => {
-            localStorage.setItem("email", result.user.email);
+        axios
+          .post(api_url + "sign-up", {
+            email: result.user.email,
+            fname: result.user.displayName,
+            number: result.user.phoneNumber,
+            password: 'password'
+          })
+          .then(function (response) {
+            db.collection("web_user")
+              .doc(result.user.email)
+              .set(
+                {
+                  email: result.user.email,
+                  fname: result.user.displayName,
+                  number: result.user.phoneNumber,
+                },
+                { merge: true }
+              )
+
+            let data = response.data.user;
+            localStorage.setItem("email", data.email);
             let user = {
-              first_name: result.user.displayName,
-              email: result.user.email,
+              id: data.id,
+              first_name: data.first_name,
+              last_name: data.last_name,
+              email: data.email,
+              number: data.number,
             };
-            localStorage.setItem("isLoggedIn", true);
             localStorage.setItem("userData", JSON.stringify(user));
+            localStorage.setItem("isLoggedIn", true);
             window.location.reload();
+          })
+          .catch(function (error) {
+            console.log(error);
           });
+        // console.log(result.user);
+        // db.collection("web_user")
+        //   .doc(result.user.email)
+        //   .set(
+        //     {
+        //       email: result.user.email,
+        //       fname: result.user.displayName,
+        //       number: result.user.phoneNumber,
+        //     },
+        //     { merge: true }
+        //   )
+        //   .then((d) => {
+        //     localStorage.setItem("email", result.user.email);
+        //     let user = {
+        //       first_name: result.user.displayName,
+        //       email: result.user.email,
+        //     };
+        //     localStorage.setItem("isLoggedIn", true);
+        //     localStorage.setItem("userData", JSON.stringify(user));
+        //     window.location.reload();
+        //   });
       }
     });
   };
@@ -797,7 +832,7 @@ class AppHeader extends Component {
                         />
                       </div> */}
                       {/* <div>
-                        
+
                         <GoogleLogin
                           clientId="666008965252-p0f44125gort69gcqa1m6e25o3tujpvp.apps.googleusercontent.com"
                           render={(renderProps) => (

@@ -16,15 +16,17 @@ import CAT8 from '../../assets/images/CAT-8.jpg';
 import CAT9 from '../../assets/images/CAT-9.jpg';
 import CAT10 from '../../assets/images/CAT-10.png';
 import CAT11 from '../../assets/images/CAT-11.jpg';
-import TAT1 from '../../assets/images/TAT-1.png';
-import TAT2 from '../../assets/images/TAT-2.png';
-import TAT3F from '../../assets/images/TAT-3(F).png';
-import TAT3M from '../../assets/images/TAT-3(M).png';
-import TAT4M from '../../assets/images/TAT-4(M).png';
-import TAT5 from '../../assets/images/TAT-5.png';
-import TAT6 from '../../assets/images/TAT-6.png';
-import TAT7 from '../../assets/images/TAT-7.png';
-import TAT8 from '../../assets/images/TAT-8.png';
+import TAT1 from '../../assets/images/TAT1.jpeg';
+import TAT2 from '../../assets/images/TAT2.jpeg';
+import TAT3 from '../../assets/images/TAT3.jpeg';
+import TAT4 from '../../assets/images/TAT4.jpeg';
+import TAT5 from '../../assets/images/TAT5.jpeg';
+import TAT6 from '../../assets/images/TAT6.jpeg';
+import TAT7 from '../../assets/images/TAT7.jpeg';
+import TAT8 from '../../assets/images/TAT8.jpeg';
+import TAT9 from '../../assets/images/TAT9.jpeg';
+import TAT10 from '../../assets/images/TAT10.jpg';
+import T from '../../assets/images/Tulips.jpg';
 import Rorschach_blot_01 from '../../assets/images/Rorschach_blot_01.jpg';
 import Rorschach_blot_02 from '../../assets/images/Rorschach_blot_02.jpg';
 import Rorschach_blot_03 from '../../assets/images/Rorschach_blot_03.jpg';
@@ -2701,17 +2703,12 @@ componentDidMount = () => {
           selected: 'A',
         },
         {
-          question: TAT3F,
+          question: TAT3,
           options: [{value: 'A', option: ''}],
           selected: 'A',
         },
         {
-          question: TAT3M,
-          options: [{value: 'A', option: ''}],
-          selected: 'A',
-        },
-        {
-          question: TAT4M,
+          question: TAT4,
           options: [{value: 'A', option: ''}],
           selected: 'A',
         },
@@ -2732,6 +2729,16 @@ componentDidMount = () => {
         },
         {
           question: TAT8,
+          options: [{value: 'A', option: ''}],
+          selected: 'A',
+        },
+        {
+          question: TAT9,
+          options: [{value: 'A', option: ''}],
+          selected: 'A',
+        },
+        {
+          question: TAT10,
           options: [{value: 'A', option: ''}],
           selected: 'A',
         },
@@ -4432,13 +4439,27 @@ next = () => {
             xhr.open("GET", this.state.questions[this.state.number-1].question, true);
             xhr.responseType = "blob";
             xhr.onload = function (e) {
+
+
               var reader = new FileReader();
               reader.onload = function(event) {
-                 var res = event.target.result;
-                 self.state.questions[self.state.number-1].question = event.target.result
-                 self.state.number= self.state.number+1
-                 self.state.value= ""
-                 self.setState({state: self.state})
+                 // var res = event.target.result;
+                 var dataURI = event.target.result
+                 var byteString = atob(dataURI.split(',')[1]);
+                var ab = new ArrayBuffer(byteString.length);
+                var ia = new Uint8Array(ab);
+
+                for (var i = 0; i < byteString.length; i++) {
+                    ia[i] = byteString.charCodeAt(i);
+                }
+                console.log(new Blob([ab], { type: 'image/jpeg' }));
+                var url = URL.createObjectURL(new Blob([ab], { type: 'image/jpeg' }));
+                console.log(url);
+                self.state.questions[self.state.number-1].question = url
+                self.state.number= self.state.number+1
+                self.state.value= ""
+                self.setState({state: self.state})
+
               }
               var file = this.response;
               reader.readAsDataURL(file)
@@ -4501,15 +4522,24 @@ select = data => {
 }
 
 onChange = (event) => {
-  var FR= new FileReader();
-  var temp, self=this;
-   FR.addEventListener("load", function(e) {
-     temp = e.target.result
-     self.state.questions[self.state.number-1].options[0].option = temp
-     self.state.image_url = temp
-     self.setState({state: self.state})
-   });
-   FR.readAsDataURL( event.target.files[0] );
+  var self=this;
+  var selectedFile = event.target.files[0]
+  var url = URL.createObjectURL(new Blob([selectedFile] , {type:'images/*'}))
+  self.state.questions[self.state.number-1].options[0].option = url
+  self.state.image_url = url
+  self.setState({state: self.state})
+
+
+
+
+  // var FR= new FileReader();
+  //  FR.addEventListener("load", function(e) {
+  //    temp = e.target.result
+  //    self.state.questions[self.state.number-1].options[0].option = temp
+  //    self.state.image_url = temp
+  //    self.setState({state: self.state})
+  //  });
+  //  FR.readAsDataURL( event.target.files[0] );
  }
 
     render() {

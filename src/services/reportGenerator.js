@@ -68,8 +68,6 @@ const generatePDF = tickets => {
   const date = Date().split(" ");
 
 
-
-
   // we use a date string to generate our filename.
   const dateStr = date[0] + date[1] + date[2] + date[3] + date[4];
   // ticket title. and margin-top + margin-left
@@ -80,7 +78,7 @@ const generatePDF = tickets => {
   var blob = doc.output();
   var formData = new FormData();
   formData.append('pdf', blob);
-  axios.post(api_url+'update_pdf', {user_id: JSON.parse(localStorage.getItem('userData')).id, pdf_blob: blob, order_id: localStorage.getItem('paid_test_test_is')})
+  axios.post(api_url+'update_pdf', {user_id: JSON.parse(localStorage.getItem('userData')).id, pdf_blob: blob, order_id: localStorage.getItem('paid_test_test_id')})
     .then(function (response) {
       console.log("success api called");
     })
