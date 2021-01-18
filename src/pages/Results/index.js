@@ -106,7 +106,6 @@ class Results extends Component {
         })
         .then((result) => {});
     } else if (localStorage.getItem("settesttype") === "Paid") {
-      alert("hello");
       db.collection("web_user")
         .doc(localStorage.getItem("email"))
         .collection(localStorage.getItem("settesttype"))

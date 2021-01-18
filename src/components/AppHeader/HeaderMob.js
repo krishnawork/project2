@@ -380,10 +380,6 @@ class AppHeader extends Component {
     });
   };
 
-  //
-
-<<<<<<< HEAD
-=======
   addgoogle = () => {
     auth.signInWithPopup(provider).then((result) => {
       if (result) {
@@ -444,7 +440,6 @@ class AppHeader extends Component {
     });
   };
 
->>>>>>> 7d3f3c2292fe544958ceb7dd6299f384a8bdc0a5
   passChange = (event) => {
     this.setState({ password: event.target.value });
   };

@@ -25,13 +25,9 @@ import {
   Input,
   Modal,
   ModalBody,
-<<<<<<< HEAD
-  Row,dre
-=======
   Row,
   dre,
   Collapse,
->>>>>>> 7d3f3c2292fe544958ceb7dd6299f384a8bdc0a5
 } from "reactstrap";
 import serviceBack from "../../assets/images/Elements.png";
 import fb from "../../assets/images/fb.png";

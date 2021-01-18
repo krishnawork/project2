@@ -341,7 +341,7 @@ class Checkout extends Component {
           localStorage.setItem('paid_test_test_id', response.razorpay_payment_id)
           let ff = "";
           if (this.props.location.state[3] === "service") {
-            axios.post(api_url+'order', {orderID: response.razorpay_payment_id, userID: this.state.id, amount: this.props.location.state[0], purpose: this.props.location.state[1], service_id: this.props.location.state[2]})
+            axios.post(api_url+'order', {orderID: response.razorpay_payment_id, userID: this.state.id, amount: this.props.location.state[0], purpose: this.props.location.state[1], service_id: this.props.location.state[2], email: localStorage.getItem("email")})
             if (this.props.location.state[5]) {
               ff = this.props.location.state[5];
             }
@@ -378,7 +378,7 @@ class Checkout extends Component {
                 console.log(response);
               });
           } else if (this.props.location.state[3] === "paid-test") {
-            axios.post(api_url+'order', {orderID: response.razorpay_payment_id, userID: this.state.id, amount: this.props.location.state[0], purpose: this.props.location.state[1], test_id: this.props.location.state[2]})
+            axios.post(api_url+'order', {orderID: response.razorpay_payment_id, userID: this.state.id, amount: this.props.location.state[0], purpose: this.props.location.state[1], test_id: this.props.location.state[2], email: localStorage.getItem("email")})
             let x = localStorage.getItem("email");
             db.collection("web_user")
               .doc(x)
@@ -417,7 +417,7 @@ class Checkout extends Component {
                 console.log(response);
               });
           } else {
-            axios.post(api_url+'order', {orderID: response.razorpay_payment_id, userID: this.state.id, amount: this.props.location.state[0], purpose: this.props.location.state[1], program_id: this.props.location.state[2]})
+            axios.post(api_url+'order', {orderID: response.razorpay_payment_id, userID: this.state.id, amount: this.props.location.state[0], purpose: this.props.location.state[1], program_id: this.props.location.state[2], email: localStorage.getItem("email")})
             console.log("else");
             console.log(
               this.state.id,
