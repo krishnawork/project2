@@ -28,9 +28,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import logo from "../../assets/images/mind-lyf-04.png";
 import api_url from "../../api_url";
 import firebase, { auth, provider } from "../../pages/firebase";
+import Swal from "sweetalert2";
+import ReactQuill from "react-quill";
 let db = firebase.firestore();
 var validator = require("email-validator");
-
 let user = {};
 
 class AppHeader extends Component {
@@ -43,6 +44,13 @@ class AppHeader extends Component {
       sidebarOpen: false,
       selectedOption: null,
       isSearchable: true,
+      showBecameCounsellor: false,
+      password: "",
+      number: "",
+      email: "",
+      fname: "",
+      lname: "",
+      comment: "",
       courseList: [
         { label: "Depression Counselling", value: "services/stress" },
         { label: "Relationship Counselling", value: "services/relationship" },
@@ -100,6 +108,11 @@ class AppHeader extends Component {
 
   onSetSidebarOpen(open) {
     this.setState({ sidebarOpen: open });
+    if (open === false) {
+      document.querySelector(".jugad").style.display = "none";
+    } else {
+      document.querySelector(".jugad").style.display = "block";
+    }
   }
 
   showLogin = () => {
@@ -182,6 +195,70 @@ class AppHeader extends Component {
     }
   };
 
+  becameCounsellor = () => {
+    console.log(this.state);
+    if (
+      this.state.fname === "" ||
+      this.state.lname === "" ||
+      this.state.email === "" ||
+      this.state.number === ""
+    ) {
+      toast.error("Please enter all the fields!");
+    } else if (validator.validate(this.state.email) === false) {
+      toast.error("Please enter a valid email address!");
+    } else if (this.state.number.length !== 10) {
+      toast.error("Please enter a 10-digit mobile number!");
+    } else {
+      let self = this;
+      axios
+        .post(api_url + "sign-up", {
+          email: this.state.email,
+          fname: this.state.fname,
+          lname: this.state.lname,
+          number: this.state.number,
+          counsellor: 1,
+          comment: this.state.comment,
+        })
+        .then(function (response) {
+          self.hideAll();
+          self.setState({ showBecameCounsellor: false });
+          Swal.fire({
+            icon: "success",
+            type: "success",
+            text: "As a Counsellor Registered successfully!",
+            showConfirmButton: true,
+            timer: 3500,
+          });
+          // window.location.assign('/');
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
+  };
+
+  showBecameCounsellor = () => {
+    this.setState({ showBecameCounsellor: true, sidebarOpen: false });
+  };
+
+  emailChange = (event) => {
+    this.setState({ email: event.target.value });
+  };
+
+  fnamechange = (event) => {
+    console.log(event.target.value);
+    this.setState({ fname: event.target.value });
+    console.log(this.state.fname);
+  };
+
+  lnameChange = (event) => {
+    this.setState({ lname: event.target.value });
+  };
+
+  commentChange = (value) => {
+    this.setState({ comment: value });
+  };
+
   nameChange = (event) => {
     this.setState({ name: event.target.value });
   };
@@ -240,6 +317,9 @@ class AppHeader extends Component {
   hideAll = () => {
     this.setState({
       showLogin: false,
+      showPass: false,
+      showBecameCounsellor: false,
+      comment: "",
     });
   };
 
@@ -298,10 +378,6 @@ class AppHeader extends Component {
     // this.hideAll();
     // this.componentDidMount();
     // window.location.reload();
-  };
-
-  emailChange = (event) => {
-    this.setState({ email: event.target.value });
   };
 
   passChange = (event) => {
@@ -428,78 +504,6 @@ class AppHeader extends Component {
                     width: "100%",
                   }}
                 >
-                  {/* <div style={{ marginRight: "10px" }}>
-                    <FacebookLogin
-                      appId="318952325788846"
-                      // autoLoad
-                      callback={this.responseFacebook}
-                      render={(renderProps) => (
-                        <span
-                          style={{
-                            cursor: "pointer",
-                            fontSize: "13px",
-                            background: "#3b5998",
-                            color: "white",
-                            padding: "6px 10px",
-                            display: "inline-flex",
-                            alignItems: "center",
-                            borderRadius: "8px",
-                          }}
-                          onClick={renderProps.onClick}
-                          disabled={renderProps.disabled}
-                        >
-                          <img
-                            src={fb}
-                            style={{
-                              height: "30px",
-                              marginRight: "10px",
-                              borderRadius: "6px",
-                            }}
-                          />
-                          <span>Login with Facebook</span>
-                        </span>
-                      )}
-                    />
-                  </div> */}
-                  {/* <div>
-                    <GoogleLogin
-                      clientId="666008965252-p0f44125gort69gcqa1m6e25o3tujpvp.apps.googleusercontent.com"
-                      render={(renderProps) => (
-                        <span
-                          style={{
-                            cursor: "pointer",
-                            fontSize: "13px",
-                            background: "#4285F4",
-                            color: "white",
-                            padding: "6px 10px",
-                            display: "inline-flex",
-                            alignItems: "center",
-                            borderRadius: "8px",
-                          }}
-                          onClick={renderProps.onClick}
-                          disabled={renderProps.disabled}
-                        >
-                          <img
-                            src={google}
-                            style={{
-                              height: "30px",
-                              width: "30px",
-                              objectFit: "contain",
-                              marginRight: "10px",
-                              padding: "5px",
-                              background: "white",
-                              borderRadius: "6px",
-                            }}
-                          />
-                          <span>Login with Google</span>
-                        </span>
-                      )}
-                      buttonText="Login"
-                      onSuccess={this.responseGoogle}
-                      // onFailure={responseGoogle}
-                      cookiePolicy={"single_host_origin"}
-                    />
-                  </div> */}
                   <div>
                     <button
                       style={{
@@ -544,7 +548,7 @@ class AppHeader extends Component {
                   style={{
                     marginTop: "10px",
                     textAlign: "left",
-                    width: "100%",
+                    // width: "100%",
                   }}
                 >
                   <Link
@@ -572,14 +576,24 @@ class AppHeader extends Component {
             </Row>
           </ModalBody>
         </Modal>
+        <div
+          class="jugad"
+          onClick={() => this.onSetSidebarOpen(false)}
+          style={{
+            zIndex: "1001",
+            position: "fixed",
+            width: "100%",
+            height: "100%",
+            display: "none",
+          }}
+        ></div>
         <Menu isOpen={this.state.sidebarOpen}>
           <div
-            style={{
-              marginBottom: "20px",
-              display: "flex",
-              justifyContent: "space-between",
-              width: "100%",
-            }}
+          // style={{
+          //   marginBottom: "20px",
+          //   display: "flex",
+          //   justifyContent: "space-between",
+          // }}
           >
             <span>
               <Link
@@ -672,7 +686,14 @@ class AppHeader extends Component {
               Programs
             </span>
           </Link>
-          <Link
+          <div
+            className="linkStyle"
+            style={{ marginBottom: "20px", fontSize: "1.3rem" }}
+            onClick={this.showBecameCounsellor}
+          >
+            Become A Counsellor
+          </div>
+          {/*<Link
             style={{ marginBottom: "20px", fontSize: "1.3rem" }}
             onClick={() => this.nav("programs")}
             className="linkStyle"
@@ -681,7 +702,7 @@ class AppHeader extends Component {
             <span className="linkHeader" style={{ marginRight: "10px" }}>
               Become a Counsellor
             </span>
-          </Link>
+          </Link> */}
           <Link
             style={{ marginBottom: "20px", fontSize: "1.3rem" }}
             onClick={() => this.nav("corporate-counselling")}
@@ -722,7 +743,7 @@ class AppHeader extends Component {
               Choose Counsellor
             </span>
           </Link>
-          <Link
+          {/*<Link
             style={{ marginBottom: "20px", fontSize: "1.3rem" }}
             onClick={() => this.nav("programs")}
             className="linkStyle"
@@ -731,12 +752,12 @@ class AppHeader extends Component {
             <span className="linkHeader" style={{ marginRight: "10px" }}>
               Discussion Forum
             </span>
-          </Link>
+          </Link> */}
           <Link
             style={{ marginBottom: "20px", fontSize: "1.3rem" }}
             onClick={() => this.nav("test")}
             className="linkStyle"
-            to="/test"
+            to="/blog"
           >
             <span className="linkHeader" style={{ marginRight: "10px" }}>
               Blog
@@ -765,23 +786,13 @@ class AppHeader extends Component {
           </Link>
         </Menu>
         <div className="headerWidth">
-          {/* <Select
-                                id="global-search"
-                                className="basic-single"
-                                classNamePrefix="select"
-                                value={selectedOption}
-                                placeholder="Search..."
-                                onChange={(selectedOption) => this.handleChange(selectedOption)}
-                                isSearchable={isSearchable}
-                                name="color"
-                                options={this.state.courseList} />  */}
           <div
             className="headerBottom flexCenter"
             style={{ justifyContent: "space-between" }}
           >
             <img
               src={menu}
-              style={{ height: "25px" }}
+              style={{ height: "25px", zIndex: "10102" }}
               onClick={() => this.onSetSidebarOpen(true)}
             />
             <Link className="linkStyle" to="/" style={{ color: "white" }}>
@@ -811,6 +822,106 @@ class AppHeader extends Component {
             </div>
           </div>
         </div>
+        <Modal
+          size="lg"
+          centered={true}
+          style={{ textAlign: "center" }}
+          isOpen={this.state.showBecameCounsellor}
+          toggle={this.hideAll}
+        >
+          <ModalBody style={{ textAlign: "center" }}>
+            <Row style={{ padding: "0px" }}>
+              <Col
+                md={12}
+                className="flexCenter"
+                style={{ flexDirection: "column", padding: "40px" }}
+              >
+                <Row>
+                  <div
+                    style={{
+                      fontSize: "1.4rem",
+                      fontFamily: "Roboto-Bold",
+                      marginBottom: "15px",
+                    }}
+                  >
+                    Became A Counsellor
+                  </div>
+                </Row>
+
+                <Row style={{ marginBottom: "35px", width: "100%" }}>
+                  <Col md={6}>
+                    <div style={{ margin: "10px 0px" }}>
+                      <Input
+                        className="inputStyle"
+                        placeholder="First Name"
+                        onChange={(event) => this.fnamechange(event)}
+                      />
+                    </div>
+                  </Col>
+                  <Col md={6}>
+                    <div style={{ margin: "10px 0px" }}>
+                      <Input
+                        className="inputStyle"
+                        placeholder="Last Name"
+                        onChange={this.lnameChange}
+                      />
+                    </div>
+                  </Col>
+                </Row>
+
+                <Row style={{ marginBottom: "35px", width: "100%" }}>
+                  <Col md={6}>
+                    <div style={{ margin: "10px 0px" }}>
+                      <Input
+                        className="inputStyle"
+                        placeholder="Email-ID"
+                        onChange={this.emailChange}
+                      />
+                    </div>
+                  </Col>
+                  <Col md={6}>
+                    <div style={{ margin: "10px 0px" }}>
+                      <Input
+                        className="inputStyle"
+                        placeholder="Phone Number"
+                        onChange={this.numberChange}
+                      />
+                    </div>
+                  </Col>
+                </Row>
+                <Row style={{ marginBottom: "35px", width: "100%" }}>
+                  <ReactQuill
+                    value={this.state.comment}
+                    onChange={this.commentChange}
+                    style={{ marginBottom: "35px", width: "100%" }}
+                  />
+                </Row>
+                <Row
+                  style={{
+                    marginTop: "20px",
+                    width: "30%",
+                    textAlign: "left",
+                  }}
+                >
+                  <Button
+                    onClick={this.becameCounsellor}
+                    style={{
+                      fontFamily: "Roboto-Bold",
+                      borderRadius: "8px",
+                      border: "none",
+                      width: "100%",
+                      background: "#DF8F06",
+                      padding: "10px 16px",
+                      fontSize: "1rem",
+                    }}
+                  >
+                    Register Now
+                  </Button>
+                </Row>
+              </Col>
+            </Row>
+          </ModalBody>
+        </Modal>
       </Fragment>
     );
   }

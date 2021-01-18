@@ -16,7 +16,7 @@ import {
   Input,
   Modal,
   ModalBody,
-  Row,
+  Row,dre
 } from "reactstrap";
 import serviceBack from "../../assets/images/Elements.png";
 import fb from "../../assets/images/fb.png";
@@ -402,10 +402,6 @@ class ServiceFee extends Component {
                 </Radio>
               </Radio.Group>
             </div>
-            ---------------
-            <p>
-              I bought a dress for <Price amount={123.45} />.
-            </p>
             <Row style={{ marginTop: "20px" }}>
               <Col xs={12}>
                 <Card
@@ -436,7 +432,7 @@ class ServiceFee extends Component {
                         marginTop: "10px",
                       }}
                     >
-                      ₹ 1,00000/-
+                      ₹ 1,000/-
                     </div>
 
                     <hr
@@ -538,7 +534,6 @@ class ServiceFee extends Component {
                         fontSize: "14px",
                         color: "white",
                         marginTop: "20px",
-                        width: "100%",
                       }}
                       onClick={() => this.openCheckout(2500, 3)}
                     >

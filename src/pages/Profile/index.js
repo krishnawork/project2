@@ -326,6 +326,7 @@ class Profile extends Component {
                         value={this.state.email}
                         placeholder="Enter your email address"
                         onChange={this.emailChange}
+                        disabled
                       />
                     </Col>
                     <Col

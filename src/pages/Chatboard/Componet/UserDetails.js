@@ -35,7 +35,7 @@ function UserDetails() {
   //
   return (
     <div>
-      <div className="btn_container">
+      <div className="">
         <button className="btn1" onClick={() => setpage(<Service />)}>
           service package
         </button>

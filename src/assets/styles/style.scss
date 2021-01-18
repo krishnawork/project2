@@ -58,7 +58,7 @@ select[name="rcrs-country"] {
 }
 
 .hoverLink:hover {
-  color: #E98E00 !important;
+  color: #e98e00 !important;
   transition: all 0.3s;
 }
 
@@ -68,7 +68,7 @@ select[name="rcrs-country"] {
   border: solid #0081d4 2px;
   background-color: #0081d4;
   transition: all 0.3s;
-  box-shadow: 0px 14px 37px 0px rgba(0,129,212,0.44);
+  box-shadow: 0px 14px 37px 0px rgba(0, 129, 212, 0.44);
   padding: 6px 22px;
   border-radius: 10px;
   font-size: 1.3rem;
@@ -85,10 +85,10 @@ select[name="rcrs-country"] {
   &:hover {
     color: white;
     border: none;
-    border: solid #0061AB 2px;
-    background-color: #0061AB;
+    border: solid #0061ab 2px;
+    background-color: #0061ab;
     transition: all 0.3s;
-    box-shadow: 0px 14px 37px 0px rgba(0,129,212,0.44);
+    box-shadow: 0px 14px 37px 0px rgba(0, 129, 212, 0.44);
   }
 }
 
@@ -138,14 +138,14 @@ select[name="rcrs-country"] {
 }
 
 .paid {
-  background: #4054B2 !important;
+  background: #4054b2 !important;
   color: white !important;
   text-align: left;
   font-size: 26px;
   transition: all 0.3s;
   &:hover {
     background: #cfdffe !important;
-    color: #4054B2 !important;
+    color: #4054b2 !important;
     transform: translateY(-10px);
     transition: all 0.3s;
   }
@@ -211,16 +211,16 @@ select[name="rcrs-country"] {
   font-size: 20px;
   margin-top: 8px;
   margin-right: 8px;
-  font-family: 'Work'; 
+  font-family: "Work";
 }
 
 .pricingCost {
   text-align: center;
-  font-family: 'Poppins-Bold'; 
+  font-family: "Poppins-Bold";
   font-size: 36px;
-  margin-top: 10px; 
+  margin-top: 10px;
   display: flex;
-  justify-content: center
+  justify-content: center;
 }
 
 .categoryBlog {
@@ -245,7 +245,7 @@ select[name="rcrs-country"] {
 }
 
 .linkHeader {
-  font-family: 'Poppins';
+  font-family: "Poppins";
   color: white !important;
   text-decoration: none;
   transition: all 0.4s;
@@ -260,7 +260,7 @@ select[name="rcrs-country"] {
 }
 
 .shadowCardMasonry {
-  box-shadow: 0px 3px 12px #0000001A;
+  box-shadow: 0px 3px 12px #0000001a;
   margin-top: 25px;
 }
 
@@ -309,23 +309,23 @@ select[name="rcrs-country"] {
   align-items: center;
 }
 
-.ant-radio-checked 
-    .ant-radio-inner {
-      border-color: #DF8F06 !important;
-    }
+.ant-radio-checked .ant-radio-inner {
+  border-color: #df8f06 !important;
+}
 
 .ant-radio-inner::after {
-  background-color: #DF8F06 !important;
+  background-color: #df8f06 !important;
 }
 
 .ant-radio-checked::after {
-  border: 1px solid #DF8F06 !important;
+  border: 1px solid #df8f06 !important;
 }
 
-.rc-tabs-tab-active, .rc-tabs-tab-active:hover {
+.rc-tabs-tab-active,
+.rc-tabs-tab-active:hover {
   color: white !important;
-  background-color: #DF8F06 !important;
-  box-shadow: 0px 12px 24px #C07B0580 !important;
+  background-color: #df8f06 !important;
+  box-shadow: 0px 12px 24px #c07b0580 !important;
   border-radius: 30px !important;
   transition: all 1s !important;
 }
@@ -339,12 +339,15 @@ select[name="rcrs-country"] {
   background-color: transparent !important;
 }
 
-.btn:focus,.btn:active {
+.btn:focus,
+.btn:active {
   outline: none !important;
   box-shadow: none !important;
 }
 
-:focus { outline: none !important; }
+:focus {
+  outline: none !important;
+}
 
 .curveStyle {
   margin-top: -8%;
@@ -392,11 +395,13 @@ select[name="rcrs-country"] {
 }
 
 .servicesHead {
-  font-family: 'Poppins-Bold';
+  font-family: "Poppins-Bold";
   font-size: 20px;
 }
 
-[data-theme='compact'] .site-collapse-custom-collapse .site-collapse-custom-panel,
+[data-theme="compact"]
+  .site-collapse-custom-collapse
+  .site-collapse-custom-panel,
 .site-collapse-custom-collapse .site-collapse-custom-panel {
   background: #fff;
   border-radius: 2px;
@@ -421,19 +426,21 @@ select[name="rcrs-country"] {
   display: block !important;
   margin-left: 20px !important;
   margin-bottom: 10px !important;
-  font-family: 'Roboto' !important;
+  font-family: "Roboto" !important;
 }
 
-[data-theme='compact'] .site-collapse-custom-collapse .site-collapse-custom-panel,
+[data-theme="compact"]
+  .site-collapse-custom-collapse
+  .site-collapse-custom-panel,
 .site-collapse-custom-collapse .faq-collapse-custom-panel {
   border-top: solid 2px #eae9e9 !important;
-  font-family: 'Roboto-SemiBold' !important;
+  font-family: "Roboto-SemiBold" !important;
   font-size: 16px !important;
   padding: 6px !important;
 }
 
 .faqBody {
-  font-family: 'Roboto'!important;
+  font-family: "Roboto" !important;
   font-size: 14px !important;
 }
 
@@ -447,7 +454,7 @@ select[name="rcrs-country"] {
     border: solid 1px #005191;
     background: #005191;
     color: white;
-    box-shadow: 0px 3px 12px #00457D66;
+    box-shadow: 0px 3px 12px #00457d66;
     transition: all 0.4s;
   }
 }
@@ -495,19 +502,19 @@ select[name="rcrs-country"] {
 }
 
 .stepsContainer {
-  width: 70%; 
+  width: 70%;
   margin: auto;
   margin-top: 80px;
 }
 
 .programHeaders {
-  font-family: 'Nunito-Bold';
+  font-family: "Nunito-Bold";
   font-size: 20px;
 }
 
 .programTitle {
-  font-family: 'Nunito-Bold';
-  font-size: 60px; 
+  font-family: "Nunito-Bold";
+  font-size: 60px;
   align-self: flex-end;
   margin-bottom: 20px;
   margin-top: 30px;
@@ -516,31 +523,31 @@ select[name="rcrs-country"] {
 .programButton {
   margin: 20px 0px !important;
   border-radius: 100px !important;
-  background: #DF8F06 !important;
-  border: solid 1px #DF8F06 !important;
-  box-shadow: 0px 12px 24px #BD79054D !important;
+  background: #df8f06 !important;
+  border: solid 1px #df8f06 !important;
+  box-shadow: 0px 12px 24px #bd79054d !important;
   width: 100% !important;
   padding: 10px 20px !important;
   font-size: 14px !important;
   transition: all 0.3s;
   &:hover {
-    border: solid 1px #DF8F06 !important;
+    border: solid 1px #df8f06 !important;
     background: white !important;
     box-shadow: none !important;
-    color: #DF8F06 !important;
+    color: #df8f06 !important;
     transition: all 0.3s;
   }
 }
 
 .signupContainer {
-  background: linear-gradient(135deg, #CE9FFC 0%,#7367F0 100%);
+  background: linear-gradient(135deg, #ce9ffc 0%, #7367f0 100%);
   padding-top: 16%;
   padding-bottom: 3%;
 }
 
 .divPoint {
   padding: 10px;
-  box-shadow: 0px 5px 12px #0000000D;
+  box-shadow: 0px 5px 12px #0000000d;
 }
 
 .conImg {
@@ -551,12 +558,12 @@ select[name="rcrs-country"] {
 }
 
 .hoverConsultant:hover .conImg {
-  transform: translate3d(0,-30px,0);
+  transform: translate3d(0, -30px, 0);
   transition: all 0.3s;
 }
 
 .hoverConsultant:hover .bookApp {
-  transform: translate3d(0,0px,0);
+  transform: translate3d(0, 0px, 0);
   opacity: 1;
   transition: all 0.3s;
 }
@@ -578,7 +585,7 @@ select[name="rcrs-country"] {
 
 .bookApp {
   cursor: pointer;
-  transform: translate3d(0,10px,0);
+  transform: translate3d(0, 10px, 0);
   margin-top: -30px;
   transition: all 0.3s;
   opacity: 0;
@@ -608,20 +615,20 @@ select[name="rcrs-country"] {
 
 .buttonSolid {
   border-radius: 100px !important;
-  background: #DF8F06 !important;
-  border: solid 1px #DF8F06 !important;
-  box-shadow: 0px 12px 24px #BD79054D !important;
+  background: #df8f06 !important;
+  border: solid 1px #df8f06 !important;
+  box-shadow: 0px 12px 24px #bd79054d !important;
   padding: 10px 20px !important;
   font-size: 14px !important;
   transition: all 0.3s;
   &:hover {
     .iconRight {
-      color: #DF8F06 !important;
+      color: #df8f06 !important;
     }
     box-shadow: none !important;
-    color: #DF8F06 !important;
+    color: #df8f06 !important;
     background: white !important;
-    border: solid 1px #DF8F06 !important;
+    border: solid 1px #df8f06 !important;
     transition: all 0.3s;
   }
 }
@@ -635,7 +642,7 @@ select[name="rcrs-country"] {
 
 .qualification {
   color: #585858;
-  font-family: 'Roboto';
+  font-family: "Roboto";
 }
 
 .qualHead {
@@ -672,7 +679,8 @@ select[name="rcrs-country"] {
     margin: 24px 14px !important;
     transition: all 0.3s !important;
   }
-  .rc-tabs-tab-prev-icon, .rc-tabs-tab-next-icon {
+  .rc-tabs-tab-prev-icon,
+  .rc-tabs-tab-next-icon {
     margin-top: 24px !important;
   }
   .mobCardImg {
@@ -706,7 +714,7 @@ select[name="rcrs-country"] {
     margin-top: 80px;
   }
   .stepsContainer {
-    width: 90%; 
+    width: 90%;
   }
   .programHeaders {
     font-size: 14px;
@@ -722,3 +730,7 @@ select[name="rcrs-country"] {
     margin-top: 50px;
   }
 }
+
+// #react-burger-menu-btn {
+//   position: inherit !important;
+// }

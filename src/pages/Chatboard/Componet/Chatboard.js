@@ -238,7 +238,7 @@ function Chatboard({ username, email, Img }) {
 
               <li>
                 <Countdown
-                  date={Date.now() + 9000000}
+                  date={Date.now() + 2700000}
                   ref={timeTo}
                   autoStart={false}
                 />

@@ -262,8 +262,19 @@ class Checkout extends Component {
         image: "",
 
         handler: (response) => {
+          localStorage.setItem(
+            "paid_test_test_id",
+            response.razorpay_payment_id
+          );
           let ff = "";
           if (this.props.location.state[3] === "service") {
+            axios.post(api_url + "order", {
+              orderID: response.razorpay_payment_id,
+              userID: this.state.id,
+              amount: this.props.location.state[0],
+              purpose: this.props.location.state[1],
+              service_id: this.props.location.state[2],
+            });
             if (this.props.location.state[5]) {
               ff = this.props.location.state[5];
             }
@@ -298,6 +309,13 @@ class Checkout extends Component {
                 console.log(response);
               });
           } else if (this.props.location.state[3] === "paid-test") {
+            axios.post(api_url + "order", {
+              orderID: response.razorpay_payment_id,
+              userID: this.state.id,
+              amount: this.props.location.state[0],
+              purpose: this.props.location.state[1],
+              test_id: this.props.location.state[2],
+            });
             let x = localStorage.getItem("email");
             db.collection("web_user")
               .doc(x)
@@ -320,11 +338,6 @@ class Checkout extends Component {
                 }).then((result) => {
                   if (result.value) {
                     if (self.props.location.state[3] === "paid-test") {
-                      console.log("---");
-                      localStorage.setItem(
-                        "paid_test_test_is",
-                        response.data.order
-                      );
                       self.props.history.push({
                         pathname: "/test",
                         state: self.props.location.state[3],
@@ -341,6 +354,13 @@ class Checkout extends Component {
                 console.log(response);
               });
           } else {
+            axios.post(api_url + "order", {
+              orderID: response.razorpay_payment_id,
+              userID: this.state.id,
+              amount: this.props.location.state[0],
+              purpose: this.props.location.state[1],
+              program_id: this.props.location.state[2],
+            });
             console.log("else");
             console.log(
               this.state.id,
