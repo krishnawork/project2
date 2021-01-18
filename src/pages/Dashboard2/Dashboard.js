@@ -22,7 +22,7 @@ function Dashboard() {
                 marginTop: "2px",
               }}
             >
-              Book Your Next Seassion
+              Book Your Next Session
             </h6>
           </Link>
         </div>
@@ -38,7 +38,7 @@ function Dashboard() {
                 marginTop: "2px",
               }}
             >
-              THERAPI JOURNEY
+              Therapy Journey
             </h6>
           </div>
         </div>

@@ -112,13 +112,13 @@ class AppFooter extends Component {
             <Link className="linkStyle" to="/services/stress">
               <div className="mb-10 linkFooter">Depression Counselling</div>
             </Link>
-            <Link className="linkStyle" to="/programs/relationship">
+            <Link className="linkStyle" to="/services/relationship">
               <div className="mb-10 linkFooter">Relationship Counselling</div>
             </Link>
             <Link className="linkStyle" to="/services/flourish">
               <div className="mb-10 linkFooter">Flourish At Work</div>
             </Link>
-            <Link className="linkStyle" to="/programs/self-esteem">
+            <Link className="linkStyle" to="/services/esteem">
               <div className="mb-10 linkFooter">
                 Build Self-Esteem and Confidence
               </div>

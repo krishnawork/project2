@@ -139,30 +139,30 @@ class AppFooter extends Component {
             </div>
           </Col>
           <Col md={3} style={{ fontSize: "14px" }}>
-            <Link className="linkStyle" to="/programs/depression/2">
+            <Link className="linkStyle" to="/services/stress">
               <div className="mb-10 linkFooter">Depression Counselling</div>
             </Link>
-            <Link className="linkStyle" to="/programs/relationship/3">
+            <Link className="linkStyle" to="/services/relationship">
               <div className="mb-10 linkFooter">Relationship Counselling</div>
             </Link>
-            <Link className="linkStyle" to="/services/flourish/4">
+            <Link className="linkStyle" to="/services/flourish">
               <div className="mb-10 linkFooter">Flourish At Work</div>
             </Link>
-            <Link className="linkStyle" to="/programs/self-esteem/5">
+            <Link className="linkStyle" to="/services/esteem">
               <div className="mb-10 linkFooter">
                 Build Self-Esteem and Confidence
               </div>
             </Link>
-            <Link className="linkStyle" to="/services/parenting/6">
+            <Link className="linkStyle" to="/services/parenting">
               <div className="mb-10 linkFooter">Parenting Done Right</div>
             </Link>
             <Link className="linkStyle" to="/services/special-children/7">
               <div className="mb-10 linkFooter">Special Children</div>
             </Link>
-            <Link className="linkStyle" to="/services/mental-health/8">
+            <Link className="linkStyle" to="/services/mental-health">
               <div className="mb-10 linkFooter">Mental Health Disorder</div>
             </Link>
-            <Link className="linkStyle" to="/services/therapies/9">
+            <Link className="linkStyle" to="/services/therapies">
               <div className="linkFooter">Therapies</div>
             </Link>
           </Col>

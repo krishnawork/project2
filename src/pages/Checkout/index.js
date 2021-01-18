@@ -16,7 +16,7 @@ import "react-toastify/dist/ReactToastify.css";
 import fb from "../../assets/images/fb.png";
 import registration from "../../assets/images/registration.png";
 import google from "../../assets/images/google-icon.png";
-import firebase, { auth, provider } from "../firebase";
+import firebase, { auth, provider, provider2 } from "../firebase";
 import axios from "axios";
 import {
   Button,
@@ -78,30 +78,106 @@ class Checkout extends Component {
       isSearchable: true,
     };
   }
+  //
+  addfacebook = () => {
+    auth.signInWithPopup(provider2).then((result) => {
+      if (result) {
+        db.collection("web_user").doc(result.user.displayName).set(
+          {
+            email: result.user.email,
+            fname: result.user.displayName,
+            number: result.user.phoneNumber,
+          },
+          { merge: true }
+        );
+      }
+      if (result) {
+        axios
+          .post(api_url + "sign-up", {
+            email: result.user.email,
+            fname: result.user.displayName,
+            number: result.user.phoneNumber,
+            password: "password",
+          })
+          .then(function (response) {
+            let data = response.data.user;
+            localStorage.setItem("email", result.user.displayName);
+            let user = {
+              id: data.id,
+              first_name: data.first_name,
+              last_name: data.last_name,
+              email: data.email,
+              number: data.number,
+            };
+            localStorage.setItem("userData", JSON.stringify(user));
+            localStorage.setItem("isLoggedIn", true);
+            window.location.reload();
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      }
+    });
+  };
+
+  //
+
   addgoogle = () => {
     auth.signInWithPopup(provider).then((result) => {
       if (result) {
-        console.log(result.user);
-        db.collection("web_user")
-          .doc(result.user.email)
-          .set(
-            {
-              email: result.user.email,
-              fname: result.user.displayName,
-              number: result.user.phoneNumber,
-            },
-            { merge: true }
-          )
-          .then((d) => {
-            localStorage.setItem("email", result.user.email);
+        db.collection("web_user").doc(result.user.email).set(
+          {
+            email: result.user.email,
+          },
+          { merge: true }
+        );
+      }
+      if (result) {
+        axios
+          .post(api_url + "sign-up", {
+            email: result.user.email,
+            fname: result.user.displayName,
+            number: result.user.phoneNumber,
+            password: "password",
+          })
+          .then(function (response) {
+            let data = response.data.user;
+            localStorage.setItem("email", data.email);
             let user = {
-              first_name: result.user.displayName,
-              email: result.user.email,
+              id: data.id,
+              first_name: data.first_name,
+              last_name: data.last_name,
+              email: data.email,
+              number: data.number,
             };
-            localStorage.setItem("isLoggedIn", true);
             localStorage.setItem("userData", JSON.stringify(user));
+            localStorage.setItem("isLoggedIn", true);
             window.location.reload();
+          })
+          .catch(function (error) {
+            console.log(error);
           });
+        // console.log(result.user);
+        // db.collection("web_user")
+        //   .doc(result.user.email)
+        //   .set(
+        //     {
+        //       email: result.user.email,
+        //       fname: result.user.displayName,
+        //       number: result.user.phoneNumber,
+        //     },
+        //     { merge: true }
+        //   )
+        //   .then((d) => {
+        //     localStorage.setItem("email", result.user.email);
+        //     let user = {
+        //       first_name: result.user.displayName,
+        //       email: result.user.email,
+        //     };
+        //     localStorage.setItem("isLoggedIn", true);
+        //     localStorage.setItem("userData", JSON.stringify(user));
+        //     window.location.reload();
+        //   });
       }
     });
   };
@@ -289,6 +365,8 @@ class Checkout extends Component {
                 seassion: this.props.location.state[1],
                 service_name: this.props.location.state[4],
                 service_type: ff,
+                Chattime: this.props.location.state[6],
+                ChattimeDate: this.props.location.state[7],
               })
               .then(function (response) {
                 Swal.fire({
@@ -567,6 +645,31 @@ class Checkout extends Component {
                       )}
                     />
                   </div> */}
+                  <div>
+                    <button
+                      style={{
+                        cursor: "pointer",
+                        fontSize: "13px",
+                        background: "#3b5998",
+                        color: "white",
+                        padding: "6px 10px",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        borderRadius: "8px",
+                      }}
+                      onClick={this.addfacebook}
+                    >
+                      <img
+                        src={fb}
+                        style={{
+                          height: "30px",
+                          marginRight: "10px",
+                          borderRadius: "6px",
+                        }}
+                      />
+                      <span>Login with Facebook</span>
+                    </button>
+                  </div>
                   {/* <div>
                     <GoogleLogin
                       clientId="666008965252-p0f44125gort69gcqa1m6e25o3tujpvp.apps.googleusercontent.com"

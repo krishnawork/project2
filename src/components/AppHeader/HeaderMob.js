@@ -27,7 +27,7 @@ import menu from "../../assets/images/menu.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import logo from "../../assets/images/mind-lyf-04.png";
 import api_url from "../../api_url";
-import firebase, { auth, provider } from "../../pages/firebase";
+import firebase, { auth, provider, provider2 } from "../../pages/firebase";
 import Swal from "sweetalert2";
 import ReactQuill from "react-quill";
 let db = firebase.firestore();
@@ -337,47 +337,108 @@ class AppHeader extends Component {
     window.location.reload();
   };
   //
-  addgoogle = () => {
-    auth.signInWithPopup(provider).then((result) => {
+  //
+  addfacebook = () => {
+    auth.signInWithPopup(provider2).then((result) => {
       if (result) {
-        console.log(result.user);
-        db.collection("web_user")
-          .doc(result.user.email)
-          .set(
-            {
-              email: result.user.email,
-              fname: result.user.displayName,
-              number: result.user.phoneNumber,
-            },
-            { merge: true }
-          )
-          .then((d) => {
-            localStorage.setItem("email", result.user.email);
+        db.collection("web_user").doc(result.user.displayName).set(
+          {
+            email: result.user.email,
+            fname: result.user.displayName,
+            number: result.user.phoneNumber,
+          },
+          { merge: true }
+        );
+      }
+      if (result) {
+        axios
+          .post(api_url + "sign-up", {
+            email: result.user.email,
+            fname: result.user.displayName,
+            number: result.user.phoneNumber,
+            password: "password",
+          })
+          .then(function (response) {
+            let data = response.data.user;
+            localStorage.setItem("email", result.user.displayName);
             let user = {
-              first_name: result.user.displayName,
-              email: result.user.email,
+              id: data.id,
+              first_name: data.first_name,
+              last_name: data.last_name,
+              email: data.email,
+              number: data.number,
             };
-            localStorage.setItem("isLoggedIn", true);
             localStorage.setItem("userData", JSON.stringify(user));
+            localStorage.setItem("isLoggedIn", true);
             window.location.reload();
+          })
+          .catch(function (error) {
+            console.log(error);
           });
       }
     });
   };
+
   //
 
-  responseFacebook = (response) => {
-    console.log(response);
-    // let res = response.profileObj;
-    // let data = {
-    //     name: res.name,
-    //     email: res.email,
-    // };
-    // localStorage.setItem('userData',JSON.stringify(data));
-    // localStorage.setItem('isLoggedIn',true);
-    // this.hideAll();
-    // this.componentDidMount();
-    // window.location.reload();
+  addgoogle = () => {
+    auth.signInWithPopup(provider).then((result) => {
+      if (result) {
+        db.collection("web_user").doc(result.user.email).set(
+          {
+            email: result.user.email,
+          },
+          { merge: true }
+        );
+      }
+      if (result) {
+        axios
+          .post(api_url + "sign-up", {
+            email: result.user.email,
+            fname: result.user.displayName,
+            number: result.user.phoneNumber,
+            password: "password",
+          })
+          .then(function (response) {
+            let data = response.data.user;
+            localStorage.setItem("email", data.email);
+            let user = {
+              id: data.id,
+              first_name: data.first_name,
+              last_name: data.last_name,
+              email: data.email,
+              number: data.number,
+            };
+            localStorage.setItem("userData", JSON.stringify(user));
+            localStorage.setItem("isLoggedIn", true);
+            window.location.reload();
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+        // console.log(result.user);
+        // db.collection("web_user")
+        //   .doc(result.user.email)
+        //   .set(
+        //     {
+        //       email: result.user.email,
+        //       fname: result.user.displayName,
+        //       number: result.user.phoneNumber,
+        //     },
+        //     { merge: true }
+        //   )
+        //   .then((d) => {
+        //     localStorage.setItem("email", result.user.email);
+        //     let user = {
+        //       first_name: result.user.displayName,
+        //       email: result.user.email,
+        //     };
+        //     localStorage.setItem("isLoggedIn", true);
+        //     localStorage.setItem("userData", JSON.stringify(user));
+        //     window.location.reload();
+        //   });
+      }
+    });
   };
 
   passChange = (event) => {
@@ -504,6 +565,31 @@ class AppHeader extends Component {
                     width: "100%",
                   }}
                 >
+                  <div>
+                    <button
+                      style={{
+                        cursor: "pointer",
+                        fontSize: "13px",
+                        background: "#3b5998",
+                        color: "white",
+                        padding: "6px 10px",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        borderRadius: "8px",
+                      }}
+                      onClick={this.addfacebook}
+                    >
+                      <img
+                        src={fb}
+                        style={{
+                          height: "30px",
+                          marginRight: "10px",
+                          borderRadius: "6px",
+                        }}
+                      />
+                      <span>Login with Facebook</span>
+                    </button>
+                  </div>
                   <div>
                     <button
                       style={{
@@ -656,7 +742,7 @@ class AppHeader extends Component {
               Chatboard
             </span>
           </Link>
-          <Link
+          {/* <Link
             hidden={!this.state.loggedIn}
             style={{ marginBottom: "20px", fontSize: "1.3rem" }}
             onClick={() => this.nav("profile")}
@@ -666,7 +752,7 @@ class AppHeader extends Component {
             <span className="linkHeader" style={{ marginRight: "10px" }}>
               My Profile
             </span>
-          </Link>
+          </Link> */}
           <Link
             style={{ marginBottom: "20px", fontSize: "1.3rem" }}
             onClick={() => this.nav("services")}
