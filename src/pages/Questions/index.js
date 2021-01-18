@@ -4343,6 +4343,7 @@ componentDidMount = () => {
               selected: 'A'
             },
             {
+<<<<<<< HEAD
               question: 'Draw-A-Tree- Here I want you to draw a tree as well as you can.',
               options: [{value: 'A', option: ''}],
               selected: 'A'
@@ -4424,6 +4425,296 @@ componentDidMount = () => {
             questions: 'Please make a picture of a person. Make the very best picture that you can. Take your time and work very carefully. Try very hard and see what a good picture you can make.',
         }]
 
+=======
+              value: "C",
+              option: "Have the child learn desirable habits and attitudes",
+            },
+          ],
+          selected: "",
+        },
+        {
+          questions:
+            "People regard me as a solid, understand undisturbed person, unmoved by ups and down in circum-stances.",
+          options: [
+            { value: "A", option: "Yes" },
+            { value: "B", option: "In between" },
+            { value: "C", option: "No" },
+          ],
+          selected: "",
+        },
+        {
+          questions:
+            "I think society should let reason lead it to new customs and throw aside old habits or mere tradition",
+          options: [
+            { value: "A", option: "Yes" },
+            { value: "B", option: "In between" },
+            { value: "C", option: "No" },
+          ],
+          selected: "",
+        },
+        {
+          questions:
+            "I think it is more important in the modern world to solve :",
+          options: [
+            { value: "A", option: "The question of moral purpose" },
+            { value: "B", option: "Uncertain" },
+            { value: "C", option: "The political difficulties" },
+          ],
+          selected: "",
+        },
+        {
+          questions: "Learn better by:",
+          options: [
+            { value: "A", option: "Reading a well written book" },
+            { value: "B", option: "In between" },
+            { value: "C", option: "Joining a group discussion" },
+          ],
+          selected: "",
+        },
+        {
+          questions:
+            "I like to go my own way instead of acting on approved rules",
+          options: [
+            { value: "A", option: "True" },
+            { value: "B", option: "Uncertain" },
+            { value: "C", option: "False" },
+          ],
+          selected: "",
+        },
+        {
+          questions:
+            "I  like to wait till I am sure that what I am saying is correct, before I put forth an argument.",
+          options: [
+            { value: "A", option: "Always" },
+            { value: "B", option: "Generally" },
+            { value: "C", option: "Only if it's practicable " },
+          ],
+          selected: "",
+        },
+        {
+          questions:
+            'Small things sometimes "get on my nerves" unbearably, though I realize they are trivial.',
+          options: [
+            { value: "A", option: "Yes" },
+            { value: "B", option: "In between" },
+            { value: "C", option: "No" },
+          ],
+          selected: "",
+        },
+        {
+          questions:
+            "I don't often say things on the spur of the moment that I regret.",
+          options: [
+            { value: "A", option: "True" },
+            { value: "B", option: "Uncertain" },
+            { value: "C", option: "False" },
+          ],
+          selected: "",
+        },
+        {
+          questions: "If asked to work with a charity drive, I would",
+          options: [
+            { value: "A", option: "Accept" },
+            { value: "B", option: "Uncertain" },
+            { value: "C", option: "Politely say I'm too busy" },
+          ],
+          selected: "",
+        },
+        {
+          questions:
+            "Which of the following words does not belong with others ?",
+          options: [
+            { value: "A", option: "Wide" },
+            { value: "B", option: "Zigzag" },
+            { value: "C", option: "Straight" },
+          ],
+          selected: "",
+        },
+        {
+          questions: '"Soon" is to "never" as "near" is to :',
+          options: [
+            { value: "A", option: "Nowhere" },
+            { value: "B", option: "Far" },
+            { value: "C", option: "Away" },
+          ],
+          selected: "",
+        },
+        {
+          questions: "If I make an awkward social mistake, I can forget it.",
+          options: [
+            { value: "A", option: "Yes" },
+            { value: "B", option: "In between" },
+            { value: "C", option: "No" },
+          ],
+          selected: "",
+        },
+        {
+          questions:
+            'I am known as an "idea man" who almost always puts forward some ideas on a problem.',
+          options: [
+            { value: "A", option: "Yes" },
+            { value: "B", option: "In between" },
+            { value: "C", option: "No" },
+          ],
+          selected: "",
+        },
+        {
+          questions: "I think I am better at showing :",
+          options: [
+            { value: "A", option: "Nerve in meeting challenges" },
+            { value: "B", option: "Uncertain" },
+            { value: "C", option: "Tolerance of other people's wishes" },
+          ],
+          selected: "",
+        },
+        {
+          questions: "I am considered a very enthusiastic person.",
+          options: [
+            { value: "A", option: "Yes" },
+            { value: "B", option: "In between" },
+            { value: "C", option: "No" },
+          ],
+          selected: "",
+        },
+        {
+          questions:
+            "I like a job that offers change, variety and travel, even if it in involves some danger",
+          options: [
+            { value: "A", option: "Yes" },
+            { value: "B", option: "In between" },
+            { value: "C", option: "No" },
+          ],
+          selected: "",
+        },
+        {
+          questions:
+            "I am a fairly strict person, insisting on always doing things as correctly as possible.",
+          options: [
+            { value: "A", option: "True" },
+            { value: "B", option: "In between" },
+            { value: "C", option: "False" },
+          ],
+          selected: "",
+        },
+        {
+          questions:
+            "I enjoy work that requires conscientious, exacting skills.",
+          options: [
+            { value: "A", option: "Yes" },
+            { value: "B", option: "In between" },
+            { value: "C", option: "No" },
+          ],
+          selected: "",
+        },
+        {
+          questions: "I'm the energetic type who keeps busy.",
+          options: [
+            { value: "A", option: "Yes" },
+            { value: "B", option: "Uncertain" },
+            { value: "C", option: "No" },
+          ],
+          selected: "",
+        },
+        {
+          questions:
+            "I am sure there are no questions that I have skipped or failed to answer properly.",
+          options: [
+            { value: "A", option: "Yes" },
+            { value: "B", option: "Uncertain" },
+            { value: "C", option: "No" },
+          ],
+          selected: "",
+        },
+      ];
+    } else if (type === "Connos") {
+    } else if (type === "SPM") {
+    } else if (type === "HTP") {
+      this.state.questions = [
+        {
+          question:
+            "Draw-A-Person- I want you to draw a person as well as you can. After the completion of the first drawing, the participant is instructed to, Now draw a [opposite sex of the first picture] as well as you can. (Only in case of pencil drawing not in the colour drawing).",
+          options: [{ value: "A", option: "" }],
+          selected: "A",
+        },
+        {
+          question:
+            "Draw-A-House- Here I want you to draw a tree as well as you can.",
+          options: [{ value: "A", option: "" }],
+          selected: "A",
+        },
+        {
+          question:
+            "Draw-A-Tree- Here I want you to draw a tree as well as you can.",
+          options: [{ value: "A", option: "" }],
+          selected: "A",
+        },
+      ];
+    } else if (type === "CAT") {
+      this.state.questions = [
+        {
+          question: CAT1,
+          options: [{ value: "A", option: "" }],
+          selected: "A",
+        },
+        {
+          question: CAT2,
+          options: [{ value: "A", option: "" }],
+          selected: "A",
+        },
+        {
+          question: CAT3,
+          options: [{ value: "A", option: "" }],
+          selected: "A",
+        },
+        {
+          question: CAT4,
+          options: [{ value: "A", option: "" }],
+          selected: "A",
+        },
+        {
+          question: CAT5,
+          options: [{ value: "A", option: "" }],
+          selected: "A",
+        },
+        {
+          question: CAT6,
+          options: [{ value: "A", option: "" }],
+          selected: "A",
+        },
+        {
+          question: CAT7,
+          options: [{ value: "A", option: "" }],
+          selected: "A",
+        },
+        {
+          question: CAT8,
+          options: [{ value: "A", option: "" }],
+          selected: "A",
+        },
+        {
+          question: CAT9,
+          options: [{ value: "A", option: "" }],
+          selected: "A",
+        },
+        {
+          question: CAT10,
+          options: [{ value: "A", option: "" }],
+          selected: "A",
+        },
+        {
+          question: CAT11,
+          options: [{ value: "A", option: "" }],
+          selected: "A",
+        },
+      ];
+    } else if (type === "DAP") {
+      this.state.questions = [
+        {
+          questions:
+            "Please make a picture of a person. Make the very best picture that you can. Take your time and work very carefully. Try very hard and see what a good picture you can make.",
+        },
+      ];
+>>>>>>> 7d3f3c2292fe544958ceb7dd6299f384a8bdc0a5
     }
     this.setState({state: this.state})
 }
@@ -4431,6 +4722,7 @@ componentDidMount = () => {
 next = () => {
     let number = this.state.questions.length;
 
+<<<<<<< HEAD
     if (this.state.number!==number) {
       if (localStorage.getItem("type") == "CAT" || localStorage.getItem("type") == "ROR" || localStorage.getItem("type") == "TAT"){
         if(this.state.value != ''){
@@ -4468,12 +4760,63 @@ next = () => {
         }
       }else if(localStorage.getItem("type") == "HTP"){
         if(this.state.image_url != null){
+=======
+    if (this.state.number !== number) {
+      if (
+        localStorage.getItem("type") == "CAT" ||
+        localStorage.getItem("type") == "ROR" ||
+        localStorage.getItem("type") == "TAT"
+      ) {
+        if (this.state.value != "") {
+          var self = this;
+          var xhr = new XMLHttpRequest();
+          xhr.open(
+            "GET",
+            this.state.questions[this.state.number - 1].question,
+            true
+          );
+          xhr.responseType = "blob";
+          xhr.onload = function (e) {
+            var reader = new FileReader();
+            reader.onload = function (event) {
+              // var res = event.target.result;
+              var dataURI = event.target.result;
+              var byteString = atob(dataURI.split(",")[1]);
+              var ab = new ArrayBuffer(byteString.length);
+              var ia = new Uint8Array(ab);
+
+              for (var i = 0; i < byteString.length; i++) {
+                ia[i] = byteString.charCodeAt(i);
+              }
+              console.log(new Blob([ab], { type: "image/jpeg" }));
+              var url = URL.createObjectURL(
+                new Blob([ab], { type: "image/jpeg" })
+              );
+              console.log(url);
+              self.state.questions[self.state.number - 1].question = url;
+              self.state.number = self.state.number + 1;
+              self.state.value = "";
+              self.setState({ state: self.state });
+            };
+            var file = this.response;
+            reader.readAsDataURL(file);
+          };
+          xhr.send();
+        }
+      } else if (localStorage.getItem("type") == "HTP") {
+        if (this.state.image_url != null) {
+>>>>>>> 7d3f3c2292fe544958ceb7dd6299f384a8bdc0a5
           this.setState({
               number: this.state.number+1,
               value: ''
           });
+<<<<<<< HEAD
           this.setState({ image_url: null})
           this.setState({ image_htp: null})
+=======
+          this.setState({ image_url: null });
+          this.setState({ image_htp: null });
+>>>>>>> 7d3f3c2292fe544958ceb7dd6299f384a8bdc0a5
         }
       }
       else if (this.state.questions[this.state.number-1].selected!=='') {

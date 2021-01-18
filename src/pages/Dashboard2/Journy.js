@@ -19,7 +19,7 @@ function Journy() {
             console.log(data.data());
           });
         } else {
-          setLoadind("Data Not Avalabel");
+          setLoadind("Data Not Available");
         }
       });
     return () => {

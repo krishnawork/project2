@@ -119,7 +119,7 @@ let UserDeatails = ({ useremail, Email }) => {
             setuserserviceData((old) => [...old, d]);
           });
         } else {
-          setLoadind("Data Not Avalabel");
+          setLoadind("Data Not Available");
         }
       });
 
@@ -140,7 +140,7 @@ let UserDeatails = ({ useremail, Email }) => {
             setuserProgramsData((old) => [...old, d]);
           });
         } else {
-          setLoadind("Data Not Avalabel");
+          setLoadind("Data Not Available");
         }
       });
 

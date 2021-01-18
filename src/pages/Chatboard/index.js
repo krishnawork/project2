@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./chatboard.css";
 import firebase from "../firebase";
 import Login from "./Componet/Login/Login";
+import New from "./New";
 
 // import { Provider } from "react-redux";
 // import { createStore } from "redux";
@@ -14,7 +15,8 @@ function Index() {
     <>
       {/* store={store} */}
       {/* <Provider> */}
-      <Login />
+      {/* <Login /> */}
+      <New />
       {/* </Provider> */}
     </>
   );

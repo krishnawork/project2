@@ -75,7 +75,7 @@ function Seassion({ Program, seassion }) {
             setservicedata((old) => [...old, d.data()]);
           });
         } else {
-          setLoadind("Data Not Avalabel");
+          setLoadind("Data Not Available");
         }
       });
     return () => {

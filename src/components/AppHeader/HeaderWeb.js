@@ -40,7 +40,7 @@ import ReactQuill from "react-quill";
 import api_url from "../../api_url";
 import { useSelector, useDispatch } from "react-redux";
 import { Adduseremail } from "../../pages/action/action";
-import firebase, { auth, provider } from "../../pages/firebase";
+import firebase, { auth, provider, provider2 } from "../../pages/firebase";
 let db = firebase.firestore();
 
 //
@@ -592,6 +592,49 @@ class AppHeader extends Component {
       }
     });
   };
+  //
+  addfacebook = () => {
+    auth.signInWithPopup(provider2).then((result) => {
+      if (result) {
+        db.collection("web_user").doc(result.user.displayName).set(
+          {
+            email: result.user.email,
+            fname: result.user.displayName,
+            number: result.user.phoneNumber,
+          },
+          { merge: true }
+        );
+      }
+      if (result) {
+        axios
+          .post(api_url + "sign-up", {
+            email: result.user.email,
+            fname: result.user.displayName,
+            number: result.user.phoneNumber,
+            password: "password",
+          })
+          .then(function (response) {
+            let data = response.data.user;
+            localStorage.setItem("email", result.user.displayName);
+            let user = {
+              id: data.id,
+              first_name: data.first_name,
+              last_name: data.last_name,
+              email: data.email,
+              number: data.number,
+            };
+            localStorage.setItem("userData", JSON.stringify(user));
+            localStorage.setItem("isLoggedIn", true);
+            window.location.reload();
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      }
+    });
+  };
+
+  //
 
   addgoogle = () => {
     auth.signInWithPopup(provider).then((result) => {
@@ -831,6 +874,33 @@ class AppHeader extends Component {
                           )}
                         />
                       </div> */}
+
+                      <div>
+                        <button
+                          style={{
+                            cursor: "pointer",
+                            fontSize: "13px",
+                            background: "#3b5998",
+                            color: "white",
+                            padding: "6px 10px",
+                            display: "inline-flex",
+                            alignItems: "center",
+                            borderRadius: "8px",
+                          }}
+                          onClick={this.addfacebook}
+                        >
+                          <img
+                            src={fb}
+                            style={{
+                              height: "30px",
+                              marginRight: "10px",
+                              borderRadius: "6px",
+                            }}
+                          />
+                          <span>Login with Facebook</span>
+                        </button>
+                      </div>
+
                       {/* <div>
 
                         <GoogleLogin
@@ -1323,9 +1393,9 @@ class AppHeader extends Component {
                     <DropdownMenu
                       style={{ zIndex: "100000000000000000000000000000" }}
                     >
-                      <DropdownItem onClick={() => this.nav("profile")}>
+                      {/* <DropdownItem onClick={() => this.nav("profile")}>
                         My Profile
-                      </DropdownItem>
+                      </DropdownItem> */}
                       {/* <DropdownItem onClick={() => this.nav('sessions')}>My Sessions</DropdownItem> */}
                       <DropdownItem onClick={() => this.nav("dashboard")}>
                         Dashboard

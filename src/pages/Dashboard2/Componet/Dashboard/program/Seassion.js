@@ -73,7 +73,7 @@ function Seassion({ Program }) {
               console.log("sdsdsdsdsd", d.data());
             });
           } else {
-            setLoadind("Data Not Avalabel");
+            setLoadind("Data Not Available");
           }
         });
     }

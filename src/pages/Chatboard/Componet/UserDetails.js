@@ -35,7 +35,7 @@ function UserDetails() {
   //
   return (
     <div>
-      <div className="btn_container">
+      <div className="">
         <button className="btn1" onClick={() => setpage(<Service />)}>
           service package
         </button>
@@ -63,7 +63,7 @@ let Service = () => {
             setuserseassion((old) => [...old, d.data()]);
           });
         } else {
-          setLoading("Service Data Not Avalabel");
+          setLoading("Service Data Not Available");
         }
       });
     return () => {
@@ -83,7 +83,7 @@ let Service = () => {
             setuserProgramsData((old) => [...old, d]);
           });
         } else {
-          setLoading2("Pograms Data Not Avalabel");
+          setLoading2("Pograms Data Not Available");
         }
       });
 
@@ -106,6 +106,8 @@ let Service = () => {
                       gutterBottom
                     >
                       Time : {d.Chattime}
+                      <br />
+                      Date : {d.ChattimeDate}
                     </Typography>
                     <Typography variant="h5" component="h2">
                       {d.service_name}

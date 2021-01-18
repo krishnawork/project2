@@ -72,7 +72,14 @@ const generatePDF = tickets => {
   const dateStr = date[0] + date[1] + date[2] + date[3] + date[4];
   // ticket title. and margin-top + margin-left
   // doc.addImage("../assets/images/google-icon.png", "JPEG", 15, 40, 180, 180);
-  doc.text("Test result of "+JSON.parse(localStorage.getItem('userData')).last_name + " "+ JSON.parse(localStorage.getItem('userData')).first_name, 14, 15);
+  doc.text(
+    "Test result of " +
+      JSON.parse(localStorage.getItem("userData")).last_name +
+      " " +
+      JSON.parse(localStorage.getItem("userData")).first_name,
+    14,
+    15
+  );
   // we define the name of our PDF file.
   var blobPDF = doc.output('datauristring');
   var blob = doc.output();

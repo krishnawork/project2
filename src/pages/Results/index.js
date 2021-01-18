@@ -106,6 +106,7 @@ class Results extends Component {
         })
         .then((result) => {});
     } else if (localStorage.getItem("settesttype") === "Paid") {
+      alert("hello");
       db.collection("web_user")
         .doc(localStorage.getItem("email"))
         .collection(localStorage.getItem("settesttype"))
@@ -115,10 +116,14 @@ class Results extends Component {
           Test_type: localStorage.getItem("settest"),
           TimeNow: new Date().toLocaleString(),
         })
-        .then((result) => {});
+        .then((result) => {})
+        .catch((error) => {
+          console.log("error", error);
+        });
     }
 
     generatePDF(this.state.resultArray);
+    console.log("dfdfdfdfdfdfdfdfdfdsf", this.state.resultArray);
     console.log(localStorage.getItem("type"));
   };
 

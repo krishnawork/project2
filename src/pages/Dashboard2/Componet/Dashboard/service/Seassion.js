@@ -72,7 +72,7 @@ function Seassion({ service }) {
               setservicedata((old) => [...old, d.data()]);
             });
           } else {
-            setLoadind("Data Not Avalabel");
+            setLoadind("Data Not Available");
           }
         });
     }
@@ -110,6 +110,8 @@ function Seassion({ service }) {
                           seassion:{d.seassion}
                           <br />
                           chatTime:{d.Chattime}
+                          <br />
+                          Book Date:{d.ChattimeDate}
                         </Typography>
                         <Typography variant="body2" component="p">
                           <br />

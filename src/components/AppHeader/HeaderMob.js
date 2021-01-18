@@ -27,7 +27,7 @@ import menu from "../../assets/images/menu.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import logo from "../../assets/images/mind-lyf-04.png";
 import api_url from "../../api_url";
-import firebase, { auth, provider } from "../../pages/firebase";
+import firebase, { auth, provider, provider2 } from "../../pages/firebase";
 import Swal from "sweetalert2";
 import ReactQuill from "react-quill";
 let db = firebase.firestore();
@@ -108,6 +108,11 @@ class AppHeader extends Component {
 
   onSetSidebarOpen(open) {
     this.setState({ sidebarOpen: open });
+    if (open === false) {
+      document.querySelector(".jugad").style.display = "none";
+    } else {
+      document.querySelector(".jugad").style.display = "block";
+    }
   }
 
   showLogin = () => {
@@ -333,49 +338,113 @@ class AppHeader extends Component {
     window.location.reload();
   };
   //
-  addgoogle = () => {
-    auth.signInWithPopup(provider).then((result) => {
+  //
+  addfacebook = () => {
+    auth.signInWithPopup(provider2).then((result) => {
       if (result) {
-        console.log(result.user);
-        db.collection("web_user")
-          .doc(result.user.email)
-          .set(
-            {
-              email: result.user.email,
-              fname: result.user.displayName,
-              number: result.user.phoneNumber,
-            },
-            { merge: true }
-          )
-          .then((d) => {
-            localStorage.setItem("email", result.user.email);
+        db.collection("web_user").doc(result.user.displayName).set(
+          {
+            email: result.user.email,
+            fname: result.user.displayName,
+            number: result.user.phoneNumber,
+          },
+          { merge: true }
+        );
+      }
+      if (result) {
+        axios
+          .post(api_url + "sign-up", {
+            email: result.user.email,
+            fname: result.user.displayName,
+            number: result.user.phoneNumber,
+            password: "password",
+          })
+          .then(function (response) {
+            let data = response.data.user;
+            localStorage.setItem("email", result.user.displayName);
             let user = {
-              first_name: result.user.displayName,
-              email: result.user.email,
+              id: data.id,
+              first_name: data.first_name,
+              last_name: data.last_name,
+              email: data.email,
+              number: data.number,
             };
-            localStorage.setItem("isLoggedIn", true);
             localStorage.setItem("userData", JSON.stringify(user));
+            localStorage.setItem("isLoggedIn", true);
             window.location.reload();
+          })
+          .catch(function (error) {
+            console.log(error);
           });
       }
     });
   };
+
   //
 
-  responseFacebook = (response) => {
-    console.log(response);
-    // let res = response.profileObj;
-    // let data = {
-    //     name: res.name,
-    //     email: res.email,
-    // };
-    // localStorage.setItem('userData',JSON.stringify(data));
-    // localStorage.setItem('isLoggedIn',true);
-    // this.hideAll();
-    // this.componentDidMount();
-    // window.location.reload();
+<<<<<<< HEAD
+=======
+  addgoogle = () => {
+    auth.signInWithPopup(provider).then((result) => {
+      if (result) {
+        db.collection("web_user").doc(result.user.email).set(
+          {
+            email: result.user.email,
+          },
+          { merge: true }
+        );
+      }
+      if (result) {
+        axios
+          .post(api_url + "sign-up", {
+            email: result.user.email,
+            fname: result.user.displayName,
+            number: result.user.phoneNumber,
+            password: "password",
+          })
+          .then(function (response) {
+            let data = response.data.user;
+            localStorage.setItem("email", data.email);
+            let user = {
+              id: data.id,
+              first_name: data.first_name,
+              last_name: data.last_name,
+              email: data.email,
+              number: data.number,
+            };
+            localStorage.setItem("userData", JSON.stringify(user));
+            localStorage.setItem("isLoggedIn", true);
+            window.location.reload();
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+        // console.log(result.user);
+        // db.collection("web_user")
+        //   .doc(result.user.email)
+        //   .set(
+        //     {
+        //       email: result.user.email,
+        //       fname: result.user.displayName,
+        //       number: result.user.phoneNumber,
+        //     },
+        //     { merge: true }
+        //   )
+        //   .then((d) => {
+        //     localStorage.setItem("email", result.user.email);
+        //     let user = {
+        //       first_name: result.user.displayName,
+        //       email: result.user.email,
+        //     };
+        //     localStorage.setItem("isLoggedIn", true);
+        //     localStorage.setItem("userData", JSON.stringify(user));
+        //     window.location.reload();
+        //   });
+      }
+    });
   };
 
+>>>>>>> 7d3f3c2292fe544958ceb7dd6299f384a8bdc0a5
   passChange = (event) => {
     this.setState({ password: event.target.value });
   };
@@ -500,78 +569,31 @@ class AppHeader extends Component {
                     width: "100%",
                   }}
                 >
-                  {/* <div style={{ marginRight: "10px" }}>
-                    <FacebookLogin
-                      appId="318952325788846"
-                      // autoLoad
-                      callback={this.responseFacebook}
-                      render={(renderProps) => (
-                        <span
-                          style={{
-                            cursor: "pointer",
-                            fontSize: "13px",
-                            background: "#3b5998",
-                            color: "white",
-                            padding: "6px 10px",
-                            display: "inline-flex",
-                            alignItems: "center",
-                            borderRadius: "8px",
-                          }}
-                          onClick={renderProps.onClick}
-                          disabled={renderProps.disabled}
-                        >
-                          <img
-                            src={fb}
-                            style={{
-                              height: "30px",
-                              marginRight: "10px",
-                              borderRadius: "6px",
-                            }}
-                          />
-                          <span>Login with Facebook</span>
-                        </span>
-                      )}
-                    />
-                  </div> */}
-                  {/* <div>
-                    <GoogleLogin
-                      clientId="666008965252-p0f44125gort69gcqa1m6e25o3tujpvp.apps.googleusercontent.com"
-                      render={(renderProps) => (
-                        <span
-                          style={{
-                            cursor: "pointer",
-                            fontSize: "13px",
-                            background: "#4285F4",
-                            color: "white",
-                            padding: "6px 10px",
-                            display: "inline-flex",
-                            alignItems: "center",
-                            borderRadius: "8px",
-                          }}
-                          onClick={renderProps.onClick}
-                          disabled={renderProps.disabled}
-                        >
-                          <img
-                            src={google}
-                            style={{
-                              height: "30px",
-                              width: "30px",
-                              objectFit: "contain",
-                              marginRight: "10px",
-                              padding: "5px",
-                              background: "white",
-                              borderRadius: "6px",
-                            }}
-                          />
-                          <span>Login with Google</span>
-                        </span>
-                      )}
-                      buttonText="Login"
-                      onSuccess={this.responseGoogle}
-                      // onFailure={responseGoogle}
-                      cookiePolicy={"single_host_origin"}
-                    />
-                  </div> */}
+                  <div>
+                    <button
+                      style={{
+                        cursor: "pointer",
+                        fontSize: "13px",
+                        background: "#3b5998",
+                        color: "white",
+                        padding: "6px 10px",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        borderRadius: "8px",
+                      }}
+                      onClick={this.addfacebook}
+                    >
+                      <img
+                        src={fb}
+                        style={{
+                          height: "30px",
+                          marginRight: "10px",
+                          borderRadius: "6px",
+                        }}
+                      />
+                      <span>Login with Facebook</span>
+                    </button>
+                  </div>
                   <div>
                     <button
                       style={{
@@ -616,7 +638,7 @@ class AppHeader extends Component {
                   style={{
                     marginTop: "10px",
                     textAlign: "left",
-                    width: "100%",
+                    // width: "100%",
                   }}
                 >
                   <Link
@@ -644,14 +666,24 @@ class AppHeader extends Component {
             </Row>
           </ModalBody>
         </Modal>
+        <div
+          class="jugad"
+          onClick={() => this.onSetSidebarOpen(false)}
+          style={{
+            zIndex: "1001",
+            position: "fixed",
+            width: "100%",
+            height: "100%",
+            display: "none",
+          }}
+        ></div>
         <Menu isOpen={this.state.sidebarOpen}>
           <div
-            style={{
-              marginBottom: "20px",
-              display: "flex",
-              justifyContent: "space-between",
-              width: "100%",
-            }}
+          // style={{
+          //   marginBottom: "20px",
+          //   display: "flex",
+          //   justifyContent: "space-between",
+          // }}
           >
             <span>
               <Link
@@ -714,7 +746,7 @@ class AppHeader extends Component {
               Chatboard
             </span>
           </Link>
-          <Link
+          {/* <Link
             hidden={!this.state.loggedIn}
             style={{ marginBottom: "20px", fontSize: "1.3rem" }}
             onClick={() => this.nav("profile")}
@@ -724,7 +756,7 @@ class AppHeader extends Component {
             <span className="linkHeader" style={{ marginRight: "10px" }}>
               My Profile
             </span>
-          </Link>
+          </Link> */}
           <Link
             style={{ marginBottom: "20px", fontSize: "1.3rem" }}
             onClick={() => this.nav("services")}
@@ -844,23 +876,13 @@ class AppHeader extends Component {
           </Link>
         </Menu>
         <div className="headerWidth">
-          {/* <Select
-                                id="global-search"
-                                className="basic-single"
-                                classNamePrefix="select"
-                                value={selectedOption}
-                                placeholder="Search..."
-                                onChange={(selectedOption) => this.handleChange(selectedOption)}
-                                isSearchable={isSearchable}
-                                name="color"
-                                options={this.state.courseList} />  */}
           <div
             className="headerBottom flexCenter"
             style={{ justifyContent: "space-between" }}
           >
             <img
               src={menu}
-              style={{ height: "25px" }}
+              style={{ height: "25px", zIndex: "10102" }}
               onClick={() => this.onSetSidebarOpen(true)}
             />
             <Link className="linkStyle" to="/" style={{ color: "white" }}>

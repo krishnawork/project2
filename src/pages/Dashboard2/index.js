@@ -11,6 +11,7 @@ import Dashboard from "./Dashboard";
 import Test from "./Componet/Dashboard/test/Test";
 import Service from "./Componet/Dashboard/service/Service";
 import Program from "./Componet/Dashboard/program/Program";
+import AccountBoxIcon from "@material-ui/icons/AccountBox";
 
 function Index() {
   const { componet } = useParams();
@@ -18,6 +19,7 @@ function Index() {
   useEffect(() => {
     setmainpage(<Dashboard />);
   }, []);
+  const [state, setstate] = useState([]);
   useEffect(() => {
     if (componet === "test") {
       setmainpage(<Test />);
@@ -30,6 +32,22 @@ function Index() {
     }
   }, [componet]);
   // let {};
+  useEffect(() => {
+    if (localStorage.getItem("userData") !== null) {
+      let user = JSON.parse(localStorage.getItem("userData"));
+      setstate({
+        id: user.id,
+        fname: user.first_name,
+        lname: user.last_name,
+        number: user.number,
+        email: user.email,
+        loggedIn: true,
+      });
+    } else {
+      window.location.assign("/");
+    }
+  }, []);
+
   return (
     <Fragment>
       <div>
@@ -49,7 +67,33 @@ function Index() {
             <div className="col-12">
               {/* 2 col start sidebar */}
               <div className="col-2 sidenav">
-                {/* <div className="col-12"  */}
+                {/*  */}
+                <div style={{ textAlign: "center", marginBottom: "20px" }}>
+                  <AccountBoxIcon style={{ color: "white" }} fontSize="large" />
+                  <h5
+                    style={{
+                      color: "white",
+                      fontWeight: "bold",
+                      margin: "2px",
+                    }}
+                  >
+                    {state.fname}
+                  </h5>
+
+                  <Link
+                    to="/profile"
+                    style={{
+                      color: "black",
+                      backgroundColor: "white",
+                      padding: "2px",
+                      fontSize: "12px",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    Edit Profile
+                  </Link>
+                </div>
+                {/*  */}
                 <NavLink exact to="/dashboard" className="col-12 menu_option">
                   <DashboardIcon /> Dashboard
                 </NavLink>
@@ -73,7 +117,7 @@ function Index() {
                   className="col-12 menu_option"
                 >
                   <FavoriteBorderIcon />
-                  Service seassion
+                  Service Session
                 </NavLink>
                 <NavLink
                   exact
@@ -81,7 +125,7 @@ function Index() {
                   className="col-12 menu_option"
                 >
                   <FavoriteBorderIcon />
-                  Program seassion
+                  Program Session
                 </NavLink>
 
                 <NavLink exact to="/dashboard" className="col-12 menu_option">
@@ -96,15 +140,15 @@ function Index() {
                     <p></p>
                   </div>
                   <div className="col-3 apoiment">
-                    <Link to="/services">Book appointment </Link>
+                    <Link to="/services">Book Appointment </Link>
                   </div>
                   <div className="col-3 apoiment">
-                    <Link>TOLL FREE NO :- 26492659 </Link>
+                    <Link>Toll Free No :- 26492659 </Link>
                   </div>
                 </div>
                 {/*  */}
                 <div className="col-12">
-                  <h5>Analitics</h5>
+                  <h5>Analytics</h5>
                 </div>
                 {/*  */}
                 {mainpage}

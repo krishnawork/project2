@@ -75,7 +75,7 @@ function AllTest() {
             setselfdata((old) => [...old, d.data()]);
           });
         } else {
-          setLoadind("Data Not Avalabel");
+          setLoadind("Data Not Available");
         }
       });
     return () => {
@@ -96,7 +96,7 @@ function AllTest() {
             setpaiddata((old) => [...old, d.data()]);
           });
         } else {
-          setLoadind("Data Not Avalabel");
+          setLoadind("Data Not Available");
         }
       });
     return () => {

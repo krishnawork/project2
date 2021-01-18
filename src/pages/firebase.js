@@ -16,5 +16,7 @@ firebase.analytics();
 
 let auth = firebase.auth();
 let provider = new firebase.auth.GoogleAuthProvider();
-export { auth, provider };
+var provider2 = new firebase.auth.FacebookAuthProvider();
+
+export { auth, provider, provider2 };
 export default firebase;

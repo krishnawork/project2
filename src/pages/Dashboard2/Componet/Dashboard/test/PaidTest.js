@@ -73,7 +73,7 @@ function PaidTest({ test }) {
               setselfdata((old) => [...old, d.data()]);
             });
           } else {
-            setLoadind("Data Not Avalabel");
+            setLoadind("Data Not Available");
           }
         });
     }
