@@ -19,6 +19,7 @@ class Depression extends Component {
     this.state = {
       value: 1,
       program_id: this.props.match.params.programID,
+      program_Name: this.props.match.params.programName,
     };
   }
 
@@ -29,10 +30,10 @@ class Depression extends Component {
     });
   };
 
-  checkoutProgram = (amount, sessions, program_id) => {
+  checkoutProgram = (amount, sessions, program_id, program_name) => {
     this.props.history.push({
       pathname: "/checkout",
-      state: [amount, sessions, program_id, "program"],
+      state: [amount, sessions, program_id, "program", program_name],
     });
   };
 
@@ -94,7 +95,12 @@ class Depression extends Component {
                   <Button
                     className="programButton"
                     onClick={() =>
-                      this.checkoutProgram(4000, 5, this.state.program_id)
+                      this.checkoutProgram(
+                        4000,
+                        5,
+                        this.state.program_id,
+                        this.state.program_Name
+                      )
                     }
                   >
                     Start Now

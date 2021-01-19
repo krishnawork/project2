@@ -156,7 +156,7 @@ class AppFooter extends Component {
             <Link className="linkStyle" to="/services/parenting">
               <div className="mb-10 linkFooter">Parenting Done Right</div>
             </Link>
-            <Link className="linkStyle" to="/services/special-children/7">
+            <Link className="linkStyle" to="/services/special-children">
               <div className="mb-10 linkFooter">Special Children</div>
             </Link>
             <Link className="linkStyle" to="/services/mental-health">

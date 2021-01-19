@@ -8,6 +8,19 @@ import { format } from "date-fns";
 
 // define a generatePDF function that accepts a tickets argument
 const generatePDF = (tickets) => {
+  let lastname;
+  let firstname;
+  if (localStorage.getItem("isLoggedIn")) {
+    lastname = JSON.parse(localStorage.getItem("userData")).last_name;
+  } else {
+    lastname = "";
+  }
+  if (localStorage.getItem("isLoggedIn")) {
+    firstname = JSON.parse(localStorage.getItem("userData")).first_name;
+  } else {
+    firstname = "";
+  }
+
   // initialize jsPDF
   const doc = new jsPDF();
 
@@ -78,28 +91,23 @@ const generatePDF = (tickets) => {
   const dateStr = date[0] + date[1] + date[2] + date[3] + date[4];
   // ticket title. and margin-top + margin-left
   // doc.addImage("../assets/images/google-icon.png", "JPEG", 15, 40, 180, 180);
-  doc.text(
-    "Test result of " +
-      JSON.parse(localStorage.getItem("userData")).last_name +
-      " " +
-      JSON.parse(localStorage.getItem("userData")).first_name,
-    14,
-    15
-  );
+  doc.text("Test result of " + lastname + " " + firstname, 14, 15);
   // we define the name of our PDF file.
   var blobPDF = doc.output("datauristring");
   var blob = doc.output();
   var formData = new FormData();
   formData.append("pdf", blob);
-  axios
-    .post(api_url + "update_pdf", {
-      user_id: JSON.parse(localStorage.getItem("userData")).id,
-      pdf_blob: blob,
-      order_id: localStorage.getItem("paid_test_test_id"),
-    })
-    .then(function (response) {
-      console.log("success api called");
-    });
+  if (localStorage.getItem("isLoggedIn")) {
+    axios
+      .post(api_url + "update_pdf", {
+        user_id: JSON.parse(localStorage.getItem("userData")).id,
+        pdf_blob: blob,
+        order_id: localStorage.getItem("paid_test_test_id"),
+      })
+      .then(function (response) {
+        console.log("success api called");
+      });
+  }
   doc.save(`report_${dateStr}.pdf`);
 };
 

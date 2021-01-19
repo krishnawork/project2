@@ -350,35 +350,34 @@ class AppHeader extends Component {
           { merge: true }
         );
       }
-      if (result) {
-        axios
-          .post(api_url + "sign-up", {
-            email: result.user.email,
-            fname: result.user.displayName,
-            number: result.user.phoneNumber,
-            password: "password",
-          })
-          .then(function (response) {
-            let data = response.data.user;
-            localStorage.setItem("email", result.user.displayName);
-            let user = {
-              id: data.id,
-              first_name: data.first_name,
-              last_name: data.last_name,
-              email: data.email,
-              number: data.number,
-            };
-            localStorage.setItem("userData", JSON.stringify(user));
-            localStorage.setItem("isLoggedIn", true);
-            window.location.reload();
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-      }
+      console.log(result.user);
+      axios
+        .post(api_url + "sign-up", {
+          fname: result.user.displayName,
+          password: "password",
+          email: result.user.email,
+        })
+        .then(function (response) {
+          console.log("eee");
+          console.log(result.user.displayName);
+
+          let data = response.data.user;
+          console.log("sdsdsdsdsds", data);
+          let user = {
+            id: data.id,
+            first_name: data.first_name,
+            last_name: data.last_name,
+            email: data.email,
+            number: data.number,
+          };
+
+          localStorage.setItem("userData", JSON.stringify(user));
+          localStorage.setItem("isLoggedIn", true);
+          localStorage.setItem("email", result.user.displayName);
+          window.location.reload();
+        });
     });
   };
-
   //
 
   addgoogle = () => {

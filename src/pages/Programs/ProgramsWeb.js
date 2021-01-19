@@ -152,7 +152,7 @@ class ProgramsWeb extends Component {
                       </Col>
                       <Col md={4}>
                         <Link
-                          to={`/programs/anger-management/${this.get_program_id(
+                          to={`/programs/depression/${this.get_program_id(
                             "Overcome Depression and anxiety"
                           )}/Overcome Depression and anxiety`}
                           className="linkStyle blackLink"
@@ -193,7 +193,7 @@ class ProgramsWeb extends Component {
                                 }}
                               >
                                 <Link
-                                  to={`/programs/anger-management/${this.get_program_id(
+                                  to={`/programs/depression/${this.get_program_id(
                                     "Overcome Depression and anxiety"
                                   )}/Overcome Depression and anxiety`}
                                   className="linkStyle blackLink hoverLink"
@@ -213,7 +213,7 @@ class ProgramsWeb extends Component {
                       </Col>
                       <Col md={4}>
                         <Link
-                          to={`/programs/anger-management/${this.get_program_id(
+                          to={`/programs/motivation/${this.get_program_id(
                             "Self-Motivation"
                           )}/Self-Motivation`}
                           className="linkStyle blackLink"
@@ -257,7 +257,7 @@ class ProgramsWeb extends Component {
                                 }}
                               >
                                 <Link
-                                  to={`/programs/anger-management/${this.get_program_id(
+                                  to={`/programs/motivation/${this.get_program_id(
                                     "Self-Motivation"
                                   )}/Self-Motivation`}
                                   className="linkStyle blackLink hoverLink"
@@ -279,7 +279,7 @@ class ProgramsWeb extends Component {
                     <Row style={{ marginBottom: "50px" }}>
                       <Col md={4}>
                         <Link
-                          to={`/programs/anger-management/${this.get_program_id(
+                          to={`/programs/loneliness/${this.get_program_id(
                             "Overcome Loneliness"
                           )}/Overcome Loneliness`}
                           className="linkStyle blackLink"
@@ -323,7 +323,7 @@ class ProgramsWeb extends Component {
                                 }}
                               >
                                 <Link
-                                  to={`/programs/anger-management/${this.get_program_id(
+                                  to={`/programs/loneliness/${this.get_program_id(
                                     "Overcome Loneliness"
                                   )}/Overcome Loneliness`}
                                   className="linkStyle blackLink hoverLink"
@@ -343,7 +343,7 @@ class ProgramsWeb extends Component {
                       </Col>
                       <Col md={4}>
                         <Link
-                          to={`/programs/anger-management/${this.get_program_id(
+                          to={`/programs/procrastination/${this.get_program_id(
                             "Leave Your Procrastination"
                           )}/Leave Your Procrastination`}
                           className="linkStyle blackLink"
@@ -387,7 +387,7 @@ class ProgramsWeb extends Component {
                                 }}
                               >
                                 <Link
-                                  to={`/programs/anger-management/${this.get_program_id(
+                                  to={`/programs/procrastination/${this.get_program_id(
                                     "Leave Your Procrastination"
                                   )}/Leave Your Procrastination`}
                                   className="linkStyle blackLink hoverLink"
@@ -407,7 +407,7 @@ class ProgramsWeb extends Component {
                       </Col>
                       <Col md={4}>
                         <Link
-                          to={`/programs/anger-management/${this.get_program_id(
+                          to={`/programs/self-esteem/${this.get_program_id(
                             "Develop Self-Esteem and Confidence"
                           )}/Develop Self-Esteem and Confidence`}
                           className="linkStyle blackLink"
@@ -447,7 +447,7 @@ class ProgramsWeb extends Component {
                                 }}
                               >
                                 <Link
-                                  to={`/programs/anger-management/${this.get_program_id(
+                                  to={`/programs/self-esteem/${this.get_program_id(
                                     "Develop Self-Esteem and Confidence"
                                   )}/Develop Self-Esteem and Confidence`}
                                   className="linkStyle blackLink hoverLink"
@@ -469,7 +469,7 @@ class ProgramsWeb extends Component {
                     <Row style={{ marginBottom: "50px" }}>
                       <Col md={4}>
                         <Link
-                          to={`/programs/anger-management/${this.get_program_id(
+                          to={`/programs/stress/${this.get_program_id(
                             "Stress Management"
                           )}/Stress Management`}
                           className="linkStyle blackLink"
@@ -514,7 +514,7 @@ class ProgramsWeb extends Component {
                                 }}
                               >
                                 <Link
-                                  to={`/programs/anger-management/${this.get_program_id(
+                                  to={`/programs/stress/${this.get_program_id(
                                     "Stress Management"
                                   )}/Stress Management`}
                                   className="linkStyle blackLink hoverLink"
@@ -534,7 +534,7 @@ class ProgramsWeb extends Component {
                       </Col>
                       <Col md={4}>
                         <Link
-                          to={`/programs/anger-management/${this.get_program_id(
+                          to={`/programs/family/${this.get_program_id(
                             "Resolve Your Family Issues"
                           )}/Resolve Your Family Issues`}
                           className="linkStyle blackLink"
@@ -573,7 +573,7 @@ class ProgramsWeb extends Component {
                                 }}
                               >
                                 <Link
-                                  to={`/programs/anger-management/${this.get_program_id(
+                                  to={`/programs/family/${this.get_program_id(
                                     "Resolve Your Family Issues"
                                   )}/Resolve Your Family Issues`}
                                   className="linkStyle blackLink hoverLink"
@@ -593,7 +593,7 @@ class ProgramsWeb extends Component {
                       </Col>
                       <Col md={4}>
                         <Link
-                          to={`/programs/anger-management/${this.get_program_id(
+                          to={`/programs/relationship/${this.get_program_id(
                             "Improve Your Relationship With your…"
                           )}/Improve Your Relationship With your…`}
                           className="linkStyle blackLink"
@@ -637,7 +637,7 @@ class ProgramsWeb extends Component {
                                 }}
                               >
                                 <Link
-                                  to={`/programs/anger-management/${this.get_program_id(
+                                  to={`/programs/relationship/${this.get_program_id(
                                     "Improve Your Relationship With your…"
                                   )}/Improve Your Relationship With your…`}
                                   className="linkStyle blackLink hoverLink"
@@ -659,7 +659,7 @@ class ProgramsWeb extends Component {
                     <Row style={{ marginBottom: "50px" }}>
                       <Col md={4}>
                         <Link
-                          to={`/programs/anger-management/${this.get_program_id(
+                          to={`/programs/marriage/${this.get_program_id(
                             "Improve Your Marriage"
                           )}/Improve Your Marriage`}
                           className="linkStyle blackLink"
@@ -699,7 +699,7 @@ class ProgramsWeb extends Component {
                                 }}
                               >
                                 <Link
-                                  to={`/programs/anger-management/${this.get_program_id(
+                                  to={`/programs/marriage/${this.get_program_id(
                                     "Improve Your Marriage"
                                   )}/Improve Your Marriage`}
                                   className="linkStyle blackLink hoverLink"
@@ -719,7 +719,7 @@ class ProgramsWeb extends Component {
                       </Col>
                       <Col md={4}>
                         <Link
-                          to={`/programs/anger-management/${this.get_program_id(
+                          to={`/programs/marriage-jitters/${this.get_program_id(
                             "Manage Pre-Wedding Jitters"
                           )}/Manage Pre-Wedding Jitters`}
                           className="linkStyle blackLink"
@@ -763,7 +763,7 @@ class ProgramsWeb extends Component {
                                 }}
                               >
                                 <Link
-                                  to={`/programs/anger-management/${this.get_program_id(
+                                  to={`/programs/marriage-jitters/${this.get_program_id(
                                     "Manage Pre-Wedding Jitters"
                                   )}/Manage Pre-Wedding Jitters`}
                                   className="linkStyle blackLink hoverLink"
@@ -783,7 +783,7 @@ class ProgramsWeb extends Component {
                       </Col>
                       <Col md={4}>
                         <Link
-                          to={`/programs/anger-management/${this.get_program_id(
+                          to={`/programs/dream-career/${this.get_program_id(
                             "Build Your Dream Career"
                           )}/Build Your Dream Career`}
                           className="linkStyle blackLink"
@@ -827,7 +827,7 @@ class ProgramsWeb extends Component {
                                 }}
                               >
                                 <Link
-                                  to={`/programs/anger-management/${this.get_program_id(
+                                  to={`/programs/dream-career/${this.get_program_id(
                                     "Build Your Dream Career"
                                   )}/Build Your Dream Career`}
                                   className="linkStyle blackLink hoverLink"
@@ -849,7 +849,7 @@ class ProgramsWeb extends Component {
                     <Row style={{ marginBottom: "50px" }}>
                       <Col md={4}>
                         <Link
-                          to={`/programs/anger-management/${this.get_program_id(
+                          to={`/programs/career-transition/${this.get_program_id(
                             "Easy Career Transition"
                           )}/Easy Career Transition`}
                           className="linkStyle blackLink"
@@ -893,7 +893,7 @@ class ProgramsWeb extends Component {
                                 }}
                               >
                                 <Link
-                                  to={`/programs/anger-management/${this.get_program_id(
+                                  to={`/programs/career-transition/${this.get_program_id(
                                     "Easy Career Transition"
                                   )}/Easy Career Transition`}
                                   className="linkStyle blackLink hoverLink"
@@ -913,7 +913,7 @@ class ProgramsWeb extends Component {
                       </Col>
                       <Col md={4}>
                         <Link
-                          to={`/programs/anger-management/${this.get_program_id(
+                          to={`/programs/entrepreneurs/${this.get_program_id(
                             "Counselling for Entrepreneurs"
                           )}/Counselling for Entrepreneurs`}
                           className="linkStyle blackLink"
@@ -958,7 +958,7 @@ class ProgramsWeb extends Component {
                                 }}
                               >
                                 <Link
-                                  to={`/programs/anger-management/${this.get_program_id(
+                                  to={`/programs/entrepreneurs/${this.get_program_id(
                                     "Counselling for Entrepreneurs"
                                   )}/Counselling for Entrepreneurs`}
                                   className="linkStyle blackLink hoverLink"
@@ -978,7 +978,7 @@ class ProgramsWeb extends Component {
                       </Col>
                       <Col md={4}>
                         <Link
-                          to={`/programs/anger-management/${this.get_program_id(
+                          to={`/programs/sexuality/${this.get_program_id(
                             "Learn to Embrace Your Sexuality"
                           )}/Learn to Embrace Your Sexuality`}
                           className="linkStyle blackLink"
@@ -1019,7 +1019,7 @@ class ProgramsWeb extends Component {
                                 }}
                               >
                                 <Link
-                                  to={`/programs/anger-management/${this.get_program_id(
+                                  to={`/programs/sexuality/${this.get_program_id(
                                     "Learn to Embrace Your Sexuality"
                                   )}/Learn to Embrace Your Sexuality`}
                                   className="linkStyle blackLink hoverLink"
@@ -1041,7 +1041,7 @@ class ProgramsWeb extends Component {
                     <Row style={{ marginBottom: "50px" }}>
                       <Col md={4}>
                         <Link
-                          to={`/programs/anger-management/${this.get_program_id(
+                          to={`/programs/sex-education/${this.get_program_id(
                             "Sex Education"
                           )}/Sex Education`}
                           className="linkStyle blackLink"
@@ -1081,7 +1081,7 @@ class ProgramsWeb extends Component {
                                 }}
                               >
                                 <Link
-                                  to={`/programs/anger-management/${this.get_program_id(
+                                  to={`/programs/sex-education/${this.get_program_id(
                                     "Sex Education"
                                   )}/Sex Education`}
                                   className="linkStyle blackLink hoverLink"
@@ -1101,7 +1101,7 @@ class ProgramsWeb extends Component {
                       </Col>
                       <Col md={4}>
                         <Link
-                          to={`/programs/anger-management/${this.get_program_id(
+                          to={`/programs/sexual-disorder/${this.get_program_id(
                             "Identify Sexual Disorders"
                           )}/Identify Sexual Disorders`}
                           className="linkStyle blackLink"
@@ -1142,7 +1142,7 @@ class ProgramsWeb extends Component {
                                 }}
                               >
                                 <Link
-                                  to={`/programs/anger-management/${this.get_program_id(
+                                  to={`/programs/sexual-disorder/${this.get_program_id(
                                     "Identify Sexual Disorders"
                                   )}/Identify Sexual Disorders`}
                                   className="linkStyle blackLink hoverLink"
@@ -1162,7 +1162,7 @@ class ProgramsWeb extends Component {
                       </Col>
                       <Col md={4}>
                         <Link
-                          to={`/programs/anger-management/${this.get_program_id(
+                          to={`/programs/sexual-abuse/${this.get_program_id(
                             "Therapy for Sexual Abuse"
                           )}/Therapy for Sexual Abuse`}
                           className="linkStyle blackLink"
@@ -1202,7 +1202,7 @@ class ProgramsWeb extends Component {
                                 }}
                               >
                                 <Link
-                                  to={`/programs/anger-management/${this.get_program_id(
+                                  to={`/programs/sexual-abuse/${this.get_program_id(
                                     "Therapy for Sexual Abuse"
                                   )}/Therapy for Sexual Abuse`}
                                   className="linkStyle blackLink hoverLink"
@@ -1224,7 +1224,7 @@ class ProgramsWeb extends Component {
                     <Row style={{ marginBottom: "50px" }}>
                       <Col md={4} style={{ margin: "auto" }}>
                         <Link
-                          to={`/programs/anger-management/${this.get_program_id(
+                          to={`/programs/lgbtq/${this.get_program_id(
                             "Counselling for LGBTQIA Individual"
                           )}/Counselling for LGBTQIA Individual`}
                           className="linkStyle blackLink"
@@ -1265,7 +1265,7 @@ class ProgramsWeb extends Component {
                                 }}
                               >
                                 <Link
-                                  to={`/programs/anger-management/${this.get_program_id(
+                                  to={`/programs/lgbtq/${this.get_program_id(
                                     "Counselling for LGBTQIA Individual"
                                   )}/Counselling for LGBTQIA Individual`}
                                   className="linkStyle blackLink hoverLink"
@@ -1351,7 +1351,7 @@ class ProgramsWeb extends Component {
                       </Col>
                       <Col md={4}>
                         <Link
-                          to={`/programs/anger-management/${this.get_program_id(
+                          to={`/programs/depression/${this.get_program_id(
                             "Overcome Depression and anxiety"
                           )}/Overcome Depression and anxiety`}
                           className="linkStyle blackLink"
@@ -1392,7 +1392,7 @@ class ProgramsWeb extends Component {
                                 }}
                               >
                                 <Link
-                                  to={`/programs/anger-management/${this.get_program_id(
+                                  to={`/programs/depression/${this.get_program_id(
                                     "Overcome Depression and anxiety"
                                   )}/Overcome Depression and anxiety`}
                                   className="linkStyle blackLink hoverLink"
@@ -1412,7 +1412,7 @@ class ProgramsWeb extends Component {
                       </Col>
                       <Col md={4}>
                         <Link
-                          to={`/programs/anger-management/${this.get_program_id(
+                          to={`/programs/motivation/${this.get_program_id(
                             "Self-Motivation"
                           )}/Self-Motivation`}
                           className="linkStyle blackLink"
@@ -1456,7 +1456,7 @@ class ProgramsWeb extends Component {
                                 }}
                               >
                                 <Link
-                                  to={`/programs/anger-management/${this.get_program_id(
+                                  to={`/programs/motivation/${this.get_program_id(
                                     "Self-Motivation"
                                   )}/Self-Motivation`}
                                   className="linkStyle blackLink hoverLink"
@@ -1478,7 +1478,7 @@ class ProgramsWeb extends Component {
                     <Row style={{ marginBottom: "50px" }}>
                       <Col md={4}>
                         <Link
-                          to={`/programs/anger-management/${this.get_program_id(
+                          to={`/programs/loneliness/${this.get_program_id(
                             "Overcome Loneliness"
                           )}/Overcome Loneliness`}
                           className="linkStyle blackLink"
@@ -1522,7 +1522,7 @@ class ProgramsWeb extends Component {
                                 }}
                               >
                                 <Link
-                                  to={`/programs/anger-management/${this.get_program_id(
+                                  to={`/programs/loneliness/${this.get_program_id(
                                     "Overcome Loneliness"
                                   )}/Overcome Loneliness`}
                                   className="linkStyle blackLink hoverLink"
@@ -1542,7 +1542,7 @@ class ProgramsWeb extends Component {
                       </Col>
                       <Col md={4}>
                         <Link
-                          to={`/programs/anger-management/${this.get_program_id(
+                          to={`/programs/procrastination/${this.get_program_id(
                             "Leave Your Procrastination"
                           )}/Leave Your Procrastination`}
                           className="linkStyle blackLink"
@@ -1586,7 +1586,7 @@ class ProgramsWeb extends Component {
                                 }}
                               >
                                 <Link
-                                  to={`/programs/anger-management/${this.get_program_id(
+                                  to={`/programs/procrastination/${this.get_program_id(
                                     "Leave Your Procrastination"
                                   )}/Leave Your Procrastination`}
                                   className="linkStyle blackLink hoverLink"
@@ -1606,7 +1606,7 @@ class ProgramsWeb extends Component {
                       </Col>
                       <Col md={4}>
                         <Link
-                          to={`/programs/anger-management/${this.get_program_id(
+                          to={`/programs/self-esteem/${this.get_program_id(
                             "Develop Self-Esteem and Confidence"
                           )}/Develop Self-Esteem and Confidence`}
                           className="linkStyle blackLink"
@@ -1646,7 +1646,7 @@ class ProgramsWeb extends Component {
                                 }}
                               >
                                 <Link
-                                  to={`/programs/anger-management/${this.get_program_id(
+                                  to={`/programs/self-esteem/${this.get_program_id(
                                     "Develop Self-Esteem and Confidence"
                                   )}/Develop Self-Esteem and Confidence`}
                                   className="linkStyle blackLink hoverLink"
@@ -1668,7 +1668,7 @@ class ProgramsWeb extends Component {
                     <Row style={{ marginBottom: "50px" }}>
                       <Col md={4}>
                         <Link
-                          to={`/programs/anger-management/${this.get_program_id(
+                          to={`/programs/stress/${this.get_program_id(
                             "Stress Management"
                           )}/Stress Management`}
                           className="linkStyle blackLink"
@@ -1713,7 +1713,7 @@ class ProgramsWeb extends Component {
                                 }}
                               >
                                 <Link
-                                  to={`/programs/anger-management/${this.get_program_id(
+                                  to={`/programs/stress/${this.get_program_id(
                                     "Stress Management"
                                   )}/Stress Management`}
                                   className="linkStyle blackLink hoverLink"
@@ -1739,7 +1739,7 @@ class ProgramsWeb extends Component {
                     <Row style={{ marginBottom: "50px" }}>
                       <Col md={4}>
                         <Link
-                          to={`/programs/anger-management/${this.get_program_id(
+                          to={`/programs/family/${this.get_program_id(
                             "Resolve Your Family Issues"
                           )}/Resolve Your Family Issues`}
                           className="linkStyle blackLink"
@@ -1778,7 +1778,7 @@ class ProgramsWeb extends Component {
                                 }}
                               >
                                 <Link
-                                  to={`/programs/anger-management/${this.get_program_id(
+                                  to={`/programs/family/${this.get_program_id(
                                     "Resolve Your Family Issues"
                                   )}/Resolve Your Family Issues`}
                                   className="linkStyle blackLink hoverLink"
@@ -1798,7 +1798,7 @@ class ProgramsWeb extends Component {
                       </Col>
                       <Col md={4}>
                         <Link
-                          to={`/programs/anger-management/${this.get_program_id(
+                          to={`/programs/relationship/${this.get_program_id(
                             "Improve Your Relationship With your…"
                           )}/Resolve Your Family Issues`}
                           className="linkStyle blackLink"
@@ -1842,7 +1842,7 @@ class ProgramsWeb extends Component {
                                 }}
                               >
                                 <Link
-                                  to={`/programs/anger-management/${this.get_program_id(
+                                  to={`/programs/relationship/${this.get_program_id(
                                     "Improve Your Relationship With your…"
                                   )}/Resolve Your Family Issues`}
                                   className="linkStyle blackLink hoverLink"
@@ -1862,7 +1862,7 @@ class ProgramsWeb extends Component {
                       </Col>
                       <Col md={4}>
                         <Link
-                          to={`/programs/anger-management/${this.get_program_id(
+                          to={`/programs/marriage/${this.get_program_id(
                             "Improve Your Marriage"
                           )}/Improve Your Marriage`}
                           className="linkStyle blackLink"
@@ -1902,7 +1902,7 @@ class ProgramsWeb extends Component {
                                 }}
                               >
                                 <Link
-                                  to={`/programs/anger-management/${this.get_program_id(
+                                  to={`/programs/marriage/${this.get_program_id(
                                     "Improve Your Marriage"
                                   )}/Improve Your Marriage`}
                                   className="linkStyle blackLink hoverLink"
@@ -1924,7 +1924,7 @@ class ProgramsWeb extends Component {
                     <Row style={{ marginBottom: "50px" }}>
                       <Col md={4}>
                         <Link
-                          to={`/programs/anger-management/${this.get_program_id(
+                          to={`/programs/marriage-jitters/${this.get_program_id(
                             "Manage Pre-Wedding Jitters"
                           )}/Manage Pre-Wedding Jitters`}
                           className="linkStyle blackLink"
@@ -1968,7 +1968,7 @@ class ProgramsWeb extends Component {
                                 }}
                               >
                                 <Link
-                                  to={`/programs/anger-management/${this.get_program_id(
+                                  to={`/programs/marriage-jitters/${this.get_program_id(
                                     "Manage Pre-Wedding Jitters"
                                   )}/Manage Pre-Wedding Jitters`}
                                   className="linkStyle blackLink hoverLink"
@@ -1994,7 +1994,7 @@ class ProgramsWeb extends Component {
                     <Row style={{ marginBottom: "50px" }}>
                       <Col md={4}>
                         <Link
-                          to={`/programs/anger-management/${this.get_program_id(
+                          to={`/programs/dream-career/${this.get_program_id(
                             "Build Your Dream Career"
                           )}/Build Your Dream Career`}
                           className="linkStyle blackLink"
@@ -2038,7 +2038,7 @@ class ProgramsWeb extends Component {
                                 }}
                               >
                                 <Link
-                                  to={`/programs/anger-management/${this.get_program_id(
+                                  to={`/programs/dream-career/${this.get_program_id(
                                     "Build Your Dream Career"
                                   )}/Build Your Dream Career`}
                                   className="linkStyle blackLink hoverLink"
@@ -2058,7 +2058,7 @@ class ProgramsWeb extends Component {
                       </Col>
                       <Col md={4}>
                         <Link
-                          to={`/programs/anger-management/${this.get_program_id(
+                          to={`/programs/career-transition/${this.get_program_id(
                             "Easy Career Transition"
                           )}/Easy Career Transition`}
                           className="linkStyle blackLink"
@@ -2102,7 +2102,7 @@ class ProgramsWeb extends Component {
                                 }}
                               >
                                 <Link
-                                  to={`/programs/anger-management/${this.get_program_id(
+                                  to={`/programs/career-transition/${this.get_program_id(
                                     "Easy Career Transition"
                                   )}/Easy Career Transition`}
                                   className="linkStyle blackLink hoverLink"
@@ -2122,7 +2122,7 @@ class ProgramsWeb extends Component {
                       </Col>
                       <Col md={4}>
                         <Link
-                          to={`/programs/anger-management/${this.get_program_id(
+                          to={`/programs/entrepreneurs/${this.get_program_id(
                             "Counselling for Entrepreneurs"
                           )}/Counselling for Entrepreneurs`}
                           className="linkStyle blackLink"
@@ -2167,7 +2167,7 @@ class ProgramsWeb extends Component {
                                 }}
                               >
                                 <Link
-                                  to={`/programs/anger-management/${this.get_program_id(
+                                  to={`/programs/entrepreneurs/${this.get_program_id(
                                     "Counselling for Entrepreneurs"
                                   )}/Counselling for Entrepreneurs`}
                                   className="linkStyle blackLink hoverLink"
@@ -2193,7 +2193,7 @@ class ProgramsWeb extends Component {
                     <Row style={{ marginBottom: "50px" }}>
                       <Col md={4}>
                         <Link
-                          to={`/programs/anger-management/${this.get_program_id(
+                          to={`/programs/sexuality/${this.get_program_id(
                             "Learn to Embrace Your Sexuality"
                           )}/Learn to Embrace Your Sexuality`}
                           className="linkStyle blackLink"
@@ -2234,7 +2234,7 @@ class ProgramsWeb extends Component {
                                 }}
                               >
                                 <Link
-                                  to={`/programs/anger-management/${this.get_program_id(
+                                  to={`/programs/sexuality/${this.get_program_id(
                                     "Learn to Embrace Your Sexuality"
                                   )}/Learn to Embrace Your Sexuality`}
                                   className="linkStyle blackLink hoverLink"
@@ -2254,7 +2254,7 @@ class ProgramsWeb extends Component {
                       </Col>
                       <Col md={4}>
                         <Link
-                          to={`/programs/anger-management/${this.get_program_id(
+                          to={`/programs/sex-education/${this.get_program_id(
                             "Sex Education"
                           )}/Sex Education`}
                           className="linkStyle blackLink"
@@ -2294,7 +2294,7 @@ class ProgramsWeb extends Component {
                                 }}
                               >
                                 <Link
-                                  to={`/programs/anger-management/${this.get_program_id(
+                                  to={`/programs/sex-education/${this.get_program_id(
                                     "Sex Education"
                                   )}/Sex Education`}
                                   className="linkStyle blackLink hoverLink"
@@ -2314,7 +2314,7 @@ class ProgramsWeb extends Component {
                       </Col>
                       <Col md={4}>
                         <Link
-                          to={`/programs/anger-management/${this.get_program_id(
+                          to={`/programs/sexual-disorder/${this.get_program_id(
                             "Identify Sexual Disorders"
                           )}/Identify Sexual Disorders`}
                           className="linkStyle blackLink"
@@ -2355,7 +2355,7 @@ class ProgramsWeb extends Component {
                                 }}
                               >
                                 <Link
-                                  to={`/programs/anger-management/${this.get_program_id(
+                                  to={`/programs/sexual-disorder/${this.get_program_id(
                                     "Identify Sexual Disorders"
                                   )}/Identify Sexual Disorders`}
                                   className="linkStyle blackLink hoverLink"
@@ -2377,7 +2377,7 @@ class ProgramsWeb extends Component {
                     <Row style={{ marginBottom: "50px" }}>
                       <Col md={4}>
                         <Link
-                          to={`/programs/anger-management/${this.get_program_id(
+                          to={`/programs/sexual-abuse/${this.get_program_id(
                             "Therapy for Sexual Abuse"
                           )}/Therapy for Sexual Abuse`}
                           className="linkStyle blackLink"
@@ -2417,7 +2417,7 @@ class ProgramsWeb extends Component {
                                 }}
                               >
                                 <Link
-                                  to={`/programs/anger-management/${this.get_program_id(
+                                  to={`/programs/sexual-abuse/${this.get_program_id(
                                     "Therapy for Sexual Abuse"
                                   )}/Therapy for Sexual Abuse`}
                                   className="linkStyle blackLink hoverLink"
@@ -2437,7 +2437,7 @@ class ProgramsWeb extends Component {
                       </Col>
                       <Col md={4} style={{ margin: "auto" }}>
                         <Link
-                          to={`/programs/anger-management/${this.get_program_id(
+                          to={`/programs/lgbtq/${this.get_program_id(
                             "Counselling for LGBTQIA Individual"
                           )}/Counselling for LGBTQIA Individual`}
                           className="linkStyle blackLink"
@@ -2478,7 +2478,7 @@ class ProgramsWeb extends Component {
                                 }}
                               >
                                 <Link
-                                  to={`/programs/anger-management/${this.get_program_id(
+                                  to={`/programs/lgbtq/${this.get_program_id(
                                     "Counselling for LGBTQIA Individual"
                                   )}/Counselling for LGBTQIA Individual`}
                                   className="linkStyle blackLink hoverLink"

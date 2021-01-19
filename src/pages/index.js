@@ -101,92 +101,92 @@ const Pages = ({ match }) => {
               />
               <Route
                 exact
-                path={`/programs/depression/:programID`}
+                path={`/programs/depression/:programID?/:programName?`}
                 component={Depression}
               />
               <Route
                 exact
-                path={`/programs/motivation/:programID`}
+                path={`/programs/motivation/:programID?/:programName?`}
                 component={Motivation}
               />
               <Route
                 exact
-                path={`/programs/loneliness/:programID`}
+                path={`/programs/loneliness/:programID?/:programName?`}
                 component={Loneliness}
               />
               <Route
                 exact
-                path={`/programs/procrastination/:programID`}
+                path={`/programs/procrastination/:programID?/:programName?`}
                 component={Procrastination}
               />
               <Route
                 exact
-                path={`/programs/self-esteem/:programID`}
+                path={`/programs/self-esteem/:programID?/:programName?`}
                 component={SelfEsteem}
               />
               <Route
                 exact
-                path={`/programs/stress/:programID`}
+                path={`/programs/stress/:programID?/:programName?`}
                 component={Stress}
               />
               <Route
                 exact
-                path={`/programs/family/:programID`}
+                path={`/programs/family/:programID?/:programName?`}
                 component={Family}
               />
               <Route
                 exact
-                path={`/programs/relationship/:programID`}
+                path={`/programs/relationship/:programID?/:programName?`}
                 component={Relationship}
               />
               <Route
                 exact
-                path={`/programs/marriage/:programID`}
+                path={`/programs/marriage/:programID?/:programName?`}
                 component={Marriage}
               />
               <Route
                 exact
-                path={`/programs/marriage-jitters/:programID`}
+                path={`/programs/marriage-jitters/:programID?/:programName?`}
                 component={MarriageJitters}
               />
               <Route
                 exact
-                path={`/programs/dream-career/:programID`}
+                path={`/programs/dream-career/:programID?/:programName?`}
                 component={DreamCareer}
               />
               <Route
                 exact
-                path={`/programs/career-transition/:programID`}
+                path={`/programs/career-transition/:programID?/:programName?`}
                 component={CareerTrans}
               />
               <Route
                 exact
-                path={`/programs/entrepreneurs/:programID`}
+                path={`/programs/entrepreneurs/:programID?/:programName?`}
                 component={Entrepreneurs}
               />
               <Route
                 exact
-                path={`/programs/sexuality/:programID`}
+                path={`/programs/sexuality/:programID?/:programName?`}
                 component={Sexuality}
               />
               <Route
                 exact
-                path={`/programs/sex-education/:programID`}
+                path={`/programs/sex-education/:programID?/:programName?`}
                 component={SexEducation}
               />
               <Route
                 exact
-                path={`/programs/sexual-disorder/:programID`}
+                path={`/programs/sexual-disorder/:programID?/:programName?`}
                 component={SexDisorder}
               />
               <Route
                 exact
-                path={`/programs/sexual-abuse/:programID`}
+                path={`/programs/sexual-abuse/:programID?/:programName?`}
                 component={SexAbuse}
               />
               <Route
                 exact
-                path={`/programs/lgbtq/:programID`}
+                path={`/programs/lgbtq/:programID?/:programName?`}
                 component={LGBTQ}
               />
               <Route exact path={`/services`} component={Services} />
@@ -257,9 +257,14 @@ const Pages = ({ match }) => {
               <Route exact path={`/signup`} component={Signup} />
               <Route exact path={`/paid-test`} component={PaidTest} />
 
-              <Route
+              {/* <Route
                 exact
                 path={`/chatboard/:user_name?/:Email?/:service?/:id?`}
+                component={ChatBoard}
+              /> */}
+              <Route
+                exact
+                path={`/chatboard/:docter_name?`}
                 component={ChatBoard}
               />
             </Route>

@@ -94,7 +94,10 @@ class Results extends Component {
           console.log(error);
         });
     }
-    if (localStorage.getItem("settesttype") === "Self") {
+    if (
+      localStorage.getItem("settesttype") === "Self" &&
+      localStorage.getItem("isLoggedIn")
+    ) {
       db.collection("web_user")
         .doc(localStorage.getItem("email"))
         .collection(localStorage.getItem("settesttype"))
@@ -105,7 +108,10 @@ class Results extends Component {
           TimeNow: new Date().toLocaleString(),
         })
         .then((result) => {});
-    } else if (localStorage.getItem("settesttype") === "Paid") {
+    } else if (
+      localStorage.getItem("settesttype") === "Paid" &&
+      localStorage.getItem("isLoggedIn")
+    ) {
       alert("hello");
       db.collection("web_user")
         .doc(localStorage.getItem("email"))
