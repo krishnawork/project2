@@ -389,8 +389,10 @@ class ServiceFee extends Component {
   };
   select = (time) => {
     var $cols = $(".slot").click(function (e) {
-      $cols.removeClass("selected");
       $(this).addClass("selected");
+      // console.log("SDSD", e);
+      // $cols.removeClass("selected");
+      // $(this).addClass("selected");
     });
     this.setState({
       selected: time,
@@ -937,6 +939,21 @@ class ServiceFee extends Component {
                         marginTop: "20px",
                         width: "100%",
                       }}
+                      onClick={this.selectSlot}
+                    >
+                      Select Time
+                    </Button>
+                    <Button
+                      style={{
+                        borderRadius: "4px",
+                        background: "#e95f3a",
+                        border: "none",
+                        padding: "10px 20px",
+                        fontSize: "14px",
+                        color: "white",
+                        marginTop: "20px",
+                        width: "100%",
+                      }}
                       onClick={() =>
                         this.openCheckout(
                           1000,
@@ -1017,6 +1034,21 @@ class ServiceFee extends Component {
                         border: "1px solid",
                       }}
                     />
+                    <Button
+                      style={{
+                        borderRadius: "4px",
+                        background: "#11b883",
+                        border: "none",
+                        padding: "10px 20px",
+                        fontSize: "14px",
+                        color: "white",
+                        marginTop: "20px",
+                        width: "100%",
+                      }}
+                      onClick={this.selectSlot}
+                    >
+                      Select Time
+                    </Button>
                     <Button
                       style={{
                         borderRadius: "4px",
@@ -1126,6 +1158,21 @@ class ServiceFee extends Component {
                         border: "1px solid",
                       }}
                     />
+                    <Button
+                      style={{
+                        borderRadius: "4px",
+                        background: "#179add",
+                        border: "none",
+                        padding: "10px 20px",
+                        fontSize: "14px",
+                        color: "white",
+                        marginTop: "20px",
+                        width: "100%",
+                      }}
+                      onClick={this.selectSlot}
+                    >
+                      Select Time
+                    </Button>
                     <Button
                       style={{
                         borderRadius: "4px",

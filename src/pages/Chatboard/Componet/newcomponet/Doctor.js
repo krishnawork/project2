@@ -11,6 +11,7 @@ import Paper from "@material-ui/core/Paper";
 import WorkIcon from "@material-ui/icons/Work";
 import BeachAccessIcon from "@material-ui/icons/BeachAccess";
 import firebase from "../../../firebase";
+import "./Doctor.css";
 let db = firebase.firestore();
 //
 const useStyles = makeStyles((theme) => ({
@@ -31,9 +32,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 //
-function Doctor() {
+function Doctor({ setdocter_name }) {
   const classes = useStyles();
-  //
   const [doctor, setdoctor] = useState([]);
   useEffect(() => {
     db.collection("Main_user")
@@ -45,23 +45,26 @@ function Doctor() {
           });
         }
       });
-  }, []);
+  }, [setdocter_name]);
+  let showdocter_chat = (docter_name) => {
+    if (docter_name) {
+      setdocter_name(docter_name);
+    }
+  };
   return (
     <div>
       {doctor.length > 0
         ? doctor.map((d, index) => {
             return (
-              <Paper key={index} className={classes.root}>
-                <NavLink to={`/chatboard/${d.User}`}>
-                  <List hover>
-                    <ListItem>
-                      <ListItemAvatar>
-                        <Avatar alt={d.User} src={d.User_Img} />
-                      </ListItemAvatar>
-                      <ListItemText primary={d.User_Name} />
-                    </ListItem>
-                  </List>
-                </NavLink>
+              <Paper key={index} className="abhikeliye">
+                <List hover="true" onClick={() => showdocter_chat(d.User)}>
+                  <ListItem>
+                    <ListItemAvatar>
+                      <Avatar alt={d.User} src={d.User_Img} />
+                    </ListItemAvatar>
+                    <ListItemText primary={d.User_Name} />
+                  </ListItem>
+                </List>
               </Paper>
             );
           })

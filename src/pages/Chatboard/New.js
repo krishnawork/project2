@@ -9,6 +9,7 @@ import LocalGroceryStoreIcon from "@material-ui/icons/LocalGroceryStore";
 import "./new.css";
 import Doctor from "./Componet/newcomponet/Doctor";
 import ChatRoom from "./Componet/newcomponet/ChatRoom";
+import Docter_img from "./Componet/newcomponet/Docter_img";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,10 +26,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function New() {
-  const { docter_name } = useParams();
+  // const { docter_name } = useParams();
   const [User, setuser] = useState();
-  const [page, setpage] = useState(<Doctor />);
   const [page2, setpage2] = useState(null);
+  const [docter_name, setdocter_name] = useState(null);
+  const [page, setpage] = useState(<Doctor setdocter_name={setdocter_name} />);
+  const [docter_Img, setdocter_Img] = useState(null);
   const classes = useStyles();
   //
   useEffect(() => {
@@ -43,8 +46,12 @@ function New() {
 
   useEffect(() => {
     if (docter_name) {
-      setpage2(<ChatRoom />);
+      setpage2(<ChatRoom id={docter_name} />);
+      setdocter_Img(<Docter_img id={docter_name} />);
     }
+    return () => {
+      setdocter_name(null);
+    };
   }, [docter_name]);
 
   //
@@ -69,6 +76,7 @@ function New() {
               item
               container
               sm={1}
+              xs={2}
               justify="center"
               className="sidebox_firstbox"
             >
@@ -81,7 +89,7 @@ function New() {
                 <Grid item style={{ marginBottom: "20px" }}>
                   <Avatar alt={User} src="/static/images/avatar/1.jpg" />
                 </Grid>
-                <Grid item style={{ marginBottom: "20px" }}>
+                {/* <Grid item style={{ marginBottom: "20px" }}>
                   <NavLink exact to="/chatboard" className="link_test">
                     <Paper>
                       <ChatBubbleIcon />
@@ -94,7 +102,7 @@ function New() {
                       <LocalGroceryStoreIcon />
                     </Paper>
                   </Link>
-                </Grid>
+                </Grid> */}
               </Grid>
             </Grid>
             {/*  */}
@@ -103,23 +111,22 @@ function New() {
               container
               item
               sm={3}
+              xs={5}
               justify="center"
               className="sidebox_secondbox"
             >
               <Grid container direction="column" justify="flex-start">
                 <Grid item className="doctor_hading">
-                  <h5>Doctor List</h5>
+                  <h5>Docter List</h5>
                 </Grid>
                 {page}
-                {/* <Grid item>jkldfj</Grid>
-                <Grid item>jkldfj</Grid>
-                <Grid item>jkldfj</Grid>
-                <Grid item>jkldfj</Grid> */}
               </Grid>
             </Grid>
-            <Grid item container sm={8} className="sidebox_thiredbox">
+            <Grid item container sm={8} xs={5} className="sidebox_thiredbox">
               <Grid container direction="column" justify="flex-start">
-                <Grid item className="doctor_hading"></Grid>
+                <Grid item className="doctor_hading">
+                  {docter_Img}
+                </Grid>
                 {page2}
               </Grid>
             </Grid>
