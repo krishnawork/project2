@@ -69,7 +69,7 @@ let Service = () => {
     return () => {
       setuserseassion();
     };
-  }, [setuserseassion]);
+  }, [x]);
   //
   useEffect(() => {
     db.collection("web_user")

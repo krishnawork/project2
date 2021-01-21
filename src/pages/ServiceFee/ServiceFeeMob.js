@@ -864,6 +864,21 @@ class ServiceFee extends Component {
                         marginTop: "20px",
                         width: "100%",
                       }}
+                      onClick={this.selectSlot}
+                    >
+                      Select Time
+                    </Button>
+                    <Button
+                      style={{
+                        borderRadius: "4px",
+                        background: "#005191",
+                        border: "none",
+                        padding: "10px 20px",
+                        fontSize: "14px",
+                        color: "white",
+                        marginTop: "20px",
+                        width: "100%",
+                      }}
                       onClick={() => this.openCheckout(1000, 1)}
                     >
                       Book appointment
@@ -945,6 +960,22 @@ class ServiceFee extends Component {
                         fontSize: "14px",
                         color: "white",
                         marginTop: "20px",
+                        width: "100%",
+                      }}
+                      onClick={this.selectSlot}
+                    >
+                      Select Time
+                    </Button>
+                    <Button
+                      style={{
+                        borderRadius: "4px",
+                        background: "#005191",
+                        border: "none",
+                        padding: "10px 20px",
+                        fontSize: "14px",
+                        color: "white",
+                        marginTop: "20px",
+                        width: "100%",
                       }}
                       onClick={() => this.openCheckout(2500, 3)}
                     >
@@ -1037,6 +1068,21 @@ class ServiceFee extends Component {
                         border: "1px solid",
                       }}
                     />
+                    <Button
+                      style={{
+                        borderRadius: "4px",
+                        background: "#005191",
+                        border: "none",
+                        padding: "10px 20px",
+                        fontSize: "14px",
+                        color: "white",
+                        marginTop: "20px",
+                        width: "100%",
+                      }}
+                      onClick={this.selectSlot}
+                    >
+                      Select Time
+                    </Button>
                     <Button
                       style={{
                         borderRadius: "4px",
