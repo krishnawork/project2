@@ -24,6 +24,7 @@ import {
 import axios from "axios";
 import api_url from "../../api_url";
 import firebase from "../firebase";
+import Swal from "sweetalert2";
 let db = firebase.firestore();
 
 var validator = require("email-validator");
@@ -43,32 +44,7 @@ class Signup extends Component {
       confirm: "",
     };
   }
-
   signup = () => {
-    //
-    if (
-      validator.validate(this.state.email) &&
-      this.state.fname &&
-      this.state.lname &&
-      this.state.email &&
-      this.state.number &&
-      this.state.password
-    ) {
-      db.collection("web_user")
-        .doc(this.state.email)
-        .set({
-          email: this.state.email,
-          fname: this.state.fname,
-          lname: this.state.lname,
-          number: this.state.number,
-          password: this.state.password,
-          StartChat: "stop",
-        })
-        .then((dd) => {
-          localStorage.setItem("isLoggedIn", true);
-          window.location.assign("/");
-        });
-    }
     if (
       this.state.fname === "" ||
       this.state.lname === "" ||
@@ -95,25 +71,122 @@ class Signup extends Component {
           password: this.state.password,
         })
         .then(function (response) {
-          self.hideAll();
-          let data = response.data.user;
-          localStorage.setItem("email", data.email);
-          let user = {
-            id: data.id,
-            first_name: data.first_name,
-            last_name: data.last_name,
-            email: data.email,
-            number: data.number,
-          };
-          // localStorage.setItem("isLoggedIn", true);
-          localStorage.setItem("userData", JSON.stringify(user));
-          // window.location.assign("/");
+          console.log(response);
+          if (response.data.message === "User Found!") {
+            Swal.fire({
+              icon: "error",
+              type: "error",
+              text: "User Already Exists",
+              showConfirmButton: true,
+              timer: 3500,
+            });
+          } else {
+            self.hideAll();
+            let data = response.data.user;
+            localStorage.setItem("email", data.email);
+            let user = {
+              id: data.id,
+              first_name: data.first_name,
+              last_name: data.last_name,
+              email: data.email,
+              number: data.number,
+            };
+            // localStorage.setItem("isLoggedIn", true);
+            localStorage.setItem("userData", JSON.stringify(user));
+            // window.location.assign("/");
+            db.collection("web_user")
+              .doc(user.email)
+              .set({
+                email: user.email,
+                fname: user.first_name,
+                lname: user.last_name,
+                number: user.number,
+                password: data.password,
+                StartChat: "stop",
+              })
+              .then((dd) => {
+                console.log("success");
+                localStorage.setItem("isLoggedIn", true);
+                window.location.assign("/");
+              });
+          }
         })
         .catch(function (error) {
           console.log(error);
         });
     }
   };
+
+  // signup = () => {
+  //   //
+  //   if (
+  //     validator.validate(this.state.email) &&
+  //     this.state.fname &&
+  //     this.state.lname &&
+  //     this.state.email &&
+  //     this.state.number &&
+  //     this.state.password
+  //   ) {
+  //     db.collection("web_user")
+  //       .doc(this.state.email)
+  //       .set({
+  //         email: this.state.email,
+  //         fname: this.state.fname,
+  //         lname: this.state.lname,
+  //         number: this.state.number,
+  //         password: this.state.password,
+  //         StartChat: "stop",
+  //       })
+  //       .then((dd) => {
+  //         localStorage.setItem("isLoggedIn", true);
+  //         window.location.assign("/");
+  //       });
+  //   }
+  //   if (
+  //     this.state.fname === "" ||
+  //     this.state.lname === "" ||
+  //     this.state.email === "" ||
+  //     this.state.number === "" ||
+  //     this.state.password === "" ||
+  //     this.state.confirm === ""
+  //   ) {
+  //     toast.error("Please enter all the fields!");
+  //   } else if (this.state.password !== this.state.confirm) {
+  //     toast.error("Both passwords should match!");
+  //   } else if (!validator.validate(this.state.email)) {
+  //     toast.error("Please enter a valid email address!");
+  //   } else if (this.state.number.length !== 10) {
+  //     toast.error("Please enter a 10-digit mobile number!");
+  //   } else {
+  //     let self = this;
+  //     axios
+  //       .post(api_url + "sign-up", {
+  //         email: this.state.email,
+  //         fname: this.state.fname,
+  //         lname: this.state.lname,
+  //         number: this.state.number,
+  //         password: this.state.password,
+  //       })
+  //       .then(function (response) {
+  //         self.hideAll();
+  //         let data = response.data.user;
+  //         localStorage.setItem("email", data.email);
+  //         let user = {
+  //           id: data.id,
+  //           first_name: data.first_name,
+  //           last_name: data.last_name,
+  //           email: data.email,
+  //           number: data.number,
+  //         };
+  //         // localStorage.setItem("isLoggedIn", true);
+  //         localStorage.setItem("userData", JSON.stringify(user));
+  //         // window.location.assign("/");
+  //       })
+  //       .catch(function (error) {
+  //         console.log(error);
+  //       });
+  //   }
+  // };
 
   hideAll = () => {
     this.setState({

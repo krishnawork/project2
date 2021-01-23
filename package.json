@@ -24,6 +24,7 @@
     "date-fns": "^2.14.0",
     "dotenv": "^8.2.0",
     "email-validator": "^2.0.4",
+    "emoji-mart": "^3.0.0",
     "file-saver": "^2.0.2",
     "firebase": "^8.2.1",
     "image-to-base64": "^2.1.1",
