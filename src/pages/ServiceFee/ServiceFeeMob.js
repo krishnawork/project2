@@ -228,11 +228,20 @@ class ServiceFee extends Component {
       }
     });
   };
-  openCheckout = (amount, sessions) => {
+  openCheckout = (amount, sessions, service_id, service_name, service_type) => {
     if (this.state.loggedIn) {
       this.props.history.push({
         pathname: "/checkout",
-        state: [amount, sessions],
+        state: [
+          amount,
+          sessions,
+          service_id,
+          "service",
+          service_name,
+          service_type,
+          this.state.selected,
+          this.state.selectedDates,
+        ],
       });
     } else {
       this.setState({
@@ -879,7 +888,15 @@ class ServiceFee extends Component {
                         marginTop: "20px",
                         width: "100%",
                       }}
-                      onClick={() => this.openCheckout(1000, 1)}
+                      onClick={() =>
+                        this.openCheckout(
+                          1000,
+                          1,
+                          this.state.service_id,
+                          this.state.service_name,
+                          this.state.service_type
+                        )
+                      }
                     >
                       Book appointment
                     </Button>
@@ -977,7 +994,15 @@ class ServiceFee extends Component {
                         marginTop: "20px",
                         width: "100%",
                       }}
-                      onClick={() => this.openCheckout(2500, 3)}
+                      onClick={() =>
+                        this.openCheckout(
+                          2500,
+                          3,
+                          this.state.service_id,
+                          this.state.service_name,
+                          this.state.service_type
+                        )
+                      }
                     >
                       Book appointment
                     </Button>
@@ -1094,7 +1119,15 @@ class ServiceFee extends Component {
                         marginTop: "20px",
                         width: "100%",
                       }}
-                      onClick={() => this.openCheckout(4000, 5)}
+                      onClick={() =>
+                        this.openCheckout(
+                          4000,
+                          5,
+                          this.state.service_id,
+                          this.state.service_name,
+                          this.state.service_type
+                        )
+                      }
                     >
                       Book appointment
                     </Button>

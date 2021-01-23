@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     padding: "10px",
     height: "83vh",
     // border: "2px solid black",
-    overflow: "auto",
+    // overflow: "auto",
   },
   type_container: {
     position: "absolute",
@@ -146,136 +146,138 @@ function ChatRoom({ id }) {
 
   return (
     <div>
-      <div className={classes.main_container} id="messageBody">
-        {Chat_text.length > 0
-          ? Chat_text.map((d, index) => {
-              if (d.Email === localStorage.getItem("email")) {
-                return (
-                  <div key={index}>
-                    <div
-                      style={{
-                        marginBottom: "7px",
-                        textAlign: "right",
-                      }}
-                    >
-                      {d.Chat_Text ? (
-                        <Paper
-                          style={{
-                            display: "inline-block",
-                            maxWidth: "70%",
-                            marginRight: "10px",
-                          }}
-                          className={classes.paper1}
-                        >
-                          {d.Chat_Text}
-                        </Paper>
-                      ) : (
-                        ""
-                      )}
-                      {/*  */}
-                      {d.ImageFile ? (
-                        <Paper
-                          style={{
-                            display: "inline-block",
-                            maxWidth: "70%",
-                            marginRight: "10px",
-                          }}
-                          className={classes.paper}
-                        >
-                          <img
-                            className={classes.img}
-                            src={d.ImageFile}
-                            alt="no image"
-                          />
-                        </Paper>
-                      ) : (
-                        ""
-                      )}
-                      {/*  */}
-                      {d.OtherFile ? (
-                        <Paper
-                          style={{
-                            display: "inline-block",
-                            maxWidth: "70%",
-                            marginRight: "10px",
-                          }}
-                          className={classes.paper}
-                        >
-                          <a target="_blank" href={d.OtherFile}>
-                            Download File {<GetAppIcon />}
-                          </a>
-                        </Paper>
-                      ) : (
-                        ""
-                      )}
+      <div className={classes.main_container}>
+        <div id="messageBody" style={{ height: "80vh", overflow: "auto" }}>
+          {Chat_text.length > 0
+            ? Chat_text.map((d, index) => {
+                if (d.Email === localStorage.getItem("email")) {
+                  return (
+                    <div key={index}>
+                      <div
+                        style={{
+                          marginBottom: "7px",
+                          textAlign: "right",
+                        }}
+                      >
+                        {d.Chat_Text ? (
+                          <Paper
+                            style={{
+                              display: "inline-block",
+                              maxWidth: "70%",
+                              marginRight: "10px",
+                            }}
+                            className={classes.paper1}
+                          >
+                            {d.Chat_Text}
+                          </Paper>
+                        ) : (
+                          ""
+                        )}
+                        {/*  */}
+                        {d.ImageFile ? (
+                          <Paper
+                            style={{
+                              display: "inline-block",
+                              maxWidth: "70%",
+                              marginRight: "10px",
+                            }}
+                            className={classes.paper}
+                          >
+                            <img
+                              className={classes.img}
+                              src={d.ImageFile}
+                              alt="no image"
+                            />
+                          </Paper>
+                        ) : (
+                          ""
+                        )}
+                        {/*  */}
+                        {d.OtherFile ? (
+                          <Paper
+                            style={{
+                              display: "inline-block",
+                              maxWidth: "70%",
+                              marginRight: "10px",
+                            }}
+                            className={classes.paper}
+                          >
+                            <a target="_blank" href={d.OtherFile}>
+                              Download File {<GetAppIcon />}
+                            </a>
+                          </Paper>
+                        ) : (
+                          ""
+                        )}
+                      </div>
                     </div>
-                  </div>
-                );
-              } else {
-                return (
-                  <div key={index}>
-                    <div
-                      style={{
-                        marginBottom: "7px",
-                        textAlign: "left",
-                      }}
-                    >
-                      {d.Chat_Text ? (
-                        <Paper
-                          style={{
-                            display: "inline-block",
-                            maxWidth: "70%",
-                            marginLeft: "10px",
-                          }}
-                          className={classes.paper2}
-                        >
-                          {d.Chat_Text}
-                        </Paper>
-                      ) : (
-                        ""
-                      )}
-                      {/*  */}
-                      {d.ImageFile ? (
-                        <Paper
-                          style={{
-                            display: "inline-block",
-                            maxWidth: "70%",
-                            marginLeft: "10px",
-                          }}
-                          className={classes.paper}
-                        >
-                          <img
-                            className={classes.img}
-                            src={d.ImageFile}
-                            alt="no image"
-                          />
-                        </Paper>
-                      ) : (
-                        ""
-                      )}
-                      {/*  */}
-                      {d.OtherFile ? (
-                        <Paper
-                          style={{
-                            display: "inline-block",
-                            maxWidth: "70%",
-                            marginLeft: "10px",
-                          }}
-                          className={classes.paper}
-                        >
-                          <a target="_blank" href={d.OtherFile}>
-                            Download File {<GetAppIcon />}
-                          </a>
-                        </Paper>
-                      ) : (
-                        ""
-                      )}
+                  );
+                } else {
+                  return (
+                    <div key={index}>
+                      <div
+                        style={{
+                          marginBottom: "7px",
+                          textAlign: "left",
+                        }}
+                      >
+                        {d.Chat_Text ? (
+                          <Paper
+                            style={{
+                              display: "inline-block",
+                              maxWidth: "70%",
+                              marginLeft: "10px",
+                            }}
+                            className={classes.paper2}
+                          >
+                            {d.Chat_Text}
+                          </Paper>
+                        ) : (
+                          ""
+                        )}
+                        {/*  */}
+                        {d.ImageFile ? (
+                          <Paper
+                            style={{
+                              display: "inline-block",
+                              maxWidth: "70%",
+                              marginLeft: "10px",
+                            }}
+                            className={classes.paper}
+                          >
+                            <img
+                              className={classes.img}
+                              src={d.ImageFile}
+                              alt="no image"
+                            />
+                          </Paper>
+                        ) : (
+                          ""
+                        )}
+                        {/*  */}
+                        {d.OtherFile ? (
+                          <Paper
+                            style={{
+                              display: "inline-block",
+                              maxWidth: "70%",
+                              marginLeft: "10px",
+                            }}
+                            className={classes.paper}
+                          >
+                            <a target="_blank" href={d.OtherFile}>
+                              Download File {<GetAppIcon />}
+                            </a>
+                          </Paper>
+                        ) : (
+                          ""
+                        )}
+                      </div>
                     </div>
-                  </div>
-                );
-              }
-            })
-          : "Loading..."}
+                  );
+                }
+              })
+            : "Loading..."}
+        </div>
       </div>
       {page}
     </div>

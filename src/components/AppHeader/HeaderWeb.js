@@ -598,7 +598,7 @@ class AppHeader extends Component {
       if (result) {
         db.collection("web_user").doc(result.user.displayName).set(
           {
-            email: result.user.email,
+            email: result.user.displayName,
             fname: result.user.displayName,
             number: result.user.phoneNumber,
           },
@@ -610,7 +610,7 @@ class AppHeader extends Component {
         .post(api_url + "sign-up", {
           fname: result.user.displayName,
           password: "password",
-          email: result.user.email,
+          email: result.user.displayName,
         })
         .then(function (response) {
           console.log("eee");
@@ -622,7 +622,6 @@ class AppHeader extends Component {
             id: data.id,
             first_name: data.first_name,
             last_name: data.last_name,
-            email: data.email,
             number: data.number,
           };
 
@@ -642,6 +641,7 @@ class AppHeader extends Component {
         db.collection("web_user").doc(result.user.email).set(
           {
             email: result.user.email,
+            fname: result.user.displayName,
           },
           { merge: true }
         );

@@ -10,6 +10,7 @@ import "./new.css";
 import Doctor from "./Componet/newcomponet/Doctor";
 import ChatRoom from "./Componet/newcomponet/ChatRoom";
 import Docter_img from "./Componet/newcomponet/Docter_img";
+import Hidden from "@material-ui/core/Hidden";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -39,8 +40,8 @@ function New() {
       let user = JSON.parse(localStorage.getItem("userData"));
       setuser(user.first_name);
     } else {
-      // alert("Please Login Account");
-      // window.location.assign("/");
+      alert("Please Login Account");
+      window.location.assign("/");
     }
   }, []);
 
@@ -72,6 +73,7 @@ function New() {
         <Grid container spacing={3}>
           <Grid container item sm={12} className="chatbox_container">
             {/*  */}
+
             <Grid
               item
               container

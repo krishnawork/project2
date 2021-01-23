@@ -389,10 +389,9 @@ class ServiceFee extends Component {
   };
   select = (time) => {
     var $cols = $(".slot").click(function (e) {
+      console.log("SDSD", e);
+      $cols.removeClass("selected");
       $(this).addClass("selected");
-      // console.log("SDSD", e);
-      // $cols.removeClass("selected");
-      // $(this).addClass("selected");
     });
     this.setState({
       selected: time,

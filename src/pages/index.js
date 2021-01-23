@@ -67,6 +67,7 @@ import BlogDetail from "./Blog/detailed_view.js";
 import Scrollview from "./Scrollview";
 import ChatBoard from "./Chatboard/index";
 import reducer from "./reducer/reducer";
+import facebbok from "./facebbok";
 const store = createStore(reducer);
 
 const Pages = ({ match }) => {
@@ -81,6 +82,7 @@ const Pages = ({ match }) => {
 
               <Route exact path={`/`} component={Home} />
               <Route exact path={`/about`} component={About} />
+              <Route exact path={`/fabook`} component={facebbok} />
               <Route
                 exact
                 path={`/corporate-counselling`}

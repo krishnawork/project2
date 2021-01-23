@@ -915,6 +915,29 @@ class Checkout extends Component {
                   </div>
                   <hr />
                   <div
+                    style={{ display: "flex", justifyContent: "space-between" }}
+                  >
+                    <span style={{ fontFamily: "Nunito", fontSize: "18px" }}>
+                      Date
+                    </span>
+                    <span style={{ fontFamily: "Nunito", fontSize: "18px" }}>
+                      {this.props.location.state[7]}
+                    </span>
+                  </div>
+                  <hr />
+                  <div
+                    style={{ display: "flex", justifyContent: "space-between" }}
+                  >
+                    <span style={{ fontFamily: "Nunito", fontSize: "18px" }}>
+                      Time
+                    </span>
+                    <span style={{ fontFamily: "Nunito", fontSize: "18px" }}>
+                      {this.props.location.state[6]}
+                    </span>
+                  </div>
+                  <hr />
+
+                  <div
                     style={{
                       width: "70%",
                       margin: "auto",
