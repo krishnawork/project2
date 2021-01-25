@@ -107,12 +107,13 @@ class Results extends Component {
           Test_type: localStorage.getItem("settest"),
           TimeNow: new Date().toLocaleString(),
         })
-        .then((result) => {});
+        .then((result) => {
+          generatePDF(this.state.resultArray);
+        });
     } else if (
       localStorage.getItem("settesttype") === "Paid" &&
       localStorage.getItem("isLoggedIn")
     ) {
-      alert("hello");
       db.collection("web_user")
         .doc(localStorage.getItem("email"))
         .collection(localStorage.getItem("settesttype"))
@@ -121,14 +122,17 @@ class Results extends Component {
           Details: this.state.resultArray,
           Test_type: localStorage.getItem("settest"),
           TimeNow: new Date().toLocaleString(),
+          Upload_file: "",
         })
-        .then((result) => {})
+        .then((result) => {
+          localStorage.setItem("test_add_id", result.id);
+          generatePDF(this.state.resultArray);
+        })
         .catch((error) => {
           console.log("error", error);
         });
     }
 
-    generatePDF(this.state.resultArray);
     console.log("dfdfdfdfdfdfdfdfdfdsf", this.state.resultArray);
     console.log(localStorage.getItem("type"));
   };

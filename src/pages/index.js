@@ -2,7 +2,7 @@ import React, { Fragment, useEffect } from "react";
 import AppHeader from "../components/AppHeader";
 import AppFooter from "../components/AppFooter";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Switch,
   Route,
   useLocation,

@@ -5,6 +5,9 @@ import api_url from "../api_url";
 // Date Fns is used to format the dates we receive
 // from our API call
 import { format } from "date-fns";
+import firebase from "../pages/firebase";
+let db = firebase.firestore();
+let store = firebase.storage();
 
 // define a generatePDF function that accepts a tickets argument
 const generatePDF = (tickets) => {
@@ -97,6 +100,22 @@ const generatePDF = (tickets) => {
   var blob = doc.output();
   var formData = new FormData();
   formData.append("pdf", blob);
+  if (localStorage.getItem("test_add_id")) {
+    const file = blob;
+    const storageRef = store.ref(
+      `/Paid_test/${localStorage.getItem("email")}/question_File`
+    );
+    console.log("sdsdsdsd", file, file.name);
+    const fileRef = storageRef.child(file);
+    fileRef.put(file);
+
+    db.collection("web_user")
+      .doc(localStorage.getItem("email"))
+      .collection("Paid")
+      .doc(localStorage.getItem("test_add_id"))
+      .update({ question_pdf: blob })
+      .then((res) => {});
+  }
   if (localStorage.getItem("isLoggedIn")) {
     axios
       .post(api_url + "update_pdf", {

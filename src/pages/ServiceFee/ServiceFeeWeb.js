@@ -918,7 +918,7 @@ class ServiceFee extends Component {
                       Learn
                     </div>
                     <div className="pricingCost">
-                      <span className="pricingRupee">₹</span> 1,000/-
+                      <span className="pricingRupee">₹</span> 1/-
                     </div>
                     <hr
                       style={{
@@ -955,7 +955,8 @@ class ServiceFee extends Component {
                       }}
                       onClick={() =>
                         this.openCheckout(
-                          1000,
+                          1,
+                          // 1000,
                           1,
                           this.state.service_id,
                           this.state.service_name,
