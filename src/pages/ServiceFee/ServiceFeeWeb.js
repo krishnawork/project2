@@ -148,104 +148,147 @@ class ServiceFee extends Component {
   //
   addfacebook = () => {
     auth.signInWithPopup(provider2).then((result) => {
-      if (result) {
-        db.collection("web_user").doc(result.user.displayName).set(
-          {
-            email: result.user.email,
-            fname: result.user.displayName,
-            number: result.user.phoneNumber,
-          },
-          { merge: true }
-        );
+      if (!result.user.email === null) {
+        console.log(result.user.email);
+        db.collection("web_user")
+          .doc(result.user.email)
+          .set(
+            {
+              email: result.user.email,
+              fname: result.user.displayName,
+              number: result.user.phoneNumber,
+            },
+            { merge: true }
+          )
+          .then((d) => {
+            axios
+              .post(api_url + "login", {
+                email: this.state.email,
+              })
+              .then((response) => {
+                if (response.data.message === "No user found") {
+                  axios
+                    .post(api_url + "sign-up", {
+                      fname: result.user.displayName,
+                      password: "password",
+                      email: result.user.email,
+                    })
+                    .then(function (response) {
+                      console.log(result.user.email);
+
+                      let data = response.data.user;
+                      let user = {
+                        id: data.id,
+                        first_name: data.first_name,
+                        last_name: data.last_name,
+                        number: data.number,
+                        email: data.email,
+                      };
+
+                      localStorage.setItem("userData", JSON.stringify(user));
+                      localStorage.setItem("isLoggedIn", true);
+                      localStorage.setItem("email", result.user.email);
+                      window.location.reload();
+                    });
+                } else {
+                  let data = response.data.user;
+                  localStorage.setItem("email", data.email);
+                  let user = {
+                    id: data.id,
+                    first_name: data.first_name,
+                    last_name: data.last_name,
+                    email: data.email,
+                    number: data.number,
+                  };
+                  localStorage.setItem("isLoggedIn", true);
+                  localStorage.setItem("userData", JSON.stringify(user));
+                  window.location.reload();
+                }
+              })
+              .catch(function (error) {
+                // handle error
+                console.log(error);
+              });
+          });
+      } else {
+        db.collection("web_user")
+          .doc(result.user.displayName)
+          .set(
+            {
+              email: result.user.displayName,
+              fname: result.user.displayName,
+              number: result.user.phoneNumber,
+            },
+            { merge: true }
+          )
+          .then((rf) => {
+            axios
+              .post(api_url + "sign-up", {
+                fname: result.user.displayName,
+                password: "password",
+                email: result.user.displayName,
+              })
+              .then(function (response) {
+                console.log("eee");
+
+                console.log(result.user.displayName);
+
+                let data = response.data.user;
+                console.log("sdsdsdsdsds", data);
+                let user = {
+                  id: data.id,
+                  first_name: data.first_name,
+                  last_name: data.last_name,
+                  number: data.number,
+                };
+
+                localStorage.setItem("userData", JSON.stringify(user));
+                localStorage.setItem("isLoggedIn", true);
+                localStorage.setItem("email", result.user.displayName);
+                window.location.reload();
+              });
+          });
       }
-      console.log(result.user);
-      axios
-        .post(api_url + "sign-up", {
-          fname: result.user.displayName,
-          password: "password",
-          email: result.user.email,
-        })
-        .then(function (response) {
-          console.log("eee");
-          console.log(result.user.displayName);
-
-          let data = response.data.user;
-          console.log("sdsdsdsdsds", data);
-          let user = {
-            id: data.id,
-            first_name: data.first_name,
-            last_name: data.last_name,
-            email: data.email,
-            number: data.number,
-          };
-
-          localStorage.setItem("userData", JSON.stringify(user));
-          localStorage.setItem("isLoggedIn", true);
-          localStorage.setItem("email", result.user.displayName);
-          window.location.reload();
-        });
     });
   };
+
   //
 
   addgoogle = () => {
     auth.signInWithPopup(provider).then((result) => {
-      if (result) {
-        db.collection("web_user").doc(result.user.email).set(
-          {
-            email: result.user.email,
-          },
-          { merge: true }
-        );
-      }
-      if (!result.empty) {
-        axios
-          .post(api_url + "sign-up", {
-            email: result.user.email,
-            fname: result.user.displayName,
-            number: result.user.phoneNumber,
-            password: "password",
-          })
-          .then(function (response) {
-            let data = response.data.user;
-            localStorage.setItem("email", data.email);
-            let user = {
-              id: data.id,
-              first_name: data.first_name,
-              last_name: data.last_name,
-              email: data.email,
-              number: data.number,
-            };
-            localStorage.setItem("userData", JSON.stringify(user));
-            localStorage.setItem("isLoggedIn", true);
+      db.collection("web_user")
+        .doc(result.user.email)
+        .set({
+          email: result.user.email,
+          fname: result.user.displayName,
+        })
+        .then((res) => {
+          axios
+            .post(api_url + "sign-up", {
+              email: result.user.email,
+              fname: result.user.displayName,
+              number: result.user.phoneNumber,
+              password: "password",
+            })
+            .then(function (response) {
+              let data = response.data.user;
+              localStorage.setItem("email", data.email);
+              let user = {
+                id: data.id,
+                first_name: data.first_name,
+                last_name: data.last_name,
+                email: data.email,
+                number: data.number,
+              };
 
-            window.location.reload();
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-        // console.log(result.user);
-        // db.collection("web_user")
-        //   .doc(result.user.email)
-        //   .set(
-        //     {
-        //       email: result.user.email,
-        //       fname: result.user.displayName,
-        //       number: result.user.phoneNumber,
-        //     },
-        //     { merge: true }
-        //   )
-        //   .then((d) => {
-        //     localStorage.setItem("email", result.user.email);
-        //     let user = {
-        //       first_name: result.user.displayName,
-        //       email: result.user.email,
-        //     };
-        //     localStorage.setItem("isLoggedIn", true);
-        //     localStorage.setItem("userData", JSON.stringify(user));
-        //     window.location.reload();
-        //   });
-      }
+              localStorage.setItem("userData", JSON.stringify(user));
+              localStorage.setItem("isLoggedIn", true);
+              window.location.reload();
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        });
     });
   };
   //

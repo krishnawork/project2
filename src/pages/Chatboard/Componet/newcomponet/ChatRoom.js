@@ -7,6 +7,7 @@ import Paper from "@material-ui/core/Paper";
 import firebase from "../../../firebase";
 import SendMessaj from "./SendMessaj";
 import GetAppIcon from "@material-ui/icons/GetApp";
+import Swal from "sweetalert2";
 
 const db = firebase.firestore();
 
@@ -59,28 +60,6 @@ function ChatRoom({ id }) {
   const [page, setpage] = useState(null);
   const [chat, setchat] = useState(null);
 
-  // useEffect(() => {
-  //   db.collection("web_user")
-  //     .doc(localStorage.getItem("email"))
-  //     .collection("ChatRoom")
-  //     .doc(id)
-  //     .set({ StartChat: "stop" })
-  //     .then((result) => {
-  //       if (result) {
-  //         db.collection("web_user")
-  //           .doc(localStorage.getItem("email"))
-  //           .collection("ChatRoom")
-  //           .doc(id)
-  //           .onSnapshot((result) => {
-  //             if (result.data().StartChat === "stop") {
-  //               setpage(null);
-  //             } else if (result.data().StartChat === "start") {
-  //               setpage(<SendMessaj id={id} />);
-  //             }
-  //           });
-  //       }
-  //     });
-  // }, [id]);
   useEffect(() => {
     db.collection("web_user")
       .doc(localStorage.getItem("email"))
@@ -114,7 +93,14 @@ function ChatRoom({ id }) {
     if (chat === "start") {
       setpage(null);
       if (message === "hide") {
-        alert("Your session is completed");
+        Swal.fire({
+          icon: "success",
+          type: "success",
+          text: "Your session is completed",
+          showConfirmButton: true,
+          timer: 3500,
+        });
+        // alert("Your session is completed");
         message = "false";
       }
     }
@@ -139,7 +125,7 @@ function ChatRoom({ id }) {
             setChat_text((old) => [...old, d.data()]);
           });
         } else {
-          setChat_text([{ Chat_Text: "Please Start Chat" }]);
+          setChat_text([1]);
         }
       });
   }, [id]);

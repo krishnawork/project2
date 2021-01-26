@@ -9475,21 +9475,8 @@ class Questions extends Component {
           xhr.onload = function (e) {
             var reader = new FileReader();
             reader.onload = function (event) {
-              // var res = event.target.result;
-              var dataURI = event.target.result;
-              var byteString = atob(dataURI.split(",")[1]);
-              var ab = new ArrayBuffer(byteString.length);
-              var ia = new Uint8Array(ab);
-
-              for (var i = 0; i < byteString.length; i++) {
-                ia[i] = byteString.charCodeAt(i);
-              }
-              console.log(new Blob([ab], { type: "image/jpeg" }));
-              var url = URL.createObjectURL(
-                new Blob([ab], { type: "image/jpeg" })
-              );
-              console.log(url);
-              self.state.questions[self.state.number - 1].question = url;
+              var res = event.target.result;
+              self.state.questions[self.state.number - 1].question = res;
               self.state.number = self.state.number + 1;
               self.state.value = "";
               self.setState({ state: self.state });
@@ -9498,6 +9485,7 @@ class Questions extends Component {
             reader.readAsDataURL(file);
           };
           xhr.send();
+          console.log(this.state);
         }
       } else if (localStorage.getItem("type") == "HTP") {
         if (this.state.image_url != null) {
@@ -9559,22 +9547,20 @@ class Questions extends Component {
 
   onChange = (event) => {
     var self = this;
-    var selectedFile = event.target.files[0];
-    var url = URL.createObjectURL(
-      new Blob([selectedFile], { type: "images/*" })
-    );
-    self.state.questions[self.state.number - 1].options[0].option = url;
-    self.state.image_url = url;
-    self.setState({ state: self.state });
+    // var selectedFile = event.target.files[0]
+    // var url = URL.createObjectURL(new Blob([selectedFile] , {type:'images/*'}))
+    // self.state.questions[self.state.number-1].options[0].option = url
+    // self.state.image_url = url
+    // self.setState({state: self.state})
 
-    // var FR= new FileReader();
-    //  FR.addEventListener("load", function(e) {
-    //    temp = e.target.result
-    //    self.state.questions[self.state.number-1].options[0].option = temp
-    //    self.state.image_url = temp
-    //    self.setState({state: self.state})
-    //  });
-    //  FR.readAsDataURL( event.target.files[0] );
+    var FR = new FileReader();
+    FR.addEventListener("load", function (e) {
+      var temp = e.target.result;
+      self.state.questions[self.state.number - 1].options[0].option = temp;
+      self.state.image_url = temp;
+      self.setState({ state: self.state });
+    });
+    FR.readAsDataURL(event.target.files[0]);
   };
 
   render() {

@@ -105,6 +105,14 @@ function AllTest() {
   }, []);
 
   //
+  let GeneratePDF = (data, type) => {
+    if (localStorage.getItem("type") === type) {
+      generatePDF(data);
+    } else {
+    }
+  };
+
+  //
   return (
     <div>
       {/* <h1>Hari</h1> */}
@@ -141,7 +149,10 @@ function AllTest() {
                       <CardActions>
                         <Button
                           size="small"
-                          onClick={() => generatePDF(d.Details)}
+                          onClick={() => {
+                            localStorage.setItem("type", d.Test_type);
+                            generatePDF(d.Details, d.Test_type);
+                          }}
                         >
                           DownLoad PDF{" "}
                         </Button>
@@ -186,7 +197,10 @@ function AllTest() {
                       <CardActions>
                         <Button
                           size="small"
-                          onClick={() => generatePDF(d.Details)}
+                          onClick={() => {
+                            localStorage.setItem("type", d.Test_type);
+                            GeneratePDF(d.Details, d.Test_type);
+                          }}
                         >
                           DownLoad PDF{" "}
                         </Button>
