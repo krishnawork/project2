@@ -148,7 +148,7 @@ class ServiceFee extends Component {
   //
   addfacebook = () => {
     auth.signInWithPopup(provider2).then((result) => {
-      if (!result.user.email === null) {
+      if (!result.user.email === "") {
         console.log(result.user.email);
         db.collection("web_user")
           .doc(result.user.email)
@@ -998,8 +998,7 @@ class ServiceFee extends Component {
                       }}
                       onClick={() =>
                         this.openCheckout(
-                          1,
-                          // 1000,
+                          1000,
                           1,
                           this.state.service_id,
                           this.state.service_name,

@@ -2,6 +2,22 @@ import {
   faChevronRight,
   faCalendarAlt,
 } from "@fortawesome/free-solid-svg-icons";
+import {
+  Row,
+  Col,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  TableCard,
+  Card,
+  CardImg,
+  CardText,
+  CardBody,
+  CardTitle,
+  CardSubtitle,
+  Button,
+} from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "rc-tabs/assets/index.css";
 import React, { Component, Fragment, useEffect } from "react";
@@ -10,7 +26,7 @@ import Dotdotdot from "react-dotdotdot";
 import family from "../../assets/images/family.png";
 import defaultBlog from "../../assets/images/blog_default.png";
 import { Link, withRouter, useHistory } from "react-router-dom";
-import { Button, Card, CardBody, CardImg, Col, Row } from "reactstrap";
+// import { Button, Card, CardBody, CardImg, Col, Row } from "reactstrap";
 import programBanner from "../../assets/images/programBanner.png";
 import Subscribe from "../../components/Subscribe";
 import axios from "axios";
@@ -85,70 +101,76 @@ class Blog extends Component {
       <Fragment>
         <div
           style={{
-            textAlign: "center",
             paddingTop: "260px",
             width: "80%",
             margin: "auto",
           }}
         >
-          {/*<Row>
-                <input type="file" name="file" onChange={this.onChangeHandler}/>
-                <button type="button" className="btn btn-success btn-block" onClick={this.onClickHandler}>Upload</button>
-                <img src={(event) => this.temp(this.setState.imageURL)} />
-                <img id="img" />
-                </Row> */}
           <Row>
             <Col md={12}>
               <Row>
                 {this.state.blogs != null
                   ? this.state.blogs.map((blog, index) => (
-                      <Col md={4} key={index}>
-                        <Link
-                          to={`/blog/details/${blog.id}`}
-                          className="linkStyle blackLink"
-                        >
-                          <Card className="shadowCard noBorder mb-30">
-                            <CardImg
-                              top
-                              src={
-                                this.state.imageURLs != null
+                      <Col
+                        style={{ paddingBottom: "10px" }}
+                        xl={4}
+                        key={blog.id}
+                      >
+                        <Card>
+                          <CardImg
+                            top
+                            width="100%"
+                            height="270px"
+                            src={
+                              this.state.imageURLs != null
+                                ? this.state.imageURLs.find(
+                                    (x) => x.id === blog.id
+                                  ) != undefined
                                   ? this.state.imageURLs.find(
                                       (x) => x.id === blog.id
-                                    ) != undefined
-                                    ? this.state.imageURLs.find(
-                                        (x) => x.id === blog.id
-                                      ).url
-                                    : defaultBlog
-                                  : ""
-                              }
-                              alt="Card image cap"
-                              className={index % 3 == 0 ? "img_360" : "img_240"}
-                            />
-                            <CardBody>
-                              {/*}<Dotdotdot clamp={1}><div style={{fontFamily: 'Roboto-SemiBold', fontSize: '15px'}}>{blog.title}</div></Dotdotdot> */}
+                                    ).url
+                                  : defaultBlog
+                                : ""
+                            }
+                            alt="Card image cap"
+                          />
+                          <CardBody>
+                            <CardTitle style={{ fontWeight: "bold" }} tag="h5">
+                              {blog.title}
+                            </CardTitle>
+                            <CardText
+                              style={{
+                                display: "-webkit-box",
+                                maxWidth: "250px",
+                                WebkitLineClamp: "3",
+                                WebkitBoxOrient: "vertical",
+                                overflow: "hidden",
+                                textOverflow: "ellipsis",
+                              }}
+                            >
                               <div
-                                style={{
-                                  fontFamily: "Roboto-Bold",
-                                  fontSize: "26px",
+                                dangerouslySetInnerHTML={{
+                                  __html: blog.description,
                                 }}
+                              ></div>
+                            </CardText>
+                            <div
+                              style={{
+                                justifyContent: "space-between",
+                                display: "flex",
+                              }}
+                            >
+                              <Link
+                                to={`/blog/details/${blog.id}`}
+                                className="linkStyle blackLink"
                               >
-                                {blog.title}
-                              </div>
-                              <Dotdotdot clamp={3}>
-                                <div
-                                  style={{
-                                    fontSize: "12px",
-                                    marginTop: "10px",
-                                    marginBottom: "10px",
-                                  }}
-                                  dangerouslySetInnerHTML={{
-                                    __html: blog.description,
-                                  }}
-                                ></div>
-                              </Dotdotdot>
-                            </CardBody>
-                          </Card>
-                        </Link>
+                                <Button style={{ backgroundColor: "#005191" }}>
+                                  Continue Reading
+                                </Button>
+                              </Link>
+                            </div>
+                          </CardBody>
+                        </Card>
                       </Col>
                     ))
                   : ""}

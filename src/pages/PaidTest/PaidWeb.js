@@ -71,7 +71,7 @@ class PaidTest extends Component {
   //
   addfacebook = () => {
     auth.signInWithPopup(provider2).then((result) => {
-      if (!result.user.email === null) {
+      if (!result.user.email === "") {
         console.log(result.user.email);
         db.collection("web_user")
           .doc(result.user.email)

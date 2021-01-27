@@ -595,7 +595,9 @@ class AppHeader extends Component {
   //
   addfacebook = () => {
     auth.signInWithPopup(provider2).then((result) => {
-      if (!result.user.email === null) {
+      console.log("sdsdsd", result.user);
+      alert(result.user.displayName, result.user.email);
+      if (!result.user.email === "") {
         console.log(result.user.email);
         db.collection("web_user")
           .doc(result.user.email)
@@ -632,10 +634,10 @@ class AppHeader extends Component {
                         email: data.email,
                       };
 
-                      localStorage.setItem("userData", JSON.stringify(user));
-                      localStorage.setItem("isLoggedIn", true);
-                      localStorage.setItem("email", result.user.email);
-                      window.location.reload();
+                      // localStorage.setItem("userData", JSON.stringify(user));
+                      // localStorage.setItem("isLoggedIn", true);
+                      // localStorage.setItem("email", result.user.email);
+                      // window.location.reload();
                     });
                 } else {
                   let data = response.data.user;
@@ -1428,7 +1430,7 @@ class AppHeader extends Component {
                         color="white"
                         style={{ marginRight: "10px" }}
                       />
-                      Profile
+                      Dashboard
                     </DropdownToggle>
                     <DropdownMenu
                       style={{ zIndex: "100000000000000000000000000000" }}
@@ -1441,7 +1443,7 @@ class AppHeader extends Component {
                         Dashboard
                       </DropdownItem>
                       <DropdownItem onClick={() => this.nav("chatboard")}>
-                        ChatBoard
+                        Chat
                       </DropdownItem>
                       {/*<DropdownItem onClick={() => this.nav('password')}>Change Password</DropdownItem> */}
                       <DropdownItem onClick={() => this.nav("logout")}>

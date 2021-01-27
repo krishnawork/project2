@@ -68,6 +68,7 @@ import Scrollview from "./Scrollview";
 import ChatBoard from "./Chatboard/index";
 import reducer from "./reducer/reducer";
 import facebbok from "./facebbok";
+
 const store = createStore(reducer);
 
 const Pages = ({ match }) => {

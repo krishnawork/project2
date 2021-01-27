@@ -170,7 +170,7 @@ class AppFooter extends Component {
             <Link className="linkStyle" to="/blog">
               <div className="mb-10 linkFooter">Blogs</div>
             </Link>
-            <Link className="linkStyle" to="/terms">
+            <Link className="linkStyle" to="/faq">
               <div className="mb-10 linkFooter">FAQ</div>
             </Link>
             <Link className="linkStyle" to="/privacy">

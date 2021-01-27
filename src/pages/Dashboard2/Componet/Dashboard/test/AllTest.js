@@ -75,7 +75,7 @@ function AllTest() {
             setselfdata((old) => [...old, d.data()]);
           });
         } else {
-          setLoadind("Data Not Available");
+          setLoadind("");
         }
       });
     return () => {
@@ -151,7 +151,7 @@ function AllTest() {
                           size="small"
                           onClick={() => {
                             localStorage.setItem("type", d.Test_type);
-                            generatePDF(d.Details, d.Test_type);
+                            GeneratePDF(d.Details, d.Test_type);
                           }}
                         >
                           DownLoad PDF{" "}
@@ -204,6 +204,19 @@ function AllTest() {
                         >
                           DownLoad PDF{" "}
                         </Button>
+
+                        {d.Upload_file ? (
+                          <Button
+                            size="small"
+                            // onClick={() => Showfileselect(d.id)}
+                          >
+                            <a target="_blank" href={d.Upload_file}>
+                              Download Result
+                            </a>
+                          </Button>
+                        ) : (
+                          ""
+                        )}
                       </CardActions>
                     </Card>
                   </Grid>

@@ -142,6 +142,7 @@ function SendMessaj({ id }) {
           TimeNow: firebase.firestore.FieldValue.serverTimestamp(),
           Email: localStorage.getItem("email"),
           OtherFile: await fileRef.getDownloadURL(),
+          fileName: file.name,
         })
         .then((r) => {
           setOpen(false);

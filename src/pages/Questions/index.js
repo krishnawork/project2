@@ -223,7 +223,8 @@ class Questions extends Component {
         },
         {
           question:
-            "Do you use criticism (attacking your partner’s character, eg. you’re always late, you’re so inconsiderate) when you fight?",
+            // "Do you use criticism (attacking your partner’s character, eg. you’re always late, you’re so inconsiderate) when you fight?",
+            "Do you use criticism (attacking your partner's charactr4 eg. you're always late, you're so inconsiderate) when you fight ?",
           options: [
             { value: "A", option: "Rarely" },
             { value: "B", option: "Often" },
@@ -243,7 +244,7 @@ class Questions extends Component {
             {
               value: "C",
               option:
-                "Always, we are constantly pointing out each other’s insecurities",
+                "Always, we are constantly pointing out each other's insecurities",
             },
           ],
           selected: "",
@@ -9475,8 +9476,21 @@ class Questions extends Component {
           xhr.onload = function (e) {
             var reader = new FileReader();
             reader.onload = function (event) {
-              var res = event.target.result;
-              self.state.questions[self.state.number - 1].question = res;
+              // var res = event.target.result;
+              var dataURI = event.target.result;
+              var byteString = atob(dataURI.split(",")[1]);
+              var ab = new ArrayBuffer(byteString.length);
+              var ia = new Uint8Array(ab);
+
+              for (var i = 0; i < byteString.length; i++) {
+                ia[i] = byteString.charCodeAt(i);
+              }
+              console.log(new Blob([ab], { type: "image/jpeg" }));
+              var url = URL.createObjectURL(
+                new Blob([ab], { type: "image/jpeg" })
+              );
+              console.log(url);
+              // self.state.questions[self.state.number - 1].question = url;
               self.state.number = self.state.number + 1;
               self.state.value = "";
               self.setState({ state: self.state });
@@ -9485,7 +9499,6 @@ class Questions extends Component {
             reader.readAsDataURL(file);
           };
           xhr.send();
-          console.log(this.state);
         }
       } else if (localStorage.getItem("type") == "HTP") {
         if (this.state.image_url != null) {
@@ -9547,20 +9560,22 @@ class Questions extends Component {
 
   onChange = (event) => {
     var self = this;
-    // var selectedFile = event.target.files[0]
-    // var url = URL.createObjectURL(new Blob([selectedFile] , {type:'images/*'}))
-    // self.state.questions[self.state.number-1].options[0].option = url
-    // self.state.image_url = url
-    // self.setState({state: self.state})
+    var selectedFile = event.target.files[0];
+    var url = URL.createObjectURL(
+      new Blob([selectedFile], { type: "images/*" })
+    );
+    self.state.questions[self.state.number - 1].options[0].option = url;
+    self.state.image_url = url;
+    self.setState({ state: self.state });
 
-    var FR = new FileReader();
-    FR.addEventListener("load", function (e) {
-      var temp = e.target.result;
-      self.state.questions[self.state.number - 1].options[0].option = temp;
-      self.state.image_url = temp;
-      self.setState({ state: self.state });
-    });
-    FR.readAsDataURL(event.target.files[0]);
+    // var FR= new FileReader();
+    //  FR.addEventListener("load", function(e) {
+    //    temp = e.target.result
+    //    self.state.questions[self.state.number-1].options[0].option = temp
+    //    self.state.image_url = temp
+    //    self.setState({state: self.state})
+    //  });
+    //  FR.readAsDataURL( event.target.files[0] );
   };
 
   render() {
@@ -9793,11 +9808,17 @@ class Questions extends Component {
                       thinking. You can devote approximately 5 minutes per
                       story, but you can also take longer if desired.
                     </div>
-                    <div>
+                    <div
+                      style={{
+                        marginTop: "20px",
+                        marginBottom: "20px",
+                        textAlign: "center",
+                      }}
+                    >
                       <img
                         className="question-image"
-                        width={150}
-                        height={150}
+                        width={300}
+                        height={300}
                         src={
                           this.state.questions[this.state.number - 1].question
                         }
@@ -9809,6 +9830,7 @@ class Questions extends Component {
                           value={this.state.value}
                           onChange={this.handleChange}
                           cols={80}
+                          rows={10}
                           placeholder="Please write your answer here"
                         />
                       </span>

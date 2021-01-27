@@ -189,7 +189,7 @@ function ChatRoom({ id }) {
                             className={classes.paper}
                           >
                             <a target="_blank" href={d.OtherFile}>
-                              Download File {<GetAppIcon />}
+                              {d.fileName} {<GetAppIcon />}
                             </a>
                           </Paper>
                         ) : (
@@ -251,7 +251,7 @@ function ChatRoom({ id }) {
                             className={classes.paper}
                           >
                             <a target="_blank" href={d.OtherFile}>
-                              Download File {<GetAppIcon />}
+                              {d.fileName} {<GetAppIcon />}
                             </a>
                           </Paper>
                         ) : (
