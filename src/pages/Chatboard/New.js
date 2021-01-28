@@ -10,7 +10,9 @@ import "./new.css";
 import Doctor from "./Componet/newcomponet/Doctor";
 import ChatRoom from "./Componet/newcomponet/ChatRoom";
 import Docter_img from "./Componet/newcomponet/Docter_img";
+
 import Hidden from "@material-ui/core/Hidden";
+import Messageshow from "./Componet/newcomponet/Messageshow";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
 function New() {
   // const { docter_name } = useParams();
   const [User, setuser] = useState();
-  const [page2, setpage2] = useState(null);
+  const [page2, setpage2] = useState(<Messageshow />);
   const [docter_name, setdocter_name] = useState(null);
   const [page, setpage] = useState(<Doctor setdocter_name={setdocter_name} />);
   const [docter_Img, setdocter_Img] = useState(null);

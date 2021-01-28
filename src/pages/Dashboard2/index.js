@@ -12,6 +12,7 @@ import Test from "./Componet/Dashboard/test/Test";
 import Service from "./Componet/Dashboard/service/Service";
 import Program from "./Componet/Dashboard/program/Program";
 import AccountBoxIcon from "@material-ui/icons/AccountBox";
+import FeedBack from "./Componet/Dashboard/feedback/FeedBack";
 
 function Index() {
   const { componet } = useParams();
@@ -27,6 +28,8 @@ function Index() {
       setmainpage(<Service />);
     } else if (componet === "program") {
       setmainpage(<Program />);
+    } else if (componet === "feedback") {
+      setmainpage(<FeedBack />);
     } else {
       setmainpage(<Dashboard />);
     }
@@ -128,7 +131,11 @@ function Index() {
                   Program Session
                 </NavLink>
 
-                <NavLink exact to="/dashboard" className="col-12 menu_option">
+                <NavLink
+                  exact
+                  to="/dashboard/feedback"
+                  className="col-12 menu_option"
+                >
                   <StarBorderIcon /> FeedBack
                 </NavLink>
               </div>

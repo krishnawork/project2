@@ -30,6 +30,7 @@ import {
   ModalBody,
 } from "reactstrap";
 import api_url from "../../api_url";
+import { getid, incress } from "./Get_id";
 let db = firebase.firestore();
 var validator = require("email-validator");
 
@@ -374,16 +375,27 @@ class Checkout extends Component {
     if (this.state.loggedIn) {
       let options = {
         // rzp_live_7Z0yW7O941D235---check karva mate aapeli
-        key: "rzp_live_7Z0yW7O941D235",
+        // key: "rzp_live_7Z0yW7O941D235",
         // key: "rzp_live_xBQ38GAabTut31",
-        // key: "rzp_test_jc28m4cjRc1GoH",
+        key: "rzp_test_jc28m4cjRc1GoH",
         amount: this.props.location.state[0] * 100,
         name: "Mindlyf",
         description: "Consultation Booking",
         image: "",
-        payment_capture: 1,
+        // payment_capture: 1,
 
         handler: (response) => {
+          db.collection("All_order").doc(localStorage.getItem("email")).set(
+            {
+              fname: this.state.fname,
+              lname: this.state.lname,
+              email: this.state.email,
+              Mobile_number: this.state.number,
+            },
+            {
+              merge: true,
+            }
+          );
           localStorage.setItem(
             "paid_test_test_id",
             response.razorpay_payment_id
@@ -401,6 +413,27 @@ class Checkout extends Component {
               ff = this.props.location.state[5];
             }
             let x = localStorage.getItem("email");
+
+            getid("fild1").then((result) => {
+              db.collection("All_order")
+                .doc(x)
+                .collection("order")
+                .add({
+                  BillNo: result,
+                  orderID: response.razorpay_payment_id,
+                  userID: x,
+                  amount: this.props.location.state[0],
+                  seassion: this.props.location.state[1],
+                  service_name: this.props.location.state[4],
+                  service_type: ff,
+                  Chattime: this.props.location.state[6],
+                  ChattimeDate: this.props.location.state[7],
+                })
+                .then(() => {
+                  incress("fild1", result);
+                });
+            });
+
             db.collection("web_user")
               .doc(x)
               .collection("service")
@@ -441,6 +474,23 @@ class Checkout extends Component {
               test_id: this.props.location.state[2],
             });
             let x = localStorage.getItem("email");
+            getid("fild1").then((result) => {
+              db.collection("All_order")
+                .doc(x)
+                .collection("order")
+                .add({
+                  BillNo: result,
+                  orderID: response.razorpay_payment_id,
+                  userID: x,
+                  amount: this.props.location.state[0],
+                  seassion: this.props.location.state[1],
+                  test_type: "Paid",
+                  test_name: localStorage.getItem("type"),
+                })
+                .then(() => {
+                  incress("fild1", result);
+                });
+            });
             db.collection("web_user")
               .doc(x)
               .collection("paid-test")
@@ -493,6 +543,21 @@ class Checkout extends Component {
               this.props.location.state[4]
             );
             let x = localStorage.getItem("email");
+            getid("fild1").then((result) => {
+              db.collection("All_order")
+                .doc(x)
+                .collection("order")
+                .add({
+                  BillNo: result,
+                  userID: x,
+                  amount: this.props.location.state[0],
+                  seassion: this.props.location.state[1],
+                  service_name: this.props.location.state[4],
+                })
+                .then(() => {
+                  incress("fild1", result);
+                });
+            });
             db.collection("web_user")
               .doc(x)
               .collection("Programs")
