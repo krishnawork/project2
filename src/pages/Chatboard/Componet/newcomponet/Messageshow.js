@@ -1,5 +1,6 @@
 import React from "react";
 import ForumIcon from "@material-ui/icons/Forum";
+import backgroundImage from "../../../../assets/images/header-back.jpg";
 
 function Messageshow() {
   return (
@@ -11,6 +12,18 @@ function Messageshow() {
           textAlign: "center",
         }}
       >
+        <img
+          src={backgroundImage}
+          style={{
+            position: "absolute",
+            top: "0px",
+            left: "0px",
+            width: "100%",
+            height: "100%",
+            zIndex: "-1",
+          }}
+          alt=""
+        />
         <ForumIcon
           style={{ marginTop: "200px", fontSize: "100px", color: "#005191" }}
         />

@@ -63,16 +63,27 @@ function Docter_img({ id }) {
           <Avatar
             alt={docter.User}
             src={docter.User_Img}
-            style={{ marginRight: "10px", marginTop: "5px" }}
+            style={{ marginRight: "10px", marginTop: "7px" }}
           />
         </h6>
       ) : (
         ""
       )}
-      {docter ? <h6 style={{ fontWeight: "bold" }}>{docter.User_Name}</h6> : ""}
+      {docter ? (
+        <h6 style={{ fontWeight: "bold", color: "white" }}>
+          {docter.User_Name}
+        </h6>
+      ) : (
+        ""
+      )}
       {/* <Avatar alt={docter.User} src={docter.User_Img} />; */}
       <h6
-        style={{ position: "absolute", right: "10px", top: "13px" }}
+        style={{
+          position: "absolute",
+          right: "10px",
+          top: "13px",
+          color: "white",
+        }}
         variant="contained"
         color="primary"
       >

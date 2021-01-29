@@ -375,9 +375,9 @@ class Checkout extends Component {
     if (this.state.loggedIn) {
       let options = {
         // rzp_live_7Z0yW7O941D235---check karva mate aapeli
-        // key: "rzp_live_7Z0yW7O941D235",
+        key: "rzp_live_7Z0yW7O941D235",
         // key: "rzp_live_xBQ38GAabTut31",
-        key: "rzp_test_jc28m4cjRc1GoH",
+        // key: "rzp_test_jc28m4cjRc1GoH",
         amount: this.props.location.state[0] * 100,
         name: "Mindlyf",
         description: "Consultation Booking",

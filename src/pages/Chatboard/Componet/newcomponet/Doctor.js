@@ -11,6 +11,7 @@ import Paper from "@material-ui/core/Paper";
 import WorkIcon from "@material-ui/icons/Work";
 import BeachAccessIcon from "@material-ui/icons/BeachAccess";
 import firebase from "../../../firebase";
+import backgroundImage from "../../../../assets/images/header-back.jpg";
 import "./Doctor.css";
 let db = firebase.firestore();
 //
@@ -20,12 +21,10 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: "auto",
     marginRight: "auto",
     marginTop: "10px",
-    backgroundColor: theme.palette.background.paper,
     cursor: "pointer",
   },
   paper: {
     textAlign: "center",
-    backgroundColor: "#ecf4fd",
   },
   hover: {
     backgroundColor: "red",
@@ -46,8 +45,16 @@ function Doctor({ setdocter_name }) {
         }
       });
   }, [setdocter_name]);
-  let showdocter_chat = (docter_name) => {
+  let showdocter_chat = (docter_name, id) => {
     if (docter_name) {
+      doctor.map((d, k) => {
+        if ("x" + k === id) {
+          document.querySelector("#" + id).classList.add("click_color");
+        } else {
+          document.querySelector("#x" + k).classList.remove("click_color");
+        }
+      });
+      // e.target.style.backgroundColor = "pink";
       setdocter_name(docter_name);
     }
   };
@@ -56,8 +63,16 @@ function Doctor({ setdocter_name }) {
       {doctor.length > 0
         ? doctor.map((d, index) => {
             return (
-              <Paper key={index} className="abhikeliye">
-                <List hover="true" onClick={() => showdocter_chat(d.User)}>
+              <Paper
+                key={index}
+                id={"x" + index}
+                className="abhikeliye"
+                style={{ color: "white" }}
+              >
+                <List
+                  hover="true"
+                  onClick={(e) => showdocter_chat(d.User, "x" + index)}
+                >
                   <ListItem>
                     <ListItemAvatar>
                       <Avatar alt={d.User} src={d.User_Img} />
@@ -68,7 +83,7 @@ function Doctor({ setdocter_name }) {
               </Paper>
             );
           })
-        : "...Loading"}
+        : ""}
     </div>
   );
 }

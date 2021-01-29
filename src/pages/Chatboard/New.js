@@ -10,7 +10,7 @@ import "./new.css";
 import Doctor from "./Componet/newcomponet/Doctor";
 import ChatRoom from "./Componet/newcomponet/ChatRoom";
 import Docter_img from "./Componet/newcomponet/Docter_img";
-
+import Logo from "../../assets/images/mind-lyf-04.png";
 import Hidden from "@material-ui/core/Hidden";
 import Messageshow from "./Componet/newcomponet/Messageshow";
 
@@ -90,6 +90,16 @@ function New() {
                 justify="flex-start"
                 alignItems="center"
               >
+                <img
+                  src={Logo}
+                  alt=""
+                  style={{
+                    width: "70px",
+                    height: "auto",
+                    color: "white",
+                    marginBottom: "20px",
+                  }}
+                />
                 <Grid item style={{ marginBottom: "20px" }}>
                   <Avatar alt={User} src="/static/images/avatar/1.jpg" />
                 </Grid>
@@ -119,9 +129,14 @@ function New() {
               justify="center"
               className="sidebox_secondbox"
             >
-              <Grid container direction="column" justify="flex-start">
+              <Grid
+                container
+                direction="column"
+                justify="flex-start"
+                style={{ backgroundColor: "#005191" }}
+              >
                 <Grid item className="doctor_hading">
-                  <h5>Docter List</h5>
+                  <h5 style={{ color: "white" }}>Psychologist</h5>
                 </Grid>
                 {page}
               </Grid>

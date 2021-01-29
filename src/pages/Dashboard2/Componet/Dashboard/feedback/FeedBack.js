@@ -13,6 +13,8 @@ import { toast, ToastContainer } from "react-toastify";
 import Swal from "sweetalert2";
 import { Feedback } from "@material-ui/icons";
 import Button from "@material-ui/core/Button";
+import api_url from "../../../../../api_url";
+import axios from "axios";
 let db = firebase.firestore();
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -321,14 +323,28 @@ export default function CustomizedTables() {
           My_therapist_seemed_knowledgeable_about_the_issues: group6,
         })
         .then((re) => {
-          Swal.fire({
-            icon: "success",
-            type: "success",
-            text: "Your Feedback Has Been Successfully Submitted!",
-            showConfirmButton: true,
-            timer: 3500,
-          }).then((s) => {
-            history.push("/dashboard");
+          axios({
+            method: "get",
+            url: api_url + "feedback_email_send",
+            params: {
+              email: localStorage.getItem("email"),
+              group1: group1,
+              group2: group2,
+              group3: group3,
+              group4: group4,
+              group5: group5,
+              group6: group6,
+            },
+          }).then((re) => {
+            Swal.fire({
+              icon: "success",
+              type: "success",
+              text: "Your Feedback Has Been Successfully Submitted!",
+              showConfirmButton: true,
+              timer: 3500,
+            }).then((s) => {
+              history.push("/dashboard");
+            });
           });
         });
     } else {
