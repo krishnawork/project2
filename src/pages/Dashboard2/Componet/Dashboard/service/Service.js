@@ -69,7 +69,7 @@ function Service({ service }) {
   return (
     <div>
       <Grid container spacing={3}>
-        <Grid item xs={6} sm={3}>
+        <Grid item xs={6} sm={3} style={{ padding: "20px" }}>
           <Button
             className={`${classes.paper} ${classes.psychology}`}
             onClick={() => {
@@ -80,7 +80,7 @@ function Service({ service }) {
           </Button>
         </Grid>
         {/*  */}
-        <Grid item xs={6} sm={3}>
+        <Grid item xs={6} sm={3} style={{ padding: "20px" }}>
           <Button
             className={`${classes.paper} ${classes.psychology}`}
             onClick={() => {
@@ -91,7 +91,7 @@ function Service({ service }) {
           </Button>
         </Grid>
         {/*  */}
-        <Grid item xs={6} sm={3}>
+        <Grid item xs={6} sm={3} style={{ padding: "20px" }}>
           <Button
             className={`${classes.paper} ${classes.psychology}`}
             onClick={() => {
@@ -102,7 +102,7 @@ function Service({ service }) {
           </Button>
         </Grid>
         {/*  */}
-        <Grid item xs={6} sm={3}>
+        <Grid item xs={6} sm={3} style={{ padding: "20px" }}>
           <Button
             className={`${classes.paper} ${classes.psychology}`}
             onClick={() => {

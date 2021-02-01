@@ -87,44 +87,46 @@ function Seassion({ Program, seassion }) {
     <div>
       {/* box 1 */}
       <Grid container spacing={3}>
-        {servicedata.length > 0
-          ? servicedata.map((d) => {
-              return (
-                <>
-                  <Grid item xs={6} sm={3}>
-                    <Card className={classes.root} variant="outlined">
-                      <CardContent>
-                        <Typography
-                          className={classes.title}
-                          color="textSecondary"
-                          gutterBottom
-                        >
-                          "Programs"
-                        </Typography>
-                        <Typography variant="h5" component="h2">
-                          {d.service_name}
-                        </Typography>
-                        <Typography
-                          className={classes.pos}
-                          color="textSecondary"
-                        >
-                          seassion:{d.seassion}
-                          <br />
-                          chatTime:{d.Chattime}
-                        </Typography>
-                        <Typography variant="body2" component="p">
-                          <br />
-                        </Typography>
-                      </CardContent>
-                      <CardActions>
-                        <Button size="small">amount: {d.amount}</Button>
-                      </CardActions>
-                    </Card>
-                  </Grid>
-                </>
-              );
-            })
-          : Loadind}
+        {servicedata.length > 0 ? (
+          servicedata.map((d) => {
+            return (
+              <>
+                <Grid item xs={12} sm={3} style={{ padding: "20px" }}>
+                  <Card className={classes.root} variant="outlined">
+                    <CardContent>
+                      <Typography
+                        className={classes.title}
+                        color="textSecondary"
+                        gutterBottom
+                      >
+                        "Programs"
+                      </Typography>
+                      <Typography variant="h5" component="h2">
+                        {d.service_name}
+                      </Typography>
+                      <Typography className={classes.pos} color="textSecondary">
+                        seassion:{d.seassion}
+                        <br />
+                        chatTime:{d.Chattime}
+                      </Typography>
+                      <Typography variant="body2" component="p">
+                        <br />
+                      </Typography>
+                    </CardContent>
+                    <CardActions>
+                      <Button size="small">amount: {d.amount}</Button>
+                    </CardActions>
+                  </Card>
+                </Grid>
+              </>
+            );
+          })
+        ) : (
+          <Grid item xs={12} sm={3} style={{ padding: "20px" }}>
+            {" "}
+            {Loadind}
+          </Grid>
+        )}
       </Grid>
       {/*  */}
     </div>

@@ -82,11 +82,15 @@ class ServiceFee extends Component {
       openMorn: true,
       selected: "",
       selectedDates: "",
+      todaytime: new Date().getHours(),
+      todaydate: 0,
+      activedate: "",
     };
   }
 
   componentDidMount = () => {
     let user;
+    let krishna = new Date();
 
     if (localStorage.getItem("isLoggedIn")) {
       user = JSON.parse(localStorage.getItem("userData"));
@@ -354,6 +358,7 @@ class ServiceFee extends Component {
   componentDidMount = () => {
     // this.state.dates.push(moment(today));
     var today = moment();
+
     for (var i = 0; i < 13; i++) {
       this.state.dates.push(moment(today).add(i, "days").format("MM-DD-YYYY"));
     }
@@ -369,6 +374,9 @@ class ServiceFee extends Component {
         loggedIn: false,
       });
     }
+    this.setState({ todaydate: this.state.dates[0] });
+    this.setState({ selectedDates: this.state.dates[0] });
+    this.setState({ activedate: this.state.dates[0] });
   };
 
   setTime = (time) => {
@@ -430,7 +438,11 @@ class ServiceFee extends Component {
       showSlotBook: false,
     });
   };
+
   select = (time) => {
+    // alert(this.state.todaytime);
+    // alert(this.state.todaydate);
+
     var $cols = $(".slot").click(function (e) {
       console.log("SDSD", e);
       $cols.removeClass("selected");
@@ -478,14 +490,45 @@ class ServiceFee extends Component {
                             />
                           </span>
                         </div>
+
                         <Collapse isOpen={this.state.openMorn}>
                           <div className="slotGrid">
-                            <div
-                              className="slot"
-                              onClick={() => this.select("9:00 AM")}
-                            >
-                              9:00 AM
-                            </div>
+                            {index === 0 && this.state.todaytime >= 9 ? (
+                              <div
+                                className="slot"
+                                style={{ backgroundColor: "gray" }}
+                              >
+                                9:00 AM
+                              </div>
+                            ) : (
+                              <div
+                                className="slot"
+                                onClick={() => {
+                                  this.select("9:00 AM");
+                                  this.selecteddates2();
+                                }}
+                              >
+                                9:00 AM
+                              </div>
+                            )}
+                            {index === 0 && this.state.todaytime > 9 ? (
+                              <div
+                                className="slot"
+                                style={{ backgroundColor: "gray" }}
+                              >
+                                9:00 AM
+                              </div>
+                            ) : (
+                              <div
+                                className="slot"
+                                onClick={() => {
+                                  this.select("9:00 AM");
+                                  this.selecteddates2();
+                                }}
+                              >
+                                9:00 AM
+                              </div>
+                            )}
                             <div
                               className="slot"
                               onClick={() => this.select("9:45 AM")}
@@ -504,6 +547,8 @@ class ServiceFee extends Component {
                             >
                               11:15 AM
                             </div>
+                            {}
+                            {}
                             <div
                               className="slot"
                               onClick={() => this.select("12:00 AM")}
@@ -512,6 +557,7 @@ class ServiceFee extends Component {
                             </div>
                           </div>
                         </Collapse>
+
                         <div onClick={this.toggleAfter} className="dayTime">
                           Afternoon
                           <span>

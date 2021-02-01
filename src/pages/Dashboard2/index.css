@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 .row::after {
   content: "";
   clear: both;
@@ -65,6 +68,8 @@
   background-color: #5279e0;
   height: 100vh;
   padding-top: 10px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
 }
 .menu_option {
   padding: 10px;
@@ -85,14 +90,18 @@
   padding-top: 10px;
   background-color: #f9f7fd;
   height: 100vh;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
   overflow: auto;
 }
 .apoiment {
   text-align: center;
 }
-.apoiment a {
+.Book_apoiment {
+  text-align: center;
+}
+.linka {
   padding: 4px;
-  background-color: #fff;
   text-decoration: none;
   color: black;
   font-size: 12px;

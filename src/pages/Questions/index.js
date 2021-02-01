@@ -9766,6 +9766,7 @@ class Questions extends Component {
                         className="question-image"
                         width={350}
                         height={350}
+                        style={{ border: "2px solid black", margin: "10px" }}
                         src={this.state.image_url}
                       />
                     ) : (
@@ -9810,8 +9811,8 @@ class Questions extends Component {
                     </div>
                     <div
                       style={{
-                        marginTop: "20px",
-                        marginBottom: "20px",
+                        marginTop: "50px",
+                        marginBottom: "50px",
                         textAlign: "center",
                       }}
                     >
@@ -9819,6 +9820,7 @@ class Questions extends Component {
                         className="question-image"
                         width={300}
                         height={300}
+                        style={{ border: "2px solid black" }}
                         src={
                           this.state.questions[this.state.number - 1].question
                         }

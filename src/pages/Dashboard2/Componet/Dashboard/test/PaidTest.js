@@ -87,39 +87,44 @@ function PaidTest({ test }) {
     <div>
       {/* <h1>Hari</h1> */}
       <Grid container spacing={3}>
-        {selfdata.length > 0
-          ? selfdata.map((d, index) => {
-              return (
-                <Grid item xs={6} sm={3} key={index}>
-                  <Card className={classes.root} variant="outlined">
-                    <CardContent>
-                      <Typography
-                        className={classes.title}
-                        color="textSecondary"
-                        gutterBottom
-                      >
-                        {d.Test}
-                      </Typography>
-                      <Typography variant="h5" component="h2">
-                        {d.TimeNow}
-                      </Typography>
-                      <Typography className={classes.pos} color="textSecondary">
-                        Test_type: <br />
-                        {d.Test_type}
-                        <br />
-                      </Typography>
-                      <Typography variant="body2" component="p">
-                        <br />
-                      </Typography>
-                    </CardContent>
-                    <CardActions>
-                      {/* <Button size="small">amount: {d.amount}</Button> */}
-                    </CardActions>
-                  </Card>
-                </Grid>
-              );
-            })
-          : Loadind}
+        {selfdata.length > 0 ? (
+          selfdata.map((d, index) => {
+            return (
+              <Grid item xs={12} sm={3} key={index} style={{ padding: "20px" }}>
+                <Card className={classes.root} variant="outlined">
+                  <CardContent>
+                    <Typography
+                      className={classes.title}
+                      color="textSecondary"
+                      gutterBottom
+                    >
+                      {d.Test}
+                    </Typography>
+                    <Typography variant="h5" component="h2">
+                      {d.TimeNow}
+                    </Typography>
+                    <Typography className={classes.pos} color="textSecondary">
+                      Test_type: <br />
+                      {d.Test_type}
+                      <br />
+                    </Typography>
+                    <Typography variant="body2" component="p">
+                      <br />
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    {/* <Button size="small">amount: {d.amount}</Button> */}
+                  </CardActions>
+                </Card>
+              </Grid>
+            );
+          })
+        ) : (
+          <Grid item xs={12} sm={3} style={{ padding: "20px" }}>
+            {" "}
+            {Loadind}
+          </Grid>
+        )}
       </Grid>
     </div>
   );
