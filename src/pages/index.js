@@ -260,11 +260,6 @@ const Pages = ({ match }) => {
               <Route exact path={`/signup`} component={Signup} />
               <Route exact path={`/paid-test`} component={PaidTest} />
 
-              {/* <Route
-                exact
-                path={`/chatboard/:user_name?/:Email?/:service?/:id?`}
-                component={ChatBoard}
-              /> */}
               <Route
                 exact
                 path={`/chatboard/:docter_name?`}

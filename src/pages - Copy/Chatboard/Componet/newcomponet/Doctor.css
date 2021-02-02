@@ -1,0 +1,12 @@
+.abhikeliye:hover {
+  background-color: #003057 !important;
+  border-bottom: 1px solid #6a6983;
+}
+.abhikeliye {
+  background-color: #005191 !important;
+  border-bottom: 1px solid white !important;
+  cursor: pointer !important;
+}
+.click_color {
+  background-color: #003057 !important;
+}
